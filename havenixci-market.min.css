@@ -1,0 +1,815 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+body {
+    background: #f9f9f9;
+    padding-top: 70px;
+}
+.titre {
+    font-size: 2.3rem;
+    font-weight: 800;
+    color: #222;
+    margin-top: 15px;
+    text-align: center;
+    letter-spacing: 1px;
+}
+.titre span {
+    color: #ff8800;
+}
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: white;
+    z-index: 1000;
+    overflow: hidden;
+    padding: 10px 0;
+}
+.slogan {
+
+    
+    font-size: 1.3rem;
+    color: white;
+    font-weight: 600;
+    text-align: center;
+    letter-spacing: 0.5px;
+    background: linear-gradient(135deg, #ff8800, #ff5e00);
+    box-shadow: 0 10px 25px rgba(255,136,0,0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 50px;
+    padding: 14px 28px; 
+    margin: 25px auto;
+    width: fit-content;
+}
+.slogan:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 35px rgba(255,136,0,0.5);
+}
+
+.slogan-action {
+    position: relative;
+    padding-top: 20px;
+    text-align: center;
+}
+.slogan-action::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 3px;
+    background: #ff8800;
+    border-radius: 2px;
+    opacity: 0.8;
+}
+
+.btn-vider-panier {
+    background-color: #e57373;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+.market-instructions {
+    width: 90%;
+    max-width: 800px;
+    margin: 20px auto;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.instruction-principale {
+    background: #f7f7f7;
+    color: #1a1a1a;
+    font-weight: bold;
+    font-size: 18px;
+    padding: 12px 15px;
+    border-radius: 6px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+.condition-paiement {
+    background-color: #f2f2f2;
+    color: #000000;
+    padding: 10px 15px;
+    border: 1px solid #ff8800;
+    border-radius: 6px;
+    font-size: 15px;
+    line-height: 1.5;
+    text-align: center;
+    margin-bottom: 10px;
+}
+.choix-restaurant {
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    margin: 10px 19px;
+    padding: 5px 15px;
+    color: #ffffff;
+    background: #989899;
+    border-radius: 8px;
+    line-height: 1.6;
+}
+.condition-paiement .orange {
+    color: #ff8800;
+    font-weight: bold;
+}
+.panier-icon {
+    position: fixed;
+    top: 12px;
+    right: 20px;
+    background: #ff6f00;
+    padding: 8px 12px;
+    border-radius: 40px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+}
+.panier-icon img {
+    width: 22px;
+    height: 22px;
+}
+.top-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 15px;
+    z-index: 1000;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+.btn-reservation {
+    display: block;
+    background: #004aad;
+    color: white;
+    margin: 20px auto;
+    width: fit-content;
+    padding: 12px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+.btn-reservation:hover {
+    background: #e6c200;
+    transform: translateY(-2px);
+}
+.hamburger {
+    width: 25px;
+    height: 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+}
+.hamburger span {
+    display: block;
+    height: 2.5px;
+    width: 100%;
+    background: #333;
+    border-radius: 2px;
+    
+}
+
+#compteur {
+    background: rgb(255, 255, 255);
+    color: #f44336;
+    padding: 2px 6px;
+    border-radius: 50%;
+    font-size: 11px;
+    font-weight: bold;
+}
+nav{
+    display: none;
+    flex-direction: column;
+    position: fixed;
+    top: 60px;
+    left: 0;
+    width: 200px;
+    background: #fff;
+    box-shadow: 2px 0 6px rgba(0,0,0,0.1);
+}
+nav a {
+    padding: 12px;
+    text-decoration: none;
+    color: #000;
+    border-bottom: 1px solid #eee;
+}
+nav a:hover {
+    background: #ffcc00;color: #000;
+}
+.panier-container {
+    display: none;
+    position: fixed;
+    top: 60px;
+    right: 0;
+    width: 300px;
+    background: #fff;
+    padding: 15px;
+    box-shadow: -4px 0 15px;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+#restaurants {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+.restaurant-menu {
+    padding-top: 10px;
+    text-align: center;
+}
+.restaurant-menu h1 {
+    margin-top: 5px;
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 8px;
+}
+.desc {
+    color: #777;
+    margin-bottom: 15px;
+    font-size: 16px;
+    text-align: center;
+    line-height: 1.5;
+}
+.galerie {
+    display: flex;
+    gap: 15px;
+    overflow-x: auto;
+    padding: 15px 12px;
+    scroll-behavior: smooth;
+    overscroll-behavior-x: contain;
+    margin-bottom: 15px;
+}
+.galerie img {
+    flex: 0 0 auto;
+    width: 65%;
+    max-width: 320px;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 5px 12px rgba(0,0,0,0.5);
+    transition: 0.3s;
+}
+.galerie::-webkit-scrollbar {
+    height: 6px;
+}
+.galerie::-webkit-scrollbar-thumb {
+    background: #ff7a3c;
+    border-radius: 10px;
+}
+.livraison-box {
+    margin: 10px 0;
+    font-size: 14px;
+}
+.badge-livraison {
+    display: inline-block;
+    background: #ff6f00;
+    color: #ffffff;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-weight: bold;
+    margin-left: 5px;
+    animation: pulse 1.5s infinite;
+}
+.profil-restaurant .horaires {
+    font-size: 0.95rem;
+    color: #555;
+    margin: 5px 0 10px 0;
+    font-weight: 500; 
+}
+.profil-restaurant .horaires::before {
+    content: "";
+}
+.profil-restaurant .horaires:hover {
+    color: #ff6600;
+    cursor: pointer;
+}
+/* espace avis client */
+.hotel-reviews {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+.section-title {
+    text-align: center;
+    font-size: 1.6rem;
+    color: #004aad;
+    margin-bottom: 40px;
+}
+.reviews-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.review-card {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+}
+.review-text {
+    font-size: 0.95rem;
+    color: #444;
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+.review-author {
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: #004aad;
+}
+.review-action {
+    text-align: center;
+    margin-top: 40px;
+}
+.btn-avis {
+    display: inline-block;
+    padding: 12px 20px;
+    background: #ffc700;
+    color: #000;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 6px;
+    transition: 0.3s ease;
+}
+.sous-texte {
+    font-size: 14px;
+    color: #555555;
+    margin-top: 8px;
+    margin-bottom: 10px;
+    line-height: 1.4;
+    text-align: center;
+}
+.contact-info {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #000000;
+    line-height: 1.6;
+    width: 100%;
+    text-align: center;
+}
+@keyframes pulse {
+    0% { transform: scale(1);}
+}
+.menu-produits {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    padding: 20px;
+    text-align: center;
+    width: 100%;
+}
+.produit {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(34,197,94,0.35);
+    width: 90%;
+    min-height: 400px;
+    max-width: 400px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.produi {
+    width: 90%;
+    background: white;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    overflow: hidden;
+    display: flex;
+    margin-top: 20px !important;
+    flex-direction: column;
+    border-radius: 15px;
+    padding: 15px;
+    box-sizing: border-box;
+    margin: auto;
+    text-align: center;
+    align-items: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.produi:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+.produi img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    object-position: center center;
+    display: block;
+    margin: 0 auto;
+    border-radius: 10px;
+}
+.produi select,
+.produi input {
+    width: 100%;
+    padding: 12px 14px;
+    margin: 6px auto;
+    display: block;
+    border: 1px solid #dcdcdc;
+    border-radius: 10px;
+    font-size: 16px;
+    background: white;
+    color: #444;
+    outline: none;
+    transition: all 0.3s ease;
+}
+.produi select:focus,
+.produi input:focus {
+    border-color: #ff7a3c;
+    background: white;
+    box-shadow: 0 0 6px rgba(255,122,60,0.25);
+}
+.produi h3 {
+    margin: 10px 0 5px;
+}
+.produi button {
+    margin-top: auto;
+    width: 100%;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(135deg,#ff7a3c,#ff3c00);
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-weight: bold;
+}
+.produit:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+.produit img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+.produit {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 15px;
+    max-width: 400px;
+}
+.produit h3 {
+    height: 50px;
+    line-height: 50px;
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.produit p {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin: 0;  
+}
+.produit p span {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #28a745;
+    background-color: #e6f7ee;
+    border-radius: 6px;
+    padding: 2px 6px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: default; 
+    min-width: 200px;  
+}
+
+.produit p:hover {
+    transform: scale(1.05);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+}
+.produit select,
+.produit input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 8px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+.ligne-acc {
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+}
+.ligne-acc select {
+    flex: 1;
+}
+.produit button {
+    margin-top: auto;
+    width: 100%;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(135deg,#ff7a3c,#ff3c00);
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-weight: bold;
+}
+.produit button:hover {
+    background: #ff5a14;
+}
+.galerie img:hover {
+    transform: scale(1.05);
+}
+
+.profil-restaurant {
+    width: 300px;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.profil-restaurant:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+
+}
+.image-resto {
+    width: 100%;
+    height: 170px;
+    object-fit: cover;
+    display: block;
+}
+.nom-resto {
+    margin-top: 15px;
+    font-size: 19px;
+    font-weight: 600;
+    padding: 0 15px;
+    margin-bottom: 10px;
+}
+.specialistes {
+    font-size: 14px;
+    color: #000000;
+    padding: 0 10px;
+    margin-bottom: 10px;
+}
+.btn-menu {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 15px;
+    background: #ff7a00;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+#message-panier {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #22c55e;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-size: 12px;
+    white-space: nowrap;
+    display: none;
+    font-weight: 700;
+    z-index: 9999;
+}
+.panier-icon img.animate {
+    transform: scale(1.3) rotate(-10deg);
+    transition: 0.2s;
+}
+.panier-container h3 {
+    margin-bottom: 10px;
+    text-align: center;
+    color: #25d366;
+}
+.panier-item {
+    display: flex;
+    justify-content: space-between;
+    margin: 8px 0;
+}
+.panier-item button {
+    background: #ff6600;
+    border: none;
+    color: #fff;
+    padding: 3px 8px;
+    cursor: pointer;
+}
+.btn-whatsapp {
+    background: #25d366;
+    color: white;
+    border: none;
+    padding: 10px;
+    width: 100%;
+    margin-top: 10px;
+    cursor: pointer;
+}
+/* service de protection */
+.info-paiement {
+    font-size: 13px;
+    color: #555;
+    margin-top: 5px;
+}
+/* le placeholder */
+section {
+    padding: 25px;
+    scroll-margin-top: 100px;
+}
+h2 {
+    margin-bottom: 15px;
+}
+.input-client {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 12px;
+    border: 1px solid #ddd;
+    font-size: 14px;
+    outline: none;
+}
+.input-client {
+    border-color: #e67e22;
+    box-shadow: 0 0 5px rgba(230,126,34,0.3);
+}
+.produits {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px,1fr));
+    gap: 15px;
+}
+.card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    padding: 10px;
+    text-align: center;
+}
+/* restaurant en vignette */
+.restaurant-slider {
+    padding: 20px;
+    text-align: center;
+}
+.titre-resto {
+    font-size: 20px;
+    margin-bottom: 4px;
+}
+.sous-titre {
+    color: black;
+    font-size: 12px;
+    margin-bottom: 6px;
+}
+.scroll-message {
+    font-size: 12px;
+    color: blue;
+    margin-bottom: 12px;
+    text-align: right;
+}
+.slider-restaurant {
+    display: flex;
+    overflow-x: auto;
+    gap: 15px;
+    scrollbar-width: none;
+}
+.slider-restaurant::-webkit-scrollbar {
+    display: none;
+}
+.slider-restaurant img {
+    width: 250px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+    flex-basis: 0;
+}
+input[type="text"] {
+    width: 100%;
+    height: 28px;
+    padding: 2px 6px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+}
+input::placeholder {
+    color: #999;
+    font-size: 14px;
+}
+.card img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+.card h3 {
+    margin-top: 10px;
+    font-size: 1.2rem;
+    color: #222;
+} 
+.card p {
+    color: #ff6600;
+    font-weight: 700;
+    margin-top: 5px;
+}
+.card button {
+    background: linear-gradient(45deg,#ffd000,#ffcc00);
+    border: none;
+    padding: 8px;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 8px;
+}
+.card button:hover {
+    background: linear-gradient(45deg,#ffcc00,#e6c200);
+    transform: scale(1.05);
+}
+.zone-confiance {
+    padding: 12px 10px;
+    background: #ffffff;
+    text-align: center;
+    border-top: 1px solid #eee;
+    margin: 10px;
+    border-radius: 10px;
+}
+.condition-mini {
+    font-size: 12px;
+    color: #cc3300;
+    margin: 6px 0;
+    text-align: left;
+    line-height: 1.4;
+    font-weight: 600;
+}
+.info {
+    margin: 6px 0;
+    font-size: 14px;
+    color: #222;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+}
+.info a {
+    color: green;
+    text-decoration: none;
+    font-weight: 600;
+}
+.info a:hover {
+    opacity: 0.8;
+}
+footer {
+    text-align: center; 
+    padding: 20px;
+    background: #004aad;
+    margin-top: 40px;
+    color: #fff;
+}
+footer p {
+    margin-bottom: 10px;
+}
+@media (max-width: 600px){
+    .profil-restaurant {
+        width: 100%;
+}
+}
+@media (max-width: 480px) {
+    .produit {
+        max-width: 100%;
+    }
+    .produit h3 {
+        font-size: 16px;
+        height: 40px;
+        line-height: 40px;
+    }
+    .produit p span {
+        font-size: 0.8rem;
+        padding: 2px 4px;
+        min-width: 150px;
+    }
+}
+
