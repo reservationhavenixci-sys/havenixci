@@ -1,0 +1,152 @@
+<!--  
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Havenix CI Market</title>
+    <link rel="icon" href="image-logo/logo havenix/IMG_20260102_023057_251.webp">
+    <link rel="stylesheet" href="havenixci-market.min.css">
+</head>
+<body>
+
+<header> 
+    <div class="top-bar">
+        <div class="hamburger" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="panier-icon" onclick="togglePanier()">
+            <img src="image-logo/logo havenix/panier.webp" alt="panier" width="25">
+            <span id="compteur">0</span>
+        </div>
+    </div>
+
+    <nav id="menu">
+        <a href="havenixci-market.html">➤ 🍽 Restaurants</a>
+        <a href="havenixci-market.html#fruits">➤ 🍍 Fruits frais</a>
+        <a href="havenixci-market.html#jus">➤ 🥤 Jus frais</a>
+    </nav>
+</header>
+
+<div id="panier-container" class="panier-container">
+    <h3>Mon panier</h3>
+    <div id="panier-list"></div>
+    <p id="total">Total : 0 F</p>
+
+    <div class="livraison-box">
+        <p>🛵 Livraison : <span id="prix-livraison" class="badge-livraison">1000 F</span></p>
+    </div>
+
+    <button class="btn-vider-panier" onclick="viderpanier()">Vider le panier</button>
+
+    <input type="text" id="client-nom" placeholder="👤 Votre nom" class="input-client">
+    <input type="text" id="client-numero" placeholder="📞 Numéro joignable" class="input-client">
+    <input type="text" id="client-localisation" placeholder="📍 Lieu de livraison" class="input-client">
+
+    <p class="condition-mini">🔒 Paiement sécurisé avant livraison 🚀</p>
+    <button class="btn-whatsapp" onclick="EnvoyerWhatsApp()">Commander via WhatsApp</button>
+</div> 
+
+<div id="message-panier">Produit ajouté au panier</div>
+
+<main>
+    <section class="restaurant-menu">
+        <h1 id="restaurant" data-nom="safa">Restaurant Safa</h1>
+        <p class="desc">Poulet braisé · Poisson braisé · Grillades africaines</p>
+
+        <div class="galerie">
+            <img src="image-market/repas/espace detente.webp" loading="lazy" alt="Espace détente">
+            <img src="image-market/repas/espace inter.webp" loading="lazy" alt="Espace intérieur">
+            <img src="image-market/repas/mini terasse.webp" loading="lazy" alt="Mini terrasse">
+        </div>
+        -->
+
+        <!-- Poulet -->
+         <!--  
+        <div class="produi">
+            <img src="image-market/repas/poulet.webp" alt="Poulet Bien Assaisonné" loading="lazy">
+            <h3>Poulet Bien Assaisonné</h3>
+            <select id="prix-poulet">
+                <option value="3500">Demi - (3500 F)</option>
+                <option value="5000">Complet - (5000 F)</option>
+            </select>
+            <div class="ligne-acc">
+                <select id="acc-poulet">
+                    <option value="">Choisir un accompagnement</option>
+                    <option value="Attiéké">Attiéké</option>
+                    <option value="Riz">Riz</option>
+                    <option value="Frites">Frites</option>
+                </select>
+                <select id="extra-poulet">
+                    <option value="0">Extra</option>
+                    <option value="500">Attiéké (+500 F)</option>
+                    <option value="1000">Riz (+1000 F)</option>
+                </select>
+            </div>
+            <input type="text" id="type-poulet" placeholder="Détail de la commande">
+            <button type="button" onclick="commanderPlat('prix-poulet','acc-poulet','extra-poulet','Poulet Bien Assaisonné','type-poulet')">🛒 Ajouter</button>
+        </div>
+        -->
+
+        <!-- Poisson -->
+         <!--  
+        <div class="produi">
+            <img src="image-market/repas/poisson.webp" alt="Poisson Bien Frais" loading="lazy">
+            <h3>Poisson Bien Frais</h3>
+            <select id="prix-poisson">
+                <option value="2500">Petit - (2500 F)</option>
+                <option value="4000">Moyen - (4000 F)</option>
+                <option value="5000">Gros - (5000 F)</option>
+            </select>
+            <div class="ligne-acc">
+                <select id="acc-poisson">
+                    <option value="">Choisir un accompagnement</option>
+                    <option value="Attiéké">Attiéké</option>
+                    <option value="Riz">Riz</option>
+                    <option value="Frites">Frites</option>
+                </select>
+                <select id="extra-poisson">
+                    <option value="0">Extra</option>
+                    <option value="500">Attiéké (+500 F)</option>
+                    <option value="1000">Riz (+1000 F)</option>
+                </select>
+            </div>
+            <input type="text" id="type-poisson" placeholder="Détail de la commande">
+            <button type="button" onclick="commanderPlat('prix-poisson','acc-poisson','extra-poisson','Poisson Bien Frais','type-poisson')">🛒 Ajouter</button>
+        </div>
+        -->
+
+        <!-- Viande -->
+         <!--  
+        <div class="produi">
+            <img src="image-market/repas/Viande (6).webp" alt="Viande Tendre" loading="lazy">
+            <h3>Viande Tendre</h3>
+            <select id="prix-viande">
+                <option value="3000">Simple - (3000 F)</option>
+                <option value="5000">Généreuse - (5000 F)</option>
+            </select>
+            <div class="ligne-acc">
+                <select id="acc-viande">
+                    <option value="">Choisir un accompagnement</option>
+                    <option value="Attiéké">Attiéké</option>
+                    <option value="Riz">Riz</option>
+                    <option value="Frites">Frites</option>
+                </select>
+                <select id="extra-viande">
+                    <option value="0">Extra</option>
+                    <option value="500">Attiéké (+500 F)</option>
+                    <option value="1000">Riz (+1000 F)</option>
+                </select>
+            </div>
+            <input type="text" id="type-viande" placeholder="Détail de la commande">
+            <button type="button" onclick="commanderPlat('prix-viande','acc-viande','extra-viande','Viande Tendre','type-viande')">🛒 Ajouter</button>
+        </div>
+    </section>
+</main>
+
+<script src="havenixci-market.min.js"></script>
+</body>
+</html>
+--> 

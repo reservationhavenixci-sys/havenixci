@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Havenix ci Market</title>
+    <link rel="icon" href="image-logo/logo havenix/IMG_20260102_023057_251.webp">
+    <link rel="stylesheet" href="havenixci-market.min.css">
+</head>
+<body>
+    <header>
+    <div class="top-bar">
+        <div class="hamburger" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="panier-icon" onclick="togglePanier()">
+            <img src="image-logo/logo havenix/panier.webp" loading="lazy" alt="panier" width="25">
+            <span id="compteur">0</span>
+        </div>
+    </div>
+
+    <nav id="menu">
+        <a href="#jus">➤🥤 Jus frais</a>
+        <a href="#fruits">➤🍊 Fruits frais</a>
+    </nav>
+
+    </header>
+     <a href="hotel-yamoussoukro.html" class="btn-reservation">← Retour à la réservation</a>
+    <h1 class="titre">Havenix <span>CI</span> Market</h1>
+    <p class="slogan">🌿 Bien-être naturel</p>
+    <p class="slogan-action">Fruits & jus frais à Yamoussoukro, en 1 clic</p>
+    <!--  
+    <P class="choix-restaurant">Restaurants disponibles</P>
+    -->
+    <div id="panier-container" class="panier-container">
+        <h3>Mon panier</h3>
+        <div id="panier-list"></div>
+        <p id="total">Total : 0 F</p>
+        <div class="livraison-box">
+            <p>
+            🛵 Livraison directe là où vous êtes
+                <span id="prix-livraison" class="badge-livraison"> 1000 F</span>
+            </p>
+        </div>
+        <button class="btn-vider-panier" onclick="viderpanier()">Vider le panier</button>
+        <input type="text" id="client-nom" placeholder="👤 Votre nom" class="input-client">
+        <input type="text" id="client-numero" placeholder="📞 Numéro joignable" class="input-client">
+        <input type="text" id="client-localisation" placeholder="📍 Lieu de livraison" class="input-client">
+        <p class="condition-mini">🔒 Paiement sécurisé avant livraison 🚀</p>
+        <button class="btn-whatsapp" onclick="EnvoyerWhatsApp()">Commander via WhatsApp</button>
+    </div>
+    <div id="message-panier">Produit ajouté au panier</div>
+    <main> 
+        <!--  
+        <section id="restaurants">
+            <div class="profil-restaurant">
+                <img src="image-market/repas/espace inter.webp" alt="Havenix Express" class="image-resto" loading="lazy">
+                <h2 class="nom-resto">Restaurant Safa</h2>
+                <p class="specialistes">Poulet braisé . Poisson braisé . Grillades africaines</p>
+                <p class="horaires">⏰ Ouvert : 10h - 22h</p>
+                 <a href="restaurant-safa.html" class="btn-menu">Voir le menu →</a>
+            </div>
+        </section>
+        -->
+        <section id="jus">
+            <h2>🥤 Jus frais</h2>
+            <div class="produits">
+                <div class="produit">
+                    <img src="image-market/jus-frais/jusorange.webp" loading="lazy" alt="Orange Naturel">
+                    <h3>🍊 Orange juteuse</h3>
+                     <p>
+                    <span>⏰ Fait aujourd'hui</span>
+                    <span>💦 Fraîcheur immédiate</span>
+                    <span>🛵 Livré où vous êtes</span>
+                    </p>
+                    <select id="prix-orange">
+                        <option value="#">Choisir la taille</option>
+                        <option value="2500">⭐ 1L – 2 500 F (le choix idéal)</option>
+                        <option value="3500">💪 1,5L – 3 500 F (💥 Top volume)</option>
+                        <option value="4500">🔥 2L – 4 500 F (🔥 Super deal)</option>
+                    </select>
+                    <button onclick="commanderjus('prix-orange','Orange Naturel')">🛒 Ajouter</button>
+                </div>
+                <div class="produit">
+                    <img src="image-market/jus-frais/clementine jus.webp" loading="lazy" alt="Clémentine Naturel">
+                    <h3>🍊 Clémentine naturelle</h3>
+                     <p>
+                     <span>⏰ Fait aujourd'hui</span>
+                    <span>☀️ Fraîcheur du matin</span>
+                    <span>🛵 Livré où vous êtes</span>
+                    </p>
+                    <select id="prix-orang">
+                        <option value="#">Choisir la taille</option>
+                        <option value="2500">⭐ Petit format – 2 500 F (le choix idéal)</option>
+                        <option value="3500">💪 Moyen format – 3 500 F (💥 Top volume)</option>
+                        <option value="4500">🔥 Grand format – 4 500 F (🔥 Super deal)</option>
+                    </select>
+                    <button onclick="commanderjus('prix-orange','Clémentine Naturel')">🛒 Ajouter</button>
+                </div>
+                <div class="produit">
+                    <img src="image-market/jus-frais/juspamplemousse.webp" loading="lazy" alt="Pamplemousse Naturel">
+                    <h3>🍈 Pamplemousse naturel</h3>
+                     <p>
+                     <span>⏰ Fait aujourd'hui</span>
+                    <span>💎 Tonique naturel</span>
+                    <span>🛵 Livré où vous êtes</span>
+                    </p>
+                    <select id="prix-pamplemousse">
+                        <option value="#">Choisir la taille</option>
+                        <option value="2500">⭐ 1L – 2 500 F (le choix idéal)</option>
+                        <option value="3500">💪 1,5L – 3 500 F (💥 Top volume)</option>
+                        <option value="4500">🔥 2L – 4 500 F (🔥 Super deal)</option>
+                    </select>
+                    <button onclick="commanderjus('prix-pamplemousse','Pamplemousse Naturel')">🛒 Ajouter</button>
+                </div>
+                <div class="produit">
+                    <img src="image-market/jus-frais/jus d'ananas.webp" loading="lazy" alt="Ananas Naturel">
+                    <h3>🍍 Ananas naturel</h3>
+                     <p>
+                    <span>⏰ Fait aujourd'hui</span>
+                    <span>🍯 Douceur sucrée</span>
+                    <span>🛵 Livré où vous êtes</span>
+                    </p>
+                    <select id="prix-ananas">
+                        <option value="#">Choisir la taille</option>
+                        <option value="2500">⭐ 1L – 2 500 F (le choix idéal)</option>
+                        <option value="3500">💪 1,5L – 3 500 F (💥 Top volume)</option>
+                        <option value="4500">🔥 2L – 4 500 F (🔥 Super deal)</option>
+                    </select>
+                    <button onclick="commanderjus('prix-ananas','Ananas Naturel')">🛒 Ajouter</button>
+                </div>
+                <div class="produit">
+                    <img src="image-market/jus-frais/jus de pastèque.webp" loading="lazy" alt="Pastèque Naturel">
+                    <h3>🍉 Pastèque naturelle</h3>
+                     <p>
+                    <span>⏰ Fait aujourd'hui</span>
+                    <span>💦 Ultra rafraîchissante</span>
+                    <span>🛵 Livré où vous êtes</span>
+                    </p>
+                    <select id="prix-pastequee">
+                        <option value="#">Choisir la taille</option>
+                        <option value="2500">⭐ 1L – 2 500 F (le choix idéal)</option>
+                        <option value="3500">💪 1,5L – 3 500 F (💥 Top volume)</option>
+                        <option value="4500">🔥 2L – 4 500 F (🔥 Super deal)</option>
+                    </select>
+                    <button onclick="commanderjus('prix-pastequee','Pastèque Naturel')">🛒 Ajouter</button>
+                </div>
+                <div class="produit">
+                    <img src="image-market/jus-frais/jus de corosol.webp" loading="lazy" alt="Corossol Naturel">
+                    <h3>🍈 Corossol naturel</h3>
+                     <p>
+                    <span>⏰ Fait aujourd'hui</span>
+                    <span>🌿 Digestion facile</span>
+                    <span>🛵 Livré où vous êtes</span>
+                    </p>
+                    <select id="prix-corossol">
+                        <option value="#">Choisir la taille</option>
+                        <option value="3500">⭐ 1L – 3 500 F (le choix idéal)</option>
+                        <option value="5500">💪 1,5L – 5 500 F (💥 Top volume)</option>
+                        <option value="6500">🔥 2L – 6 500 F (🔥 Super deal)</option>
+                    </select>
+                    <button onclick="commanderjus('prix-corossol','Corossol Naturel')">🛒 Ajouter</button>
+                </div>
+                <div class="produit">
+                    <img src="image-market/jus-frais/jus de tchongon.webp" loading="lazy" alt="Tchongon Naturel">
+                    <h3>🥭 Tchongon naturel</h3>
+                     <p>
+                    <span>⏰ Fait aujourd'hui</span>
+                    <span>⚡ Energie naturelle</span>
+                    <span>🛵 Livré où vous êtes</span>
+                    </p>
+                    <select id="prix-tchongon">
+                        <option value="#">Choisir la taille</option>
+                        <option value="3500">⭐ 1L – 3 500 F (le choix idéal)</option>
+                        <option value="5500">💪 1,5L – 5 500 F (💥 Top volume</option>
+                        <option value="6500">🔥 2L – 6 500 F (🔥 Super deal)</option>
+                    </select>
+                    <button onclick="commanderjus('prix-tchongon','Tchongon Naturel')">🛒 Ajouter</button>
+                </div>
+                <div class="produit">
+                    <img src="image-market/jus-frais/jus de carotte.webp" loading="lazy" alt="Carotte Naturel">
+                    <h3>🥕 Carotte naturelle</h3>
+                     <p>
+                    <span>⏰ Fait aujourd'hui</span>
+                    <span>✨ Peau éclatante</span>
+                    <span>🛵 Livré où vous êtes</span>
+                    </p>
+                    <select id="prix-carotte">
+                        <option value="#">Choisir la taille</option>
+                        <option value="3500">⭐ 1L – 3 500 F (le choix idéal)</option>
+                        <option value="5500">💪 1,5L – 5 500 F (💥 Top volume)</option>
+                        <option value="6500">🔥 2L – 6 500 F (🔥 Super deal)</option>
+                    </select>
+                    <button onclick="commanderjus('prix-carotte','Carotte Naturel')">🛒 Ajouter</button>
+                </div>
+            </div>
+        </section>
+        <section id="fruits">
+            <h2>🍊 Fruits frais</h2>
+            <div class="produits">
+                <div class="produit">
+                    <img src="image-market/fruits-frais/Nectarine.webp" loading="lazy" alt="Nectarine juteuse">
+                    <h3>🍑 Nectarine juteuse</h3>
+                    <p>
+                    <span>💎 Sélection Premium</span>    
+                    <span>⚡ Énergie naturelle</span>
+                    <span>🛵 Livré où vous êtes</span>
+                    </p>
+                    <select id="prix-onctueux">
+                        <option value="">Choisir l'option</option>
+                        <option value="2500">⭐ 6 nectarines – 2 500 F (le choix idéal)</option>
+                        <option value="3500">💪 9 nectarines – 3 500 F (meilleur prix)</option>
+                    </select>
+                    <button onclick="commanderjus('prix-onctueux','Nectarine juteuse')">🛒 Ajouter</button>
+                </div>
+                <div class="produit">
+                    <img src="image-market/fruits-frais/clementine.webp" loading="lazy" alt="Clémentine parfumée">
+                    <h3>🍊 Clémentine parfumée</h3>
+                    <p>
+                    <span>💎 Sélection Premium</span>
+                    <span>😌 Sensation légère</span>
+                    <span>🛵 Livré où vous êtes</span>
+                    </p>
+                    <select id="prix-douce">
+                        <option value="">Choisir l'option</option>
+                        <option value="2500">⭐ 6 clémentines – 2 500 F (le choix idéal)</option>
+                        <option value="3500">💪 9 clémentines – 3 500 F (meilleur prix)</option>
+                    </select>
+                    <button onclick="commanderjus('prix-douce','Clémentine parfumée')">🛒 Ajouter</button>
+                </div>
+                <div class="produit">
+                    <img src="image-market/fruits-frais/grenade.webp" loading="lazy" alt="Grenade fraîche">
+                    <h3>🍎 Grenade fraîche</h3>
+                    <p>
+                    <span>💎 Sélection Premium</span>
+                    <span>⚡ Tonifie le corps</span>
+                    <span>🛵 Livré où vous êtes</span>
+                    </p>
+                    <select id="prix-do">
+                        <option value="">Choisir l'option</option>
+                       <option value="2300">🍎 4 grenades – 2 300 F</option>
+                        <option value="4500">⭐ 9 grenades – 4 500 F (le choix idéal)</option>
+                        <option value="6500">💪 12 grenades – 6 500 F (meilleur prix)</option>
+                    </select>
+                    <button onclick="commanderjus('prix-do','Grenade fraîche')">🛒 Ajouter</button>
+                </div>
+                  <div class="produit">
+                    <img src="image-market/fruits-frais/raisin.webp" loading="lazy" alt="Raisin Frais">
+                    <h3>🍇 Raisin croquant</h3>
+                    <p>
+                    <span>💎 Sélection Premium</span>
+                    <span>🍬 Sucre naturel</span>
+                    <span>🛵 Livré où vous êtes</span>
+                    </p>
+                    <select id="prix-rais">
+                        <option value="">Choisir l'option</option>
+                       <option value="2300">⭐ 1 boîte G – 2 500 F (le choix idéal)</option>
+                    </select>
+                    <button onclick="commanderjus('prix-rais','Raisin Frais')">🛒 Ajouter</button>
+                </div>
+                <div class="produit">
+                    <img src="image-market/fruits-frais/kiwi.webp" loading="lazy" alt="Kiwi vitaminé">
+                    <h3>🥝 Kiwi vitaminé</h3>
+                    <p>
+                    <span>💎 Sélection Premium</span>
+                    <span>🌿 Bonne digestion</span>
+                    <span>🛵 Livré où vous êtes</span>
+                    </p>
+                    <select id="prix-cremeux">
+                        <option value="">Choisir l'option</option>
+                        <option value="2500">⭐ 8 kiwis – 2 500 F (le choix idéal)</option>
+                        <option value="3500">💪 12 kiwis – 3 500 F (meilleur prix)</option>
+                    </select>
+                    <button onclick="commanderjus('prix-cremeux','Kiwi vitaminé')">🛒 Ajouter</button>
+                </div>
+                <div class="produit">
+                    <img src="image-market/fruits-frais/pomme.webp" loading="lazy" alt="Pomme Croquante">
+                    <h3>🍏 Pommes croquantes</h3>
+                    <p>
+                    <span>💎 Sélection Premium</span>
+                    <span>😋 Croquante & rassasiante</span>
+                    <span>🛵 Livré où vous êtes</span>
+                    </p>
+                    <select id="prix-croquante">
+                        <option value="">Choisir l'option</option>
+                        <option value="1200">⭐ 6 pommes – 1 200 F (le choix idéal)</option>
+                        <option value="1800">💪 9 pommes – 1 800 F (meilleur prix)</option>
+                        <option value="1200">⭐ 12 pommes – 1 200 F (le choix idéal)</option>
+                        <option value="1800">💪 18 pommes – 1 800 F (meilleur prix)</option>
+                    </select>
+                    <button onclick="commanderjus('prix-croquante','Pomme Croquante')">🛒 Ajouter</button>
+                </div>
+                 <div class="produit">
+                    <img src="image-market/fruits-frais/poire.webp" loading="lazy" alt="Poire fondationte">
+                    <h3>🍐 Poire nature</h3>
+                    <p>
+                    <span>💎 Sélection Premium</span>
+                    <span>😌 Effet apaisant</span>
+                    <span>🛵 Livré où vous êtes</span>
+                    </p>
+                    <select id="prix-croquan">
+                        <option value="">Choisir l'option</option>
+                        <option value="2500">⭐ 6 poires – 2 500 F (le choix idéal)</option>
+                        <option value="3500">💪 9 poires – 3 500 F (meilleur prix)</option>
+                    </select>
+                    <button onclick="commanderjus('prix-croquan','Poire fondationte')">🛒 Ajouter</button>
+                </div>
+                 <div class="produit">
+                    <img src="image-market/fruits-frais/prune.webp" loading="lazy" alt="Prune sucrée">
+                    <h3>🍑 Prune sucrée</h3>
+                    <p>
+                    <span>💎 Sélection Premium</span>
+                    <span>⚡ Énergie douce</span>
+                    <span>🛵 Livré où vous êtes</span>
+                    </p>
+                    <select id="prix-croquant">
+                        <option value="">Choisir l'option</option>
+                        <option value="2500">⭐ 6 prunes – 2 500 F (le choix idéal)</option>
+                        <option value="3500">💪 9 prunes – 3 500 F (meilleur prix)</option>
+                    </select>
+                    <button onclick="commanderjus('prix-croquant','Prune sucrée')">🛒 Ajouter</button>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Avis clients -->
+        <section class="hotel-reviews">
+            <h3 class="section-title">⭐ Avis clients</h3>
+            <div class="reviews-container">
+                <div class="review-card">
+                    <p class="review-text">j'ai bien aimé le jus de corossol, très bonne qualité et bien frais.</p>
+                    <span class="review-author">Mariam</span>
+                </div>
+                <div class="review-card">
+                    <p class="review-text">Désormais je suis abonnée chez vous.Vos fruits et jus sont vraiment bons !</p>
+                    <span class="review-author">Koffi</span>
+                </div>
+                 
+                <div class="review-card">
+                    <p class="review-text">Le jus de pastèque est super rafraîchissant ! juste ce qu'il me fallait pour l'après-midi.</p>
+                    <span class="review-author">N'Guessan</span>
+                </div>
+                
+                <div class="review-card">
+                    <p class="review-text">J'ai commandé plusieur fruits,tout était parfait et frais. Merci !</p>
+                    <span class="review-author">Yao Kouadio</span>
+                </div>
+            </div>
+            <div class="review-action">
+                <a href="javascript:void(0)" onclick="envoyerAvis()" class="btn-avis">✍️ Laissez votre avis</a>
+                <p class="sous-texte"><em>Aidez-nous à ameliorer votre expérience</em></p>
+            </div>
+        </section>
+    </main>
+    <div class="zone-confiance">
+        <p class="info">Livraison rapide à Yamoussoukro 🚀</p>
+        <p class="info"><a href="https://wa.me/2250798016927" target="_blank">Vous êtes vendeur ? Rejoignez Havenix CI Market</a></p>
+        <p class="info">Commande simple en 1 clic ✅</p>
+    </div>
+    <footer id="footer">
+        <p><strong>Havenix CI market - Yamoussoukro </strong></p>
+        <p> <strong>WhatsApp : </strong>+225 07-98-01-69-27</p>
+    </footer>
+    <script src="havenixci-market.min.js"></script>
+</body>
+</html>
