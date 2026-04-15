@@ -273,6 +273,31 @@ html {
     margin-bottom: 10px;
     line-height: 1.6;
 }
+/* bouton whatsApp aide */
+.whatsapp-float {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 20px;
+    right: 20px;
+    background: transparent;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    z-index: 10000;
+    transition: transform 0.3s ease;
+    text-decoration: none;
+}
+.whatsapp-float img {
+    width: 35px;
+    height: 35px;
+}
+.whatsapp-float:hover {
+    transform: scale(1.1);
+}
+
 .contact-info a {
     color: #fff;
     text-decoration: none;
@@ -705,7 +730,7 @@ html {
     max-width: 900px;
     background: #f5f7fa;
     border-radius: 12px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
     border-left: 5px solid #004aad;
     margin-top: 10px;
 }
