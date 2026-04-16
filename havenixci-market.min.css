@@ -775,7 +775,7 @@ input::placeholder {
     gap: 6px;
 }
 .info a {
-    color: green;
+    color: #004aad;
     text-decoration: none;
     font-weight: 600;
 }
