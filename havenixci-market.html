@@ -29,26 +29,26 @@
     </header>
      <a href="hotel-yamoussoukro.html" class="btn-reservation">← Retour à la réservation</a>
     <h1 class="titre">Havenix <span>CI</span> Market</h1>
-    <p class="slogan">🌿 Bien-être naturel</p>
-    <p class="slogan-action">Fruits & jus frais à Yamoussoukro, en 1 clic</p>
+    <p class="slogan">🎉 BON PLAN : Économisez dès le 2ème ajout !</p>
+    <p class="slogan-action">Votre bien-être naturel à Yakro, livré en 1 clic.</p>
     <!--  
     <P class="choix-restaurant">Restaurants disponibles</P>
     -->
     <div id="panier-container" class="panier-container">
         <h3>Mon panier</h3>
         <div id="panier-list"></div>
-        <p id="total">Total : 0 F</p>
+        <p id="total" class="total-box">Total : 0 F</p>
+        <p id="bonus-message" class="bonus-message"></p>
         <div class="livraison-box">
             <p>
-            🛵 Livraison directe là où vous êtes
-                <span id="prix-livraison" class="badge-livraison"> 1000 F</span>
+            🛵 Livraison Gratuite partout à Yakro
             </p>
         </div>
         <button class="btn-vider-panier" onclick="viderpanier()">Vider le panier</button>
         <input type="text" id="client-nom" placeholder="👤 Votre nom" class="input-client">
         <input type="text" id="client-numero" placeholder="📞 Numéro joignable" class="input-client">
         <input type="text" id="client-localisation" placeholder="📍 Lieu de livraison" class="input-client">
-        <p class="condition-mini">🔒 Paiement sécurisé avant livraison 🚀</p>
+        <p class="condition-mini">Paiement à la livraison(Cash ou Mobile Money)</p>
         <button class="btn-whatsapp" onclick="EnvoyerWhatsApp()">Commander via WhatsApp</button>
     </div>
     <div id="message-panier">Produit ajouté au panier</div>
@@ -69,131 +69,131 @@
             <div class="produits">
                 <div class="produit">
                     <img src="image-market/jus-frais/jusorange.webp" loading="lazy" alt="Orange Naturel">
-                    <h3>Orange juteuse</h3>
+                    <h3>Pur Orange</h3>
                      <p>
-                    <span>⏰ Fait aujourd'hui</span>
-                    <span>💦 Fraîcheur immédiate</span>
-                    <span>🛵 Livré où vous êtes</span>
+                    <span>🌿 100% Naturel & Pur</span>
+                    <span>💥 Pressé du jour</span>
+                    <span>🛵 Livraison Gratuite</span>
                     </p>
                     <select id="prix-orange">
-                        <option value="#">Choisir la taille</option>
-                        <option value="2500">⭐ 1L – 2 500 F (le choix idéal)</option>
-                        <option value="3500">💪 1,5L – 3 500 F (💥 Top volume)</option>
-                        <option value="4500">🔥 2L – 4 500 F (🔥 Super deal)</option>
+                        <option value="#">Nos prix livrés</option>
+                        <option value="3500">⭐ 1L – 3 500 F (Livré chez vous)</option>
+                        <option value="4500">💪 1,5L – 4 500 F (Économisez 750F !)</option>
+                        <option value="6000">🔥 2L – 6 000 F (Économisez 1 000F !)</option>
                     </select>
-                    <button onclick="commanderjus('prix-orange','Orange Naturel')">🛒 Ajouter</button>
+                    <button onclick="commanderjus('prix-orange','Pur Orange')">🛒 Ajouter</button>
                 </div>
                 <div class="produit">
                     <img src="image-market/jus-frais/clementine jus.webp" loading="lazy" alt="Clémentine Naturel">
-                    <h3>Clémentine naturelle</h3>
+                    <h3>Pur Clémentine</h3>
                      <p>
-                     <span>⏰ Fait aujourd'hui</span>
-                    <span>☀️ Fraîcheur du matin</span>
-                    <span>🛵 Livré où vous êtes</span>
+                    <span>🌿 100% Naturel & Pur</span>
+                    <span>💥 Pressé du jour</span>
+                    <span>🛵 Livraison Gratuite</span>
                     </p>
                     <select id="prix-orang">
-                        <option value="#">Choisir la taille</option>
-                        <option value="2500">⭐ Petit format – 2 500 F (le choix idéal)</option>
-                        <option value="3500">💪 Moyen format – 3 500 F (💥 Top volume)</option>
-                        <option value="4500">🔥 Grand format – 4 500 F (🔥 Super deal)</option>
+                        <option value="#">Nos prix livrés</option>
+                        <option value="3500">⭐ Petit format – 3 500 F (Livré chez vous)</option>
+                        <option value="4500">💪 Moyen format – 4 500 F (Économisez 750F !)</option>
+                        <option value="6000">🔥 Grand format – 6 000 F (Économisez 1 000F !)</option>
                     </select>
-                    <button onclick="commanderjus('prix-orange','Clémentine Naturel')">🛒 Ajouter</button>
+                    <button onclick="commanderjus('prix-orang','Pur Clémentine')">🛒 Ajouter</button>
                 </div>
                 <div class="produit">
                     <img src="image-market/jus-frais/juspamplemousse.webp" loading="lazy" alt="Pamplemousse Naturel">
-                    <h3>Pamplemousse naturel</h3>
+                    <h3>Pur Pamplemousse</h3>
                      <p>
-                     <span>⏰ Fait aujourd'hui</span>
-                    <span>💎 Tonique naturel</span>
-                    <span>🛵 Livré où vous êtes</span>
+                    <span>🌿 100% Naturel & Pur</span>
+                    <span>💥 Pressé du jour</span>
+                    <span>🛵 Livraison Gratuite</span>
                     </p>
                     <select id="prix-pamplemousse">
-                        <option value="#">Choisir la taille</option>
-                        <option value="2500">⭐ 1L – 2 500 F (le choix idéal)</option>
-                        <option value="3500">💪 1,5L – 3 500 F (💥 Top volume)</option>
-                        <option value="4500">🔥 2L – 4 500 F (🔥 Super deal)</option>
+                        <option value="#">Nos prix livrés</option>
+                        <option value="3500">⭐ 1L – 3 500 F (Livré chez vous)</option>
+                        <option value="4500">💪 1,5L – 4 500 F (Économisez 750F !)</option>
+                        <option value="6000">🔥 2L – 6 000 F (Économisez 1 000F !)</option>
                     </select>
-                    <button onclick="commanderjus('prix-pamplemousse','Pamplemousse Naturel')">🛒 Ajouter</button>
+                    <button onclick="commanderjus('prix-pamplemousse','Pur Pamplemousse')">🛒 Ajouter</button>
                 </div>
                 <div class="produit">
                     <img src="image-market/jus-frais/jus d'ananas.webp" loading="lazy" alt="Ananas Naturel">
-                    <h3>Ananas naturel</h3>
+                    <h3>Pur Ananas</h3>
                      <p>
-                    <span>⏰ Fait aujourd'hui</span>
-                    <span>🍯 Douceur sucrée</span>
-                    <span>🛵 Livré où vous êtes</span>
+                    <span>🌿 100% Naturel & Pur</span>
+                    <span>💥 Pressé du jour</span>
+                    <span>🛵 Livraison Gratuite</span>
                     </p>
                     <select id="prix-ananas">
-                        <option value="#">Choisir la taille</option>
-                        <option value="2500">⭐ 1L – 2 500 F (le choix idéal)</option>
-                        <option value="3500">💪 1,5L – 3 500 F (💥 Top volume)</option>
-                        <option value="4500">🔥 2L – 4 500 F (🔥 Super deal)</option>
+                        <option value="#">Nos prix livrés</option>
+                        <option value="3500">⭐ 1L – 3 500 F (Livré chez vous)</option>
+                        <option value="4500">💪 1,5L – 4 500 F (Économisez 750F !)</option>
+                        <option value="6000">🔥 2L – 6 000 F (Économisez 1 000F !)</option>
                     </select>
-                    <button onclick="commanderjus('prix-ananas','Ananas Naturel')">🛒 Ajouter</button>
+                    <button onclick="commanderjus('prix-ananas','Pur Ananas')">🛒 Ajouter</button>
                 </div>
                 <div class="produit">
                     <img src="image-market/jus-frais/jus de pastèque.webp" loading="lazy" alt="Pastèque Naturel">
-                    <h3>Pastèque naturelle</h3>
+                    <h3>Pur Pastèque</h3>
                      <p>
-                    <span>⏰ Fait aujourd'hui</span>
-                    <span>💦 Ultra rafraîchissante</span>
-                    <span>🛵 Livré où vous êtes</span>
+                    <span>🌿 100% Naturel & Pur</span>
+                    <span>💥 Pressé du jour</span>
+                    <span>🛵 Livraison Gratuite</span>
                     </p>
                     <select id="prix-pastequee">
-                        <option value="#">Choisir la taille</option>
-                        <option value="2500">⭐ 1L – 2 500 F (le choix idéal)</option>
-                        <option value="3500">💪 1,5L – 3 500 F (💥 Top volume)</option>
-                        <option value="4500">🔥 2L – 4 500 F (🔥 Super deal)</option>
+                        <option value="#">Nos prix livrés</option>
+                        <option value="3500">⭐ 1L – 3 500 F (Livré chez vous)</option>
+                        <option value="4500">💪 1,5L – 4 500 F (Économisez 750F !)</option>
+                        <option value="6000">🔥 2L – 6 000 F (Économisez 1 000F !)</option>
                     </select>
-                    <button onclick="commanderjus('prix-pastequee','Pastèque Naturel')">🛒 Ajouter</button>
+                    <button onclick="commanderjus('prix-pastequee','Pur Pastèque')">🛒 Ajouter</button>
                 </div>
                 <div class="produit">
                     <img src="image-market/jus-frais/jus de corosol.webp" loading="lazy" alt="Corossol Naturel">
-                    <h3>Corossol naturel</h3>
+                    <h3>Pur Corossol</h3>
                      <p>
-                    <span>⏰ Fait aujourd'hui</span>
-                    <span>🌿 Digestion facile</span>
-                    <span>🛵 Livré où vous êtes</span>
+                    <span>🌿 100% Naturel & Pur</span>
+                    <span>💥 Pressé du jour</span>
+                    <span>🛵 Livraison Gratuite</span>
                     </p>
                     <select id="prix-corossol">
-                        <option value="#">Choisir la taille</option>
-                        <option value="3500">⭐ 1L – 3 500 F (le choix idéal)</option>
-                        <option value="5500">💪 1,5L – 5 500 F (💥 Top volume)</option>
-                        <option value="6500">🔥 2L – 6 500 F (🔥 Super deal)</option>
+                        <option value="#">Nos prix livrés</option>
+                        <option value="4500">⭐ 1L – 4 500 F (Livré chez vous)</option>
+                        <option value="6500">💪 1,5L – 6 500 F (Économisez 750F !)</option>
+                        <option value="8000">🔥 2L – 8 000 F (Économisez 1 000F !)</option>
                     </select>
-                    <button onclick="commanderjus('prix-corossol','Corossol Naturel')">🛒 Ajouter</button>
+                    <button onclick="commanderjus('prix-corossol','Pur Corossol')">🛒 Ajouter</button>
                 </div>
                 <div class="produit">
                     <img src="image-market/jus-frais/jus de tchongon.webp" loading="lazy" alt="Tchongon Naturel">
-                    <h3>Tchongon naturel</h3>
+                    <h3>Pur Tchongon</h3>
                      <p>
-                    <span>⏰ Fait aujourd'hui</span>
-                    <span>⚡ Energie naturelle</span>
-                    <span>🛵 Livré où vous êtes</span>
+                    <span>🌿 100% Naturel & Pur</span>
+                    <span>💥 Pressé du jour</span>
+                    <span>🛵 Livraison Gratuite</span>
                     </p>
                     <select id="prix-tchongon">
-                        <option value="#">Choisir la taille</option>
-                        <option value="3500">⭐ 1L – 3 500 F (le choix idéal)</option>
-                        <option value="5500">💪 1,5L – 5 500 F (💥 Top volume</option>
-                        <option value="6500">🔥 2L – 6 500 F (🔥 Super deal)</option>
+                        <option value="#">Nos prix livrés</option>
+                        <option value="4500">⭐ 1L – 4 500 F (Livré chez vous)</option>
+                        <option value="6500">💪 1,5L – 6 500 F (Économisez 750F !)</option>
+                        <option value="8000">🔥 2L – 8 000 F (Économisez 1 000F !)</option>
                     </select>
-                    <button onclick="commanderjus('prix-tchongon','Tchongon Naturel')">🛒 Ajouter</button>
+                    <button onclick="commanderjus('prix-tchongon','Pur Tchongon')">🛒 Ajouter</button>
                 </div>
                 <div class="produit">
                     <img src="image-market/jus-frais/jus de carotte.webp" loading="lazy" alt="Carotte Naturel">
-                    <h3>Carotte naturelle</h3>
+                    <h3>Pur Carotte</h3>
                      <p>
-                    <span>⏰ Fait aujourd'hui</span>
-                    <span>✨ Peau éclatante</span>
-                    <span>🛵 Livré où vous êtes</span>
+                    <span>🌿 100% Naturel & Pur</span>
+                    <span>💥 Pressé du jour</span>
+                    <span>🛵 Livraison Gratuite</span>
                     </p>
                     <select id="prix-carotte">
-                        <option value="#">Choisir la taille</option>
-                        <option value="3500">⭐ 1L – 3 500 F (le choix idéal)</option>
-                        <option value="5500">💪 1,5L – 5 500 F (💥 Top volume)</option>
-                        <option value="6500">🔥 2L – 6 500 F (🔥 Super deal)</option>
+                        <option value="#">Nos prix livrés</option>
+                        <option value="4500">⭐ 1L – 4 500 F (Livré chez vous)</option>
+                        <option value="6500">💪 1,5L – 6 500 F (Économisez 750F !)</option>
+                        <option value="8000">🔥 2L – 8 000 F (Économisez 1 000F !)</option>
                     </select>
-                    <button onclick="commanderjus('prix-carotte','Carotte Naturel')">🛒 Ajouter</button>
+                    <button onclick="commanderjus('prix-carotte','Pur Carotte')">🛒 Ajouter</button>
                 </div>
             </div>
         </section>
@@ -202,128 +202,131 @@
             <div class="produits">
                 <div class="produit">
                     <img src="image-market/fruits-frais/Nectarine.webp" loading="lazy" alt="Nectarine juteuse">
-                    <h3>Nectarine juteuse</h3>
+                    <h3>⭐ Nectarines</h3>
                     <p>
-                    <span>💎 Sélection Premium</span>    
-                    <span>⚡ Énergie naturelle</span>
-                    <span>🛵 Livré où vous êtes</span>
+                    <span>💎 Trié & Qualité Top</span>    
+                    <span>⚡ Conservé au frais</span>
+                    <span>🛵 Livraison Gratuite</span>
                     </p>
                     <select id="prix-onctueux">
-                        <option value="">Choisir l'option</option>
-                        <option value="2500">⭐ 6 nectarines – 2 500 F (le choix idéal)</option>
-                        <option value="3500">💪 9 nectarines – 3 500 F (meilleur prix)</option>
+                        <option value="">Quantité & Prix</option>
+                        <option value="3500">🛒 Pack Solo (6 fruits) – 3 500 F</option>
+                        <option value="6000">🎉 Pack Duo (12 fruits) – 6000 F </option>
+                        <option value="8000">🔥 Pack Famille(18 fruits) – 8 000 F </option>
                     </select>
-                    <button onclick="commanderjus('prix-onctueux','Nectarine juteuse')">🛒 Ajouter</button>
+                    <button onclick="commanderjus('prix-onctueux','Nectarines')">🛒 Ajouter</button>
                 </div>
                 <div class="produit">
                     <img src="image-market/fruits-frais/clementine.webp" loading="lazy" alt="Clémentine parfumée">
-                    <h3>Clémentine parfumée</h3>
+                    <h3>⭐ Clémentines</h3>
                     <p>
-                    <span>💎 Sélection Premium</span>
-                    <span>😌 Sensation légère</span>
-                    <span>🛵 Livré où vous êtes</span>
+                    <span>💎 Trié & Qualité Top</span>    
+                    <span>⚡ Conservé au frais</span>
+                    <span>🛵 Livraison Gratuite</span>
                     </p>
                     <select id="prix-douce">
-                        <option value="">Choisir l'option</option>
-                        <option value="2500">⭐ 6 clémentines – 2 500 F (le choix idéal)</option>
-                        <option value="3500">💪 9 clémentines – 3 500 F (meilleur prix)</option>
+                        <option value="">Quantité & Prix</option>
+                        <option value="3500">🛒 Pack Solo (6 fruits) – 3 500 F</option>
+                        <option value="6000">🎉 Pack Duo (12 fruits) – 6000 F </option>
+                        <option value="8000">🔥 Pack Famille(18 fruits) – 8 000 F </option>
                     </select>
-                    <button onclick="commanderjus('prix-douce','Clémentine parfumée')">🛒 Ajouter</button>
+                    <button onclick="commanderjus('prix-douce','Clémentines')">🛒 Ajouter</button>
                 </div>
                 <div class="produit">
                     <img src="image-market/fruits-frais/grenade.webp" loading="lazy" alt="Grenade fraîche">
-                    <h3>Grenade fraîche</h3>
+                    <h3>⭐ Grenades</h3>
                     <p>
-                    <span>💎 Sélection Premium</span>
-                    <span>⚡ Tonifie le corps</span>
-                    <span>🛵 Livré où vous êtes</span>
+                    <span>💎 Trié & Qualité Top</span>    
+                    <span>⚡ Conservé au frais</span>
+                    <span>🛵 Livraison Gratuite</span>
                     </p>
                     <select id="prix-do">
-                        <option value="">Choisir l'option</option>
-                       <option value="2300">🍎 4 grenades – 2 300 F</option>
-                        <option value="4500">⭐ 9 grenades – 4 500 F (le choix idéal)</option>
-                        <option value="6500">💪 12 grenades – 6 500 F (meilleur prix)</option>
+                        <option value="">Quantité & Prix</option>
+                       <option value="3500">🍎 Pack Santé(4 fruits) – 3 500 F</option>
+                        <option value="5500">🎉 Pack Duo(9 fruits) – 5 500 F</option>
+                        <option value="7500">🔥 Pack Famille(12 fruits) – 7 500 F</option>
                     </select>
-                    <button onclick="commanderjus('prix-do','Grenade fraîche')">🛒 Ajouter</button>
+                    <button onclick="commanderjus('prix-do','Grenades')">🛒 Ajouter</button>
                 </div>
                   <div class="produit">
                     <img src="image-market/fruits-frais/raisin.webp" loading="lazy" alt="Raisin Frais">
-                    <h3>Raisin croquant</h3>
+                    <h3>⭐ Raisins</h3>
                     <p>
-                    <span>💎 Sélection Premium</span>
-                    <span>🍬 Sucre naturel</span>
-                    <span>🛵 Livré où vous êtes</span>
+                    <span>💎 Trié & Qualité Top</span>    
+                    <span>⚡ Conservé au frais</span>
+                    <span>🛵 Livraison Gratuite</span>
                     </p>
                     <select id="prix-rais">
-                        <option value="">Choisir l'option</option>
-                       <option value="2300">⭐ 1 boîte G – 2 500 F (le choix idéal)</option>
+                        <option value="">Quantité & Prix</option>
+                       <option value="3500">⭐ 1 boîte G – 3 500 F (le choix idéal)</option>
                     </select>
-                    <button onclick="commanderjus('prix-rais','Raisin Frais')">🛒 Ajouter</button>
+                    <button onclick="commanderjus('prix-rais','Raisins')">🛒 Ajouter</button>
                 </div>
                 <div class="produit">
                     <img src="image-market/fruits-frais/kiwi.webp" loading="lazy" alt="Kiwi vitaminé">
-                    <h3>Kiwi vitaminé</h3>
+                    <h3>⭐ Kiwis</h3>
                     <p>
-                    <span>💎 Sélection Premium</span>
-                    <span>🌿 Bonne digestion</span>
-                    <span>🛵 Livré où vous êtes</span>
+                    <span>💎 Trié & Qualité Top</span>    
+                    <span>⚡ Conservé au frais</span>
+                    <span>🛵 Livraison Gratuite</span>
                     </p>
                     <select id="prix-cremeux">
-                        <option value="">Choisir l'option</option>
-                        <option value="2500">⭐ 8 kiwis – 2 500 F (le choix idéal)</option>
-                        <option value="3500">💪 12 kiwis – 3 500 F (meilleur prix)</option>
+                        <option value="">Quantité & Prix</option>
+                        <option value="3500">⭐ Pack vitamines(8 kiwis) – 3 500 F</option>
+                        <option value="4500">🔥 Pack Maxi(12 kiwis) – 4 500 F</option>
                     </select>
-                    <button onclick="commanderjus('prix-cremeux','Kiwi vitaminé')">🛒 Ajouter</button>
-                </div>
+                    <button onclick="commanderjus('prix-cremeux','Kiwis')">🛒 Ajouter</button>
+                </div> 
                 <div class="produit">
                     <img src="image-market/fruits-frais/pomme.webp" loading="lazy" alt="Pomme Croquante">
-                    <h3>Pommes croquantes</h3>
+                    <h3>⭐ Pommes</h3>
                     <p>
-                    <span>💎 Sélection Premium</span>
-                    <span>😋 Croquante & rassasiante</span>
-                    <span>🛵 Livré où vous êtes</span>
+                    <span>💎 Trié & Qualité Top</span>    
+                    <span>⚡ Conservé au frais</span>
+                    <span>🛵 Livraison Gratuite</span>
                     </p>
                     <select id="prix-croquante">
-                        <option value="">Choisir l'option</option>
-                        <option value="1200">⭐ 6 pommes – 1 200 F (le choix idéal)</option>
-                        <option value="1800">💪 9 pommes – 1 800 F (meilleur prix)</option>
-                        <option value="1200">⭐ 12 pommes – 1 200 F (le choix idéal)</option>
-                        <option value="1800">💪 18 pommes – 1 800 F (meilleur prix)</option>
+                        <option value="">Quantité & Prix</option>
+                        <option value="3000">⭐ Pack Hebdo(10 Mix R/V) – 3000 F</option>
+                        <option value="4000">💪 Pack Partage(18 Mix R/V) – 4000 F</option>
+                        <option value="4500">🔥 Super Mix(22 Rouge & Vertes) – 4500 F</option>
                     </select>
-                    <button onclick="commanderjus('prix-croquante','Pomme Croquante')">🛒 Ajouter</button>
+                    <button onclick="commanderjus('prix-croquante','Pommes')">🛒 Ajouter</button>
                 </div>
                  <div class="produit">
                     <img src="image-market/fruits-frais/poire.webp" loading="lazy" alt="Poire fondationte">
-                    <h3>Poire nature</h3>
+                    <h3>⭐ Poires</h3>
                     <p>
-                    <span>💎 Sélection Premium</span>
-                    <span>😌 Effet apaisant</span>
-                    <span>🛵 Livré où vous êtes</span>
+                    <span>💎 Trié & Qualité Top</span>    
+                    <span>⚡ Conservé au frais</span>
+                    <span>🛵 Livraison Gratuite</span>
                     </p>
                     <select id="prix-croquan">
-                        <option value="">Choisir l'option</option>
-                        <option value="2500">⭐ 6 poires – 2 500 F (le choix idéal)</option>
-                        <option value="3500">💪 9 poires – 3 500 F (meilleur prix)</option>
+                        <option value="">Quantité & Prix</option>
+                        <option value="3500">🛒 Pack Solo (6 fruits) – 3 500 F</option>
+                        <option value="6000">🎉 Pack Duo (12 fruits) – 6000 F </option>
+                        <option value="8000">🔥 Pack Famille(18 fruits) – 8 000 F </option>
                     </select>
-                    <button onclick="commanderjus('prix-croquan','Poire fondationte')">🛒 Ajouter</button>
+                    <button onclick="commanderjus('prix-croquan','Poires')">🛒 Ajouter</button>
                 </div>
                  <div class="produit">
                     <img src="image-market/fruits-frais/prune.webp" loading="lazy" alt="Prune sucrée">
-                    <h3>Prune sucrée</h3>
+                    <h3>⭐Prunes</h3>
                     <p>
-                    <span>💎 Sélection Premium</span>
-                    <span>⚡ Énergie douce</span>
-                    <span>🛵 Livré où vous êtes</span>
+                    <span>💎 Trié & Qualité Top</span>    
+                    <span>⚡ Conservé au frais</span>
+                    <span>🛵 Livraison Gratuite</span>
                     </p>
                     <select id="prix-croquant">
-                        <option value="">Choisir l'option</option>
-                        <option value="2500">⭐ 6 prunes – 2 500 F (le choix idéal)</option>
-                        <option value="3500">💪 9 prunes – 3 500 F (meilleur prix)</option>
+                        <option value="">Quantité & Prix</option>
+                        <option value="3500">🛒 Pack Solo (6 fruits) – 3 500 F</option>
+                        <option value="6000">🎉 Pack Duo (12 fruits) – 6000 F </option>
+                        <option value="8000">🔥 Pack Famille(18 fruits) – 8 000 F </option>
                     </select>
-                    <button onclick="commanderjus('prix-croquant','Prune sucrée')">🛒 Ajouter</button>
+                    <button onclick="commanderjus('prix-croquant','Prunes')">🛒 Ajouter</button>
                 </div>
             </div>
-        </section>
+        </section> 
         
         <!-- Avis clients -->
         <section class="hotel-reviews">
