@@ -149,7 +149,7 @@
     const progressFill = wizard.querySelector('[data-progress-fill]');
     const stepIndicator = wizard.querySelector('[data-step-indicator]');
 
-    /* --- Séquence des étapes propres à chaque branche --- */
+    /* --- Séquence des étapes propres à chaque branche de service --- */
     const branchSteps = {
       'whatsapp-link': [
         'whatsapp-link-secteur',
@@ -174,6 +174,32 @@
         'local-visuels',
       ],
       other: ['other-nature-projet', 'other-attentes'],
+      // La branche Sécurité numérique commence toujours par le choix du
+      // type de protection ; les étapes suivantes dépendent du sous-parcours
+      // choisi (voir securitySubbranchSteps) et sont ajoutées dynamiquement.
+      'securite-numerique': ['securite-type'],
+    };
+
+    /* --- Séquence des étapes propres à chaque sous-parcours de la
+       branche Sécurité numérique (dépend du choix fait à l'étape
+       "securite-type") --- */
+    const securitySubbranchSteps = {
+      localisation: [
+        'securite-localisation-compte',
+        'securite-localisation-confirmation',
+        'securite-localisation-tarif',
+      ],
+      sauvegarde: ['securite-sauvegarde-compte', 'securite-sauvegarde-tarif'],
+      'localisation-sauvegarde': [
+        'securite-combo-compte',
+        'securite-combo-confirmation',
+        'securite-combo-tarif',
+      ],
+      dossiers: [
+        'securite-dossiers-elements',
+        'securite-dossiers-appareil',
+        'securite-dossiers-tarif',
+      ],
     };
 
     /* --- Libellés lisibles pour le résumé et le message WhatsApp --- */
@@ -182,6 +208,7 @@
       website: 'Site internet professionnel',
       'local-visibility': 'Visibilité locale (Google Maps / Pack Google + Yango)',
       other: 'Autre demande',
+      'securite-numerique': 'Sécurité numérique',
     };
 
     const secteurLabels = {
@@ -242,6 +269,29 @@
       'rendez-vous-physique': 'Un rendez-vous physique',
     };
 
+    const securityTypeLabels = {
+      localisation: 'Localisation de téléphone',
+      sauvegarde: 'Sauvegarde automatique des photos et vidéos',
+      'localisation-sauvegarde':
+        'Localisation de téléphone + Sauvegarde automatique des photos et vidéos',
+      dossiers: 'Sécurisation des dossiers importants (PC / Mac)',
+    };
+
+    const appareilLabels = {
+      'pc-windows': 'PC Windows',
+      mac: 'Mac',
+      'les-deux': 'Les deux (PC et Mac)',
+    };
+
+    const elementsDossiersLabels = {
+      'documents-professionnels': 'Documents professionnels',
+      'documents-administratifs': 'Documents administratifs',
+      photos: 'Photos',
+      videos: 'Vidéos',
+      'projets-etudes': "Projets d'études",
+      tous: 'Tous mes dossiers importants',
+    };
+
     let currentFlow = ['identite', 'service'];
     let currentIndex = 0;
 
@@ -249,7 +299,7 @@
     document.querySelectorAll('[data-open-project-wizard]').forEach((btn) => {
       btn.addEventListener('click', (event) => {
         event.preventDefault();
-        openWizard();
+        openWizard(btn.dataset.startBranch || '');
       });
     });
 
@@ -266,11 +316,20 @@
       }
     });
 
-    function openWizard() {
+    function openWizard(startBranch) {
       wizard.hidden = false;
       document.body.style.overflow = 'hidden';
       currentFlow = ['identite', 'service'];
       currentIndex = 0;
+
+      // Si le bouton cliqué porte un [data-start-branch] (ex. « Me protéger »
+      // dans la section Sécurité numérique), on présélectionne le service
+      // correspondant à l'étape 2 pour accélérer le parcours du visiteur.
+      if (startBranch) {
+        const radio = form.querySelector(`input[name="service"][value="${startBranch}"]`);
+        if (radio) radio.checked = true;
+      }
+
       showStep('identite');
     }
 
@@ -307,6 +366,19 @@
         currentFlow = ['identite', 'service', ...(branchSteps[service] || []), 'summary'];
       }
 
+      // Branche Sécurité numérique : une fois le type de protection choisi,
+      // on insère les étapes du sous-parcours correspondant juste après
+      // "securite-type" et avant le résumé final.
+      if (stepName === 'securite-type') {
+        const type = form.querySelector('input[name="type-securite"]:checked')?.value;
+        const insertAt = currentFlow.indexOf('securite-type') + 1;
+        currentFlow = [
+          ...currentFlow.slice(0, insertAt),
+          ...(securitySubbranchSteps[type] || []),
+          'summary',
+        ];
+      }
+
       if (btn.hasAttribute('data-goto-summary')) {
         currentIndex = currentFlow.indexOf('summary');
       } else {
@@ -333,12 +405,20 @@
       form.querySelectorAll('.project-wizard__branch').forEach((el) => {
         el.hidden = true;
       });
+      // Les sous-parcours (branche Sécurité numérique) doivent eux aussi être
+      // masqués à chaque changement d'étape, sinon plusieurs sous-parcours
+      // en display:contents peuvent rester visibles simultanément.
+      form.querySelectorAll('.project-wizard__subbranch').forEach((el) => {
+        el.hidden = true;
+      });
 
       const stepEl = getStepEl(name);
       if (!stepEl) return;
 
       const branch = stepEl.closest('.project-wizard__branch');
+      const subbranch = stepEl.closest('.project-wizard__subbranch');
       if (branch) branch.hidden = false;
+      if (subbranch) subbranch.hidden = false;
       stepEl.hidden = false;
 
       if (name === 'whatsapp-link-tarif') updatePriceTier();
@@ -378,7 +458,14 @@
       if (!check) return;
 
       const update = () => {
-        check.hidden = !(input.value.trim() !== '' && input.checkValidity());
+        if (input.type === 'checkbox' || input.type === 'radio') {
+          // Pour une case à cocher, la présence de `value` ne dépend pas de
+          // l'état coché : il faut se baser sur `checked`, sinon le ✅
+          // s'affiche même quand la case n'est pas cochée.
+          check.hidden = !input.checked;
+        } else {
+          check.hidden = !(input.value.trim() !== '' && input.checkValidity());
+        }
       };
       input.addEventListener('input', update);
       input.addEventListener('change', update);
@@ -415,6 +502,19 @@
       radio.addEventListener('change', () => {
         const step = radio.closest('.project-wizard__step');
         const notice = step ? step.querySelector('[data-photo-notice]') : null;
+        if (!notice) return;
+        notice.hidden = !(radio.checked && radio.value === 'non');
+      });
+    });
+
+    /* ---------- Notice compte Gmail / Apple (branche Sécurité numérique) ----------
+       Même principe que les notices photos : affichée uniquement quand le
+       visiteur répond "non" (pas de compte existant), pour rassurer sur le
+       fait qu'Havenixci peut créer le compte pour lui. */
+    form.querySelectorAll('[data-account-trigger]').forEach((radio) => {
+      radio.addEventListener('change', () => {
+        const step = radio.closest('.project-wizard__step');
+        const notice = step ? step.querySelector('[data-account-notice]') : null;
         if (!notice) return;
         notice.hidden = !(radio.checked && radio.value === 'non');
       });
@@ -501,6 +601,34 @@
 
         const attentes = form.querySelector('input[name="attentes"]:checked');
         if (attentes) lines.push(`Attente principale : ${attentesLabels[attentes.value]}`);
+      } else if (service === 'securite-numerique') {
+        const type = form.querySelector('input[name="type-securite"]:checked')?.value;
+        if (type) lines.push(`Type de protection : ${securityTypeLabels[type] || type}`);
+
+        if (type === 'localisation') {
+          const compte = form.querySelector('input[name="compte-localisation"]:checked');
+          if (compte) lines.push(`Compte Gmail / Apple existant : ${compte.value === 'oui' ? 'Oui' : 'Non, à créer'}`);
+
+          const confirmation = form.querySelector('#wizard-confirm-localisation');
+          if (confirmation) lines.push(`Confirmation d'autorisation sur l'appareil : ${confirmation.checked ? 'Oui' : 'Non renseignée'}`);
+        } else if (type === 'sauvegarde') {
+          const compte = form.querySelector('input[name="compte-sauvegarde"]:checked');
+          if (compte) lines.push(`Compte Gmail / Apple existant : ${compte.value === 'oui' ? 'Oui' : 'Non, à créer'}`);
+        } else if (type === 'localisation-sauvegarde') {
+          const compte = form.querySelector('input[name="compte-combo"]:checked');
+          if (compte) lines.push(`Compte Gmail / Apple existant : ${compte.value === 'oui' ? 'Oui' : 'Non, à créer'}`);
+
+          const confirmation = form.querySelector('#wizard-confirm-combo');
+          if (confirmation) lines.push(`Confirmation d'autorisation sur l'appareil : ${confirmation.checked ? 'Oui' : 'Non renseignée'}`);
+        } else if (type === 'dossiers') {
+          const elements = Array.from(form.querySelectorAll('input[name="elements-dossiers"]:checked')).map(
+            (e) => elementsDossiersLabels[e.value] || e.value
+          );
+          if (elements.length) lines.push(`Éléments à protéger : ${elements.join(', ')}`);
+
+          const appareil = form.querySelector('input[name="appareil-dossiers"]:checked');
+          if (appareil) lines.push(`Appareil à sécuriser : ${appareilLabels[appareil.value] || appareil.value}`);
+        }
       }
 
       return lines;
@@ -518,6 +646,14 @@
       if (service === 'local-visibility') {
         const formule = form.querySelector('input[name="formule-locale"]:checked');
         return formule && formule.value === 'maps-yango' ? '15 000 FCFA' : '10 000 FCFA';
+      }
+      if (service === 'securite-numerique') {
+        const type = form.querySelector('input[name="type-securite"]:checked')?.value;
+        if (type === 'localisation') return 'À partir de 15 000 FCFA';
+        if (type === 'sauvegarde') return 'À partir de 15 000 FCFA';
+        if (type === 'localisation-sauvegarde') return 'À partir de 20 000 FCFA';
+        if (type === 'dossiers') return 'À partir de 20 000 FCFA';
+        return 'Tarif selon la protection choisie';
       }
       return 'Devis personnalisé selon votre demande';
     }

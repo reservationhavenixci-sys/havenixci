@@ -43,6 +43,7 @@
       <ul class="nav__list">
         <li><a href="#accueil" class="font-body">Accueil</a></li>
         <li><a href="#whatsapp-solution" class="font-body">Solution WhatsApp</a></li>
+        <li><a href="#securite-numerique" class="font-body">Sécurité</a></li>
         <li><a href="#pourquoi-havenixci" class="font-body">Pourquoi Havenixci</a></li>
         <li><a href="#services" class="font-body">Services</a></li>
         <li><a href="#methode" class="font-body">Notre méthode</a></li>
@@ -130,6 +131,37 @@
           <li class="whatsapp-solution__trust-item font-body">Accompagnement personnalisé.</li>
         </ul>
       </aside>
+    </section>
+
+    <!-- ==================== SÉCURITÉ NUMÉRIQUE ==================== -->
+    <section id="securite-numerique" class="security reveal" data-animate="fade-up" aria-labelledby="security-title">
+      <header class="section__intro">
+        <h2 id="security-title" class="font-heading">Protégez vos données numériques avant qu'il ne soit trop tard</h2>
+      </header>
+
+      <div class="security__cards" role="list">
+        <article class="card" role="listitem">
+          <h3 class="font-heading">📍 Localisation de Téléphone</h3>
+          <p class="font-body"><strong>Le problème :</strong> Un oubli dans un taxi... Perdre son téléphone, c'est perdre toute sa vie privée.</p>
+          <p class="font-body"><strong>Notre solution :</strong> Nous configurons votre appareil pour vous permettre de le localiser en temps réel, de le faire sonner ou de le bloquer à distance.</p>
+        </article>
+
+        <article class="card" role="listitem">
+          <h3 class="font-heading">📸 Sauvegarde Photos & Vidéos</h3>
+          <p class="font-body"><strong>Le problème :</strong> Un téléphone qui prend l'eau ou un écran brisé, et ce sont des années de souvenirs de famille qui disparaissent définitivement.</p>
+          <p class="font-body"><strong>Notre solution :</strong> Nous activons une sauvegarde automatique. Même si votre téléphone est détruit, vous récupérez 100 % de vos médias sur votre prochain appareil.</p>
+        </article>
+
+        <article class="card" role="listitem">
+          <h3 class="font-heading">💻 Sécurisation de Dossiers (PC / Mac)</h3>
+          <p class="font-body"><strong>Le problème :</strong> Une coupure de courant brutale ou un virus, et vos documents professionnels, bilans ou projets de fin d'études sont effacés.</p>
+          <p class="font-body"><strong>Notre solution :</strong> Nous protégeons vos dossiers importants dans un espace sécurisé. Votre ordinateur peut tomber en panne, votre travail reste à l'abri.</p>
+        </article>
+      </div>
+
+      <div class="security__action">
+        <a href="#project-wizard" class="btn btn--primary font-body" data-open-project-wizard data-start-branch="securite-numerique">Me protéger</a>
+      </div>
     </section>
 
     <!-- ==================== POURQUOI HAVENIXCI ? ==================== -->
@@ -509,7 +541,10 @@
           <legend class="font-heading">Commençons par votre projet</legend>
 
           <div class="form__group" data-field-group>
-            <label for="wizard-nom" class="font-body">Nom complet ou nom de l'entreprise</label>
+            <label for="wizard-nom" class="font-body">
+              Nom complet ou nom de l'entreprise
+              <span class="form__label-note font-body">(y compris pour une demande de Sécurité numérique)</span>
+            </label>
             <input type="text" id="wizard-nom" name="nom" required autocomplete="name" data-required="true">
             <span class="form__check" data-field-check hidden aria-hidden="true">✅</span>
           </div>
@@ -539,7 +574,7 @@
 
         <!-- ==================== ÉTAPE 2 : CHOIX DU SERVICE ==================== -->
         <fieldset class="project-wizard__step" data-step="service" data-step-index="2" hidden>
-          <legend class="font-heading">Quel levier digital souhaitez-vous activer aujourd'hui pour votre business ?</legend>
+          <legend class="font-heading">Quel levier digital souhaitez-vous activer aujourd'hui pour votre business ou protéger aujourd'hui ?</legend>
 
           <div class="project-wizard__choices" role="radiogroup" aria-label="Choix du service">
             <label class="project-wizard__choice font-body">
@@ -557,6 +592,10 @@
             <label class="project-wizard__choice font-body">
               <input type="radio" name="service" value="other" data-service-choice>
               Autre demande <span class="project-wizard__choice-hint">(Pour tout autre projet spécifique)</span>
+            </label>
+            <label class="project-wizard__choice font-body">
+              <input type="radio" name="service" value="securite-numerique" data-service-choice>
+              Sécurité numérique <span class="project-wizard__choice-hint">(Pour protéger votre téléphone, vos photos, vos vidéos et vos documents importants)</span>
             </label>
           </div>
 
@@ -857,6 +896,234 @@
               <button type="button" class="btn btn--primary font-body" data-next-step data-goto-summary>Voir le résumé</button>
             </div>
           </fieldset>
+
+        </div>
+
+        <!-- ==================== BRANCHE E : SÉCURITÉ NUMÉRIQUE ==================== -->
+        <div class="project-wizard__branch" data-branch="securite-numerique" hidden>
+
+          <fieldset class="project-wizard__step" data-step="securite-type" hidden>
+            <legend class="font-heading">Quel type de protection souhaitez-vous mettre en place ?</legend>
+            <div class="project-wizard__choices" role="radiogroup" aria-label="Type de protection">
+              <label class="project-wizard__choice font-body">
+                <input type="radio" name="type-securite" value="localisation" data-security-type-choice required data-required="true">
+                📍 Localisation de téléphone
+              </label>
+              <label class="project-wizard__choice font-body">
+                <input type="radio" name="type-securite" value="sauvegarde" data-security-type-choice>
+                📸 Sauvegarde automatique des photos et vidéos
+              </label>
+              <label class="project-wizard__choice font-body">
+                <input type="radio" name="type-securite" value="localisation-sauvegarde" data-security-type-choice>
+                📍 + 📸 Localisation de téléphone + Sauvegarde automatique des photos et vidéos
+                <span class="project-wizard__choice-hint">(Idéal pour retrouver votre téléphone en cas de perte et conserver automatiquement vos photos et vidéos)</span>
+              </label>
+              <label class="project-wizard__choice font-body">
+                <input type="radio" name="type-securite" value="dossiers" data-security-type-choice>
+                💻 Sécurisation des dossiers importants (PC / Mac)
+              </label>
+            </div>
+            <div class="project-wizard__actions">
+              <button type="button" class="btn btn--secondary font-body" data-prev-step>Retour</button>
+              <button type="button" class="btn btn--primary font-body" data-next-step>Continuer</button>
+            </div>
+          </fieldset>
+
+          <!-- ==================== SOUS-PARCOURS : LOCALISATION DE TÉLÉPHONE ==================== -->
+          <div class="project-wizard__subbranch" data-subbranch="localisation" hidden>
+
+            <fieldset class="project-wizard__step" data-step="securite-localisation-compte" hidden>
+              <legend class="font-heading">Possédez-vous déjà une adresse Gmail (Android) ou un identifiant Apple (iPhone) ?</legend>
+              <div class="project-wizard__choices" role="radiogroup" aria-label="Compte Gmail ou Apple existant">
+                <label class="project-wizard__choice font-body"><input type="radio" name="compte-localisation" value="oui" data-account-trigger required data-required="true">Oui</label>
+                <label class="project-wizard__choice font-body"><input type="radio" name="compte-localisation" value="non" data-account-trigger>Non</label>
+              </div>
+              <p class="project-wizard__notice font-body" data-account-notice hidden>Aucun problème. Nous pouvons créer et configurer votre compte afin que votre téléphone puisse être localisé et protégé.</p>
+              <div class="project-wizard__actions">
+                <button type="button" class="btn btn--secondary font-body" data-prev-step>Retour</button>
+                <button type="button" class="btn btn--primary font-body" data-next-step>Continuer</button>
+              </div>
+            </fieldset>
+
+            <fieldset class="project-wizard__step" data-step="securite-localisation-confirmation" hidden>
+              <legend class="font-heading">Confirmation obligatoire</legend>
+              <p class="project-wizard__notice font-body">Cette prestation est exclusivement destinée à sécuriser votre propre appareil ou un appareil pour lequel vous êtes autorisé à intervenir.</p>
+              <div class="form__group form__group--full" data-field-group>
+                <label class="project-wizard__choice font-body">
+                  <input type="checkbox" id="wizard-confirm-localisation" name="confirmation-localisation" value="oui" required data-required="true">
+                  Je confirme être le propriétaire ou être autorisé à faire sécuriser cet appareil.
+                </label>
+              </div>
+              <div class="project-wizard__actions">
+                <button type="button" class="btn btn--secondary font-body" data-prev-step>Retour</button>
+                <button type="button" class="btn btn--primary font-body" data-next-step>Continuer</button>
+              </div>
+            </fieldset>
+
+            <fieldset class="project-wizard__step" data-step="securite-localisation-tarif" hidden>
+              <legend class="font-heading">Tarification</legend>
+              <div class="project-wizard__price-info" data-price-info="localisation">
+                <p class="project-wizard__price font-heading">À partir de 15 000 FCFA</p>
+                <p class="project-wizard__price-note font-body">Cette prestation comprend notamment :</p>
+                <ul class="project-wizard__price-list font-body">
+                  <li>Configuration complète du compte Google ou Apple</li>
+                  <li>Activation de la localisation</li>
+                  <li>Activation des fonctions de recherche</li>
+                  <li>Paramétrage du verrouillage à distance</li>
+                  <li>Vérification générale des paramètres de sécurité</li>
+                </ul>
+              </div>
+              <div class="project-wizard__actions">
+                <button type="button" class="btn btn--secondary font-body" data-prev-step>Retour</button>
+                <button type="button" class="btn btn--primary font-body" data-next-step data-goto-summary>Voir le résumé</button>
+              </div>
+            </fieldset>
+
+          </div>
+
+          <!-- ==================== SOUS-PARCOURS : SAUVEGARDE PHOTOS & VIDÉOS ==================== -->
+          <div class="project-wizard__subbranch" data-subbranch="sauvegarde" hidden>
+
+            <fieldset class="project-wizard__step" data-step="securite-sauvegarde-compte" hidden>
+              <legend class="font-heading">Disposez-vous déjà d'un compte Gmail (Android) ou Apple (iPhone) ?</legend>
+              <div class="project-wizard__choices" role="radiogroup" aria-label="Compte Gmail ou Apple existant">
+                <label class="project-wizard__choice font-body"><input type="radio" name="compte-sauvegarde" value="oui" data-account-trigger required data-required="true">Oui</label>
+                <label class="project-wizard__choice font-body"><input type="radio" name="compte-sauvegarde" value="non" data-account-trigger>Non</label>
+              </div>
+              <p class="project-wizard__notice font-body" data-account-notice hidden>Nous pouvons créer et configurer votre compte afin d'activer la sauvegarde automatique de vos photos et vidéos.</p>
+              <div class="project-wizard__actions">
+                <button type="button" class="btn btn--secondary font-body" data-prev-step>Retour</button>
+                <button type="button" class="btn btn--primary font-body" data-next-step>Continuer</button>
+              </div>
+            </fieldset>
+
+            <fieldset class="project-wizard__step" data-step="securite-sauvegarde-tarif" hidden>
+              <legend class="font-heading">Tarification</legend>
+              <div class="project-wizard__price-info" data-price-info="sauvegarde">
+                <p class="project-wizard__price font-heading">À partir de 15 000 FCFA</p>
+                <p class="project-wizard__price-note font-body">Cette prestation comprend notamment :</p>
+                <ul class="project-wizard__price-list font-body">
+                  <li>Création du compte si nécessaire</li>
+                  <li>Configuration complète de la sauvegarde automatique</li>
+                  <li>Vérification du bon fonctionnement</li>
+                  <li>Assistance pour récupérer vos données sur un nouveau téléphone</li>
+                </ul>
+              </div>
+              <div class="project-wizard__actions">
+                <button type="button" class="btn btn--secondary font-body" data-prev-step>Retour</button>
+                <button type="button" class="btn btn--primary font-body" data-next-step data-goto-summary>Voir le résumé</button>
+              </div>
+            </fieldset>
+
+          </div>
+
+          <!-- ==================== SOUS-PARCOURS : LOCALISATION + SAUVEGARDE (COMBINÉ) ==================== -->
+          <div class="project-wizard__subbranch" data-subbranch="localisation-sauvegarde" hidden>
+
+            <fieldset class="project-wizard__step" data-step="securite-combo-compte" hidden>
+              <legend class="font-heading">Possédez-vous déjà une adresse Gmail (Android) ou un identifiant Apple (iPhone) ?</legend>
+              <div class="project-wizard__choices" role="radiogroup" aria-label="Compte Gmail ou Apple existant">
+                <label class="project-wizard__choice font-body"><input type="radio" name="compte-combo" value="oui" data-account-trigger required data-required="true">Oui</label>
+                <label class="project-wizard__choice font-body"><input type="radio" name="compte-combo" value="non" data-account-trigger>Non</label>
+              </div>
+              <p class="project-wizard__notice font-body" data-account-notice hidden>Aucun problème. Nous pouvons créer et configurer votre compte afin d'activer simultanément la localisation de votre téléphone ainsi que la sauvegarde automatique de vos photos et vidéos.</p>
+              <div class="project-wizard__actions">
+                <button type="button" class="btn btn--secondary font-body" data-prev-step>Retour</button>
+                <button type="button" class="btn btn--primary font-body" data-next-step>Continuer</button>
+              </div>
+            </fieldset>
+
+            <fieldset class="project-wizard__step" data-step="securite-combo-confirmation" hidden>
+              <legend class="font-heading">Confirmation obligatoire</legend>
+              <p class="project-wizard__notice font-body">Cette prestation est exclusivement destinée à sécuriser votre propre appareil ou un appareil pour lequel vous êtes autorisé à intervenir. Nous n'effectuons aucune configuration permettant de localiser le téléphone d'une autre personne sans son autorisation.</p>
+              <div class="form__group form__group--full" data-field-group>
+                <label class="project-wizard__choice font-body">
+                  <input type="checkbox" id="wizard-confirm-combo" name="confirmation-combo" value="oui" required data-required="true">
+                  Je confirme être le propriétaire ou être autorisé à faire sécuriser cet appareil.
+                </label>
+              </div>
+              <div class="project-wizard__actions">
+                <button type="button" class="btn btn--secondary font-body" data-prev-step>Retour</button>
+                <button type="button" class="btn btn--primary font-body" data-next-step>Continuer</button>
+              </div>
+            </fieldset>
+
+            <fieldset class="project-wizard__step" data-step="securite-combo-tarif" hidden>
+              <legend class="font-heading">Tarification</legend>
+              <div class="project-wizard__price-info" data-price-info="localisation-sauvegarde">
+                <p class="project-wizard__price font-heading">À partir de 20 000 FCFA</p>
+                <p class="project-wizard__price-note font-body">Cette prestation comprend notamment :</p>
+                <ul class="project-wizard__price-list font-body">
+                  <li>Création du compte Google ou Apple si nécessaire</li>
+                  <li>Configuration complète du compte</li>
+                  <li>Activation de la localisation du téléphone</li>
+                  <li>Activation des fonctions de recherche</li>
+                  <li>Paramétrage du verrouillage à distance</li>
+                  <li>Activation de la sauvegarde automatique des photos et vidéos</li>
+                  <li>Vérification complète du bon fonctionnement</li>
+                  <li>Vérification générale des paramètres de sécurité</li>
+                </ul>
+              </div>
+              <div class="project-wizard__actions">
+                <button type="button" class="btn btn--secondary font-body" data-prev-step>Retour</button>
+                <button type="button" class="btn btn--primary font-body" data-next-step data-goto-summary>Voir le résumé</button>
+              </div>
+            </fieldset>
+
+          </div>
+
+          <!-- ==================== SOUS-PARCOURS : SÉCURISATION DES DOSSIERS ==================== -->
+          <div class="project-wizard__subbranch" data-subbranch="dossiers" hidden>
+
+            <fieldset class="project-wizard__step" data-step="securite-dossiers-elements" hidden>
+              <legend class="font-heading">Quels éléments souhaitez-vous protéger ?</legend>
+              <div class="project-wizard__choices" role="group" aria-label="Éléments à protéger">
+                <label class="project-wizard__choice font-body"><input type="checkbox" name="elements-dossiers" value="documents-professionnels">Documents professionnels</label>
+                <label class="project-wizard__choice font-body"><input type="checkbox" name="elements-dossiers" value="documents-administratifs">Documents administratifs</label>
+                <label class="project-wizard__choice font-body"><input type="checkbox" name="elements-dossiers" value="photos">Photos</label>
+                <label class="project-wizard__choice font-body"><input type="checkbox" name="elements-dossiers" value="videos">Vidéos</label>
+                <label class="project-wizard__choice font-body"><input type="checkbox" name="elements-dossiers" value="projets-etudes">Projets d'études</label>
+                <label class="project-wizard__choice font-body"><input type="checkbox" name="elements-dossiers" value="tous">Tous mes dossiers importants</label>
+              </div>
+              <div class="project-wizard__actions">
+                <button type="button" class="btn btn--secondary font-body" data-prev-step>Retour</button>
+                <button type="button" class="btn btn--primary font-body" data-next-step>Continuer</button>
+              </div>
+            </fieldset>
+
+            <fieldset class="project-wizard__step" data-step="securite-dossiers-appareil" hidden>
+              <legend class="font-heading">Quel appareil souhaitez-vous sécuriser ?</legend>
+              <div class="project-wizard__choices" role="radiogroup" aria-label="Appareil à sécuriser">
+                <label class="project-wizard__choice font-body"><input type="radio" name="appareil-dossiers" value="pc-windows" required data-required="true">PC Windows</label>
+                <label class="project-wizard__choice font-body"><input type="radio" name="appareil-dossiers" value="mac">Mac</label>
+                <label class="project-wizard__choice font-body"><input type="radio" name="appareil-dossiers" value="les-deux">Les deux</label>
+              </div>
+              <div class="project-wizard__actions">
+                <button type="button" class="btn btn--secondary font-body" data-prev-step>Retour</button>
+                <button type="button" class="btn btn--primary font-body" data-next-step>Continuer</button>
+              </div>
+            </fieldset>
+
+            <fieldset class="project-wizard__step" data-step="securite-dossiers-tarif" hidden>
+              <legend class="font-heading">Tarification</legend>
+              <div class="project-wizard__price-info" data-price-info="dossiers">
+                <p class="project-wizard__price font-heading">À partir de 20 000 FCFA</p>
+                <p class="project-wizard__price-note font-body">Cette prestation comprend notamment :</p>
+                <ul class="project-wizard__price-list font-body">
+                  <li>Organisation de vos dossiers importants</li>
+                  <li>Sécurisation de vos documents</li>
+                  <li>Protection contre les pertes de données</li>
+                  <li>Mise en place d'une solution de sauvegarde adaptée</li>
+                  <li>Vérification du bon fonctionnement</li>
+                </ul>
+              </div>
+              <div class="project-wizard__actions">
+                <button type="button" class="btn btn--secondary font-body" data-prev-step>Retour</button>
+                <button type="button" class="btn btn--primary font-body" data-next-step data-goto-summary>Voir le résumé</button>
+              </div>
+            </fieldset>
+
+          </div>
 
         </div>
 

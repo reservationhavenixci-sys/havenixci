@@ -182,9 +182,15 @@ p { margin: 0 0 1em; }
   background: linear-gradient(180deg, rgba(28, 15, 7, .55), rgba(28, 15, 7, 0));
   transition: background-color .3s var(--ease), box-shadow .3s var(--ease);
 }
+/* CORRECTIF BUG "menu hamburger sans fond" :
+   on n'utilise plus backdrop-filter ici. Un filter/backdrop-filter sur .site-header
+   crée un nouveau "containing block" pour TOUS ses descendants en position:fixed —
+   or #nav-toggle et #main-nav (le menu mobile) sont fixed et vivent dans le header.
+   Ça les forçait à se positionner par rapport aux 84px du header au lieu de tout
+   l'écran, écrasant le menu mobile et faisant apparaître le texte sans son fond.
+   Un fond rgba bien opaque suffit visuellement, sans ce risque. */
 .site-header.is-scrolled {
-  background: rgba(28, 15, 7, .92);
-  backdrop-filter: blur(10px);
+  background: rgba(28, 15, 7, .96);
   box-shadow: var(--shadow-soft);
 }
 
@@ -763,8 +769,72 @@ p { margin: 0 0 1em; }
 }
 
 @media (max-width: 720px) {
-  .main-nav, .social-links--header, .btn--nav { display: none; }
-  .nav-toggle { display: flex; }
+  .social-links--header, .btn--nav { display: none; }
+
+  /* Le bouton hamburger reste TOUJOURS visible et cliquable, même menu ouvert :
+     z-index très élevé + position fixed propre (indépendante du header) + !important
+     en dernier recours pour écraser tout conflit éventuel. */
+  .nav-toggle {
+    display: flex !important;
+    position: fixed !important;
+    top: 16px;
+    right: 20px;
+    z-index: 999 !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    background: rgba(28, 15, 7, .85) !important;
+    border-radius: 50%;
+    box-shadow: var(--shadow-soft);
+  }
+
+  /* Le menu mobile est caché par défaut (opacity/visibility, pas display:none,
+     pour garder la transition), puis affiché dès que le JS ajoute .is-open sur #main-nav.
+     Fond opaque garanti par un rgba solide — le backdrop-filter est appliqué ici
+     directement sur #main-nav (qui EST l'élément fixed), donc sans risque : ça ne
+     touche que l'intérieur du menu, pas son propre positionnement. */
+  .main-nav {
+    position: fixed;
+    inset: var(--header-h) 0 0 0;
+    z-index: 150;
+    background: var(--brown-950);
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 48px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-12px);
+    transition: opacity .3s var(--ease), transform .3s var(--ease), visibility 0s linear .3s;
+  }
+  @supports (backdrop-filter: blur(1px)) and (not (-webkit-touch-callout: none)) {
+    .main-nav { backdrop-filter: blur(10px); background: rgba(28, 15, 7, .97); }
+  }
+  .main-nav.is-open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    transition: opacity .3s var(--ease), transform .3s var(--ease), visibility 0s linear 0s;
+  }
+  .main-nav ul {
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+  }
+  .main-nav a { font-size: 1.1rem; }
+
+  /* Animation du bouton hamburger en croix (X) quand le menu est ouvert */
+  .nav-toggle span {
+    transition: transform .3s var(--ease), opacity .3s var(--ease);
+  }
+  .nav-toggle.is-active span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+  .nav-toggle.is-active span:nth-child(2) {
+    opacity: 0;
+  }
+  .nav-toggle.is-active span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
 
   .room-grid, .spaces-grid { grid-template-columns: 1fr; }
   .free-services { flex-direction: column; gap: 20px; }
