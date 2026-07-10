@@ -37,6 +37,16 @@
      2. NAVIGATION MOBILE
      Un bouton "menu" est injecté (le HTML reste simple et valide
      sans JS) puis contrôle l'ouverture/fermeture du menu.
+
+     CORRECTIF ROBUSTESSE : la position du panneau déroulant est
+     calculée en pixels réels par le JS (getBoundingClientRect)
+     plutôt que de dépendre d'un positionnement CSS relatif au
+     header (fragile avec position: sticky + backdrop-filter,
+     qui peuvent créer des contextes de positionnement surprenants
+     selon les navigateurs). L'état ouvert/fermé est en plus posé
+     à DEUX endroits (attribut sur <nav> ET classe sur <body>)
+     avec des règles !important côté CSS, pour garantir l'affichage
+     même si une règle existante entrait en conflit.
      ------------------------------------------------------------ */
   function initNavigationMobile() {
     const header = qs('header');
@@ -55,14 +65,22 @@
 
     nav.insertBefore(bouton, liste);
 
+    function positionnerMenu() {
+      const hauteur = Math.round(header.getBoundingClientRect().height);
+      document.documentElement.style.setProperty('--header-h-px', hauteur + 'px');
+    }
+
     function fermerMenu() {
       nav.removeAttribute('data-menu');
+      document.body.classList.remove('menu-ouvert');
       bouton.setAttribute('aria-expanded', 'false');
       bouton.setAttribute('aria-label', 'Ouvrir le menu de navigation');
     }
 
     function ouvrirMenu() {
+      positionnerMenu();
       nav.setAttribute('data-menu', 'open');
+      document.body.classList.add('menu-ouvert');
       bouton.setAttribute('aria-expanded', 'true');
       bouton.setAttribute('aria-label', 'Fermer le menu de navigation');
     }
@@ -77,14 +95,25 @@
       if (evenement.target.closest('a')) fermerMenu();
     });
 
+    // Ferme le menu si on clique en dehors du panneau (sur le fond de page)
+    document.addEventListener('click', (evenement) => {
+      const estOuvert = bouton.getAttribute('aria-expanded') === 'true';
+      if (!estOuvert) return;
+      if (nav.contains(evenement.target)) return;
+      fermerMenu();
+    });
+
     document.addEventListener('keydown', (evenement) => {
       if (evenement.key === 'Escape') fermerMenu();
     });
 
     // Repasse en navigation desktop proprement au redimensionnement
     window.addEventListener('resize', debounce(() => {
+      positionnerMenu();
       if (window.innerWidth > 860) fermerMenu();
     }, 150));
+
+    positionnerMenu();
   }
 
   /* ------------------------------------------------------------
