@@ -1,11 +1,14 @@
 # Havenixci
 
-Plateforme d’hébergement et marketing digital.
+Nous accompagnons les entreprises dans leur développement digital grâce à des solutions modernes, performantes et adaptées à leurs objectifs.
 
 ## Nos services
-- Réservation d’hôtels
-- Promotion d’établissements
-- Offres spéciales
+- Création de sites web
+- Solution WhatsApp Business
+- Identité visuelle
+- Supports de communication
+- Maintenance
+- Conseil digital
 
 ## Contact
-WhatsApp : 0798016927
+WhatsApp : +225 07 98 01 69 27
