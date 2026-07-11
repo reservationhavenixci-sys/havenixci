@@ -1,0 +1,70 @@
+CARTE DE VISITE NUMÉRIQUE — MODÈLE COMMERCIAL
+================================================
+
+Ce dossier contient un modèle de carte de visite / portfolio numérique
+prêt à personnaliser pour un(e) commercial(e) en Côte d'Ivoire.
+
+FICHIERS
+--------
+- carte.html   → la page (structure et contenu)
+- carte.css    → le style (couleurs, typographie, mise en page)
+- carte.js     → les interactions (copier, enregistrer contact, partager, QR code)
+
+COMMENT PERSONNALISER
+----------------------
+Ouvrez carte.html avec un éditeur de texte (Notepad, VS Code, etc.)
+et remplacez les éléments suivants :
+
+1. VOTRE NOM
+   Cherchez "[Votre Nom]" (plusieurs occurrences) et remplacez-le
+   partout par votre nom complet.
+
+2. VOTRE PHOTO
+   Déposez votre photo dans ce même dossier, par exemple "photo.jpg",
+   puis dans carte.html cherchez :
+       <img class="hero__avatar-img" ... src="photo.jpg" ...>
+   et changez "photo.jpg" par le nom exact de votre fichier.
+   Si l'image ne se charge pas, vos initiales s'affichent automatiquement.
+
+3. TÉLÉPHONE / WHATSAPP
+   Remplacez "+225XXXXXXXXXX" (dans les liens tel: et wa.me, à 3 endroits)
+   par votre numéro complet avec l'indicatif, par exemple +2250700000000.
+   Faites de même dans le numéro affiché "XX XX XX XX XX".
+
+4. E-MAIL
+   Remplacez "votre.email@example.com" par votre adresse (liens mailto:
+   et texte affiché).
+
+5. SITE WEB (optionnel)
+   Remplacez "votresite.com" et le lien href="#" correspondant si vous
+   avez un site.
+
+6. VILLE / LOCALISATION
+   Remplacez "[Votre ville]" et l'URL de la carte Google Maps
+   (remplacez "Cote+d%27Ivoire" par le nom de votre ville, ex: "Abidjan").
+
+7. RÉSEAUX SOCIAUX
+   Remplacez les href="#" de Facebook, LinkedIn et TikTok par vos
+   propres liens de profil. Vous pouvez supprimer un bloc <li> si vous
+   n'utilisez pas un réseau, ou en dupliquer un pour en ajouter un autre.
+
+8. SERVICES
+   Les 5 services proposés (section "Mes services") sont déjà rédigés
+   pour un profil commercial — vous pouvez ajuster les textes des
+   balises <span class="service-card__label"> et
+   <span class="service-card__desc"> selon votre activité exacte.
+
+9. DONNÉES DE CONTACT (carte.js)
+   Ouvrez carte.js et mettez à jour l'objet CONTACT en haut du fichier
+   (nom, téléphone, e-mail, site, adresse) — ces informations servent
+   à générer le fichier de contact téléchargeable (.vcf).
+
+METTRE EN LIGNE
+----------------
+Une fois personnalisée, la carte peut être hébergée gratuitement sur
+des services comme Netlify, Vercel ou GitHub Pages : il suffit de
+déposer les 3 fichiers (+ votre photo) dans un même dossier. L'adresse
+obtenue peut ensuite servir pour votre QR code, vos réseaux sociaux et
+votre signature e-mail.
+
+Bonne personnalisation !

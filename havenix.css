@@ -664,6 +664,59 @@ textarea:focus-visible {
 
 
 /* ============================================================
+   9ter. HAVENIXCI CARD (CARTE DE VISITE NUMÉRIQUE)
+   ------------------------------------------------------------
+   Comme la section 9bis, HAVENIXCI CARD n'avait pas d'habillage
+   dédié dans la feuille de style d'origine. Après suppression du
+   bloc des offres SIMPLE/PRO/BUSINESS côté HTML, les blocs
+   restants (__cards, __benefits, __benefit, __action) sont
+   stylés ici sur le même langage visuel que le reste du site.
+   ============================================================ */
+.havenixci-card__cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-sm);
+  margin-bottom: var(--space-lg);
+}
+
+.havenixci-card__benefits {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-sm);
+  margin-bottom: var(--space-lg);
+}
+
+.havenixci-card__benefit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-sm);
+  background: var(--gray-50);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-md);
+  text-align: center;
+  transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
+}
+
+.havenixci-card__benefit:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-sm);
+  border-color: var(--gray-300);
+}
+
+.havenixci-card__benefit p {
+  font-weight: 600;
+  color: var(--navy-900);
+  font-size: 0.96rem;
+}
+
+.havenixci-card__action {
+  display: flex;
+  justify-content: center;
+}
+
+
+/* ============================================================
    10. MÉTHODE — timeline
    ============================================================ */
 .method__steps {
@@ -1163,6 +1216,14 @@ template { display: none; }
     grid-template-columns: repeat(2, 1fr);
   }
 
+  .havenixci-card__cards {
+    grid-template-columns: 1fr;
+  }
+
+  .havenixci-card__benefits {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
   .method__steps {
     grid-template-columns: repeat(3, 1fr);
   }
@@ -1228,6 +1289,7 @@ template { display: none; }
   .why__cards,
   .services__grid,
   .security__cards,
+  .havenixci-card__benefits,
   .method__steps,
   .portfolio__grid,
   .whatsapp-solution__benefits {

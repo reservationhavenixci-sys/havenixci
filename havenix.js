@@ -178,6 +178,11 @@
       // type de protection ; les étapes suivantes dépendent du sous-parcours
       // choisi (voir securitySubbranchSteps) et sont ajoutées dynamiquement.
       'securite-numerique': ['securite-type'],
+      // La branche HAVENIXCI CARD commence toujours par le choix de la
+      // formule ; les étapes suivantes dépendent du sous-parcours choisi
+      // (voir cardSubbranchSteps) et sont ajoutées dynamiquement, exactement
+      // comme pour la branche Sécurité numérique.
+      'havenixci-card': ['havenixci-card-formule'],
     };
 
     /* --- Séquence des étapes propres à chaque sous-parcours de la
@@ -202,6 +207,27 @@
       ],
     };
 
+    /* --- Séquence des étapes propres à chaque sous-parcours de la
+       branche HAVENIXCI CARD (dépend du choix fait à l'étape
+       "havenixci-card-formule") --- */
+    const cardSubbranchSteps = {
+      simple: [
+        'havenixci-card-simple-informations',
+        'havenixci-card-simple-visuels',
+      ],
+      pro: [
+        'havenixci-card-pro-informations',
+        'havenixci-card-pro-personnalisation',
+        'havenixci-card-pro-visuels',
+      ],
+      business: [
+        'havenixci-card-business-informations',
+        'havenixci-card-business-personnalisation',
+        'havenixci-card-business-localisation',
+        'havenixci-card-business-visuels',
+      ],
+    };
+
     /* --- Libellés lisibles pour le résumé et le message WhatsApp --- */
     const serviceLabels = {
       'whatsapp-link': 'Lien personnalisé WhatsApp',
@@ -209,6 +235,7 @@
       'local-visibility': 'Visibilité locale (Google Maps / Pack Google + Yango)',
       other: 'Autre demande',
       'securite-numerique': 'Sécurité numérique',
+      'havenixci-card': 'Carte de visite numérique (HAVENIXCI CARD)',
     };
 
     const secteurLabels = {
@@ -292,6 +319,20 @@
       tous: 'Tous mes dossiers importants',
     };
 
+    /* --- Libellés pour la branche HAVENIXCI CARD --- */
+    const formuleCardLabels = {
+      simple: 'SIMPLE (15 000 FCFA)',
+      pro: 'PRO (20 000 FCFA)',
+      business: 'BUSINESS (25 000 FCFA)',
+    };
+
+    const infosCardLabels = {
+      telephone: 'Téléphone',
+      whatsapp: 'WhatsApp',
+      services: 'Services',
+      'reseaux-sociaux': 'Réseaux sociaux',
+    };
+
     let currentFlow = ['identite', 'service'];
     let currentIndex = 0;
 
@@ -323,8 +364,9 @@
       currentIndex = 0;
 
       // Si le bouton cliqué porte un [data-start-branch] (ex. « Me protéger »
-      // dans la section Sécurité numérique), on présélectionne le service
-      // correspondant à l'étape 2 pour accélérer le parcours du visiteur.
+      // dans la section Sécurité numérique, ou « Créer ma carte » dans la
+      // section HAVENIXCI CARD), on présélectionne le service correspondant
+      // à l'étape 2 pour accélérer le parcours du visiteur.
       if (startBranch) {
         const radio = form.querySelector(`input[name="service"][value="${startBranch}"]`);
         if (radio) radio.checked = true;
@@ -379,6 +421,20 @@
         ];
       }
 
+      // Branche HAVENIXCI CARD : une fois la formule choisie (SIMPLE / PRO /
+      // BUSINESS), on insère les étapes du sous-parcours correspondant juste
+      // après "havenixci-card-formule" et avant le résumé final. Même
+      // principe que pour la branche Sécurité numérique ci-dessus.
+      if (stepName === 'havenixci-card-formule') {
+        const formule = form.querySelector('input[name="formule-card"]:checked')?.value;
+        const insertAt = currentFlow.indexOf('havenixci-card-formule') + 1;
+        currentFlow = [
+          ...currentFlow.slice(0, insertAt),
+          ...(cardSubbranchSteps[formule] || []),
+          'summary',
+        ];
+      }
+
       if (btn.hasAttribute('data-goto-summary')) {
         currentIndex = currentFlow.indexOf('summary');
       } else {
@@ -405,9 +461,10 @@
       form.querySelectorAll('.project-wizard__branch').forEach((el) => {
         el.hidden = true;
       });
-      // Les sous-parcours (branche Sécurité numérique) doivent eux aussi être
-      // masqués à chaque changement d'étape, sinon plusieurs sous-parcours
-      // en display:contents peuvent rester visibles simultanément.
+      // Les sous-parcours (branches Sécurité numérique et HAVENIXCI CARD)
+      // doivent eux aussi être masqués à chaque changement d'étape, sinon
+      // plusieurs sous-parcours en display:contents peuvent rester visibles
+      // simultanément.
       form.querySelectorAll('.project-wizard__subbranch').forEach((el) => {
         el.hidden = true;
       });
@@ -484,7 +541,10 @@
       if (target) target.hidden = false;
     }
 
-    /* ---------- Branche C : tarif selon la formule choisie ---------- */
+    /* ---------- Branche C : tarif selon la formule choisie
+       Branche F (HAVENIXCI CARD) : même mécanisme d'affichage du tarif
+       piloté par [data-price-trigger] / [data-price-info], réutilisé tel
+       quel puisque le HTML respecte la même convention d'attributs. ---------- */
     form.querySelectorAll('[data-price-trigger]').forEach((radio) => {
       radio.addEventListener('change', () => {
         const step = radio.closest('.project-wizard__step');
@@ -497,7 +557,7 @@
       });
     });
 
-    /* ---------- Notice photos (branches A et C) ---------- */
+    /* ---------- Notice photos (branches A, C et sous-parcours de F) ---------- */
     form.querySelectorAll('[data-photo-trigger]').forEach((radio) => {
       radio.addEventListener('change', () => {
         const step = radio.closest('.project-wizard__step');
@@ -629,6 +689,34 @@
           const appareil = form.querySelector('input[name="appareil-dossiers"]:checked');
           if (appareil) lines.push(`Appareil à sécuriser : ${appareilLabels[appareil.value] || appareil.value}`);
         }
+      } else if (service === 'havenixci-card') {
+        const formule = form.querySelector('input[name="formule-card"]:checked')?.value;
+        if (formule) lines.push(`Formule : ${formuleCardLabels[formule] || formule}`);
+
+        if (formule) {
+          const infosField = `infos-card-${formule}`;
+          const infos = Array.from(
+            form.querySelectorAll(`input[name="${infosField}"]:checked`)
+          ).map((i) => infosCardLabels[i.value] || i.value);
+          if (infos.length) lines.push(`Informations à afficher : ${infos.join(', ')}`);
+        }
+
+        if (formule === 'pro' || formule === 'business') {
+          const liens = form.querySelector(`[name="liens-reseaux-card-${formule}"]`)?.value.trim();
+          if (liens) lines.push(`Liens réseaux à personnaliser : ${liens}`);
+        }
+
+        if (formule === 'business') {
+          const adresse = form.querySelector('[name="adresse-card-business"]')?.value.trim();
+          if (adresse) lines.push(`Localisation : ${adresse}`);
+        }
+
+        if (formule) {
+          const visuels = form.querySelector(`input[name="visuels-card-${formule}"]:checked`);
+          if (visuels) {
+            lines.push(`Logo / photo de profil disponible : ${visuels.value === 'oui' ? 'Oui' : 'Non, à fournir après validation'}`);
+          }
+        }
       }
 
       return lines;
@@ -654,6 +742,13 @@
         if (type === 'localisation-sauvegarde') return 'À partir de 20 000 FCFA';
         if (type === 'dossiers') return 'À partir de 20 000 FCFA';
         return 'Tarif selon la protection choisie';
+      }
+      if (service === 'havenixci-card') {
+        const formule = form.querySelector('input[name="formule-card"]:checked')?.value;
+        if (formule === 'simple') return '15 000 FCFA';
+        if (formule === 'pro') return '20 000 FCFA';
+        if (formule === 'business') return '25 000 FCFA';
+        return 'Tarif selon la formule choisie';
       }
       return 'Devis personnalisé selon votre demande';
     }

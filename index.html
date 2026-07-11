@@ -43,6 +43,7 @@
       <ul class="nav__list">
         <li><a href="#accueil" class="font-body">Accueil</a></li>
         <li><a href="#whatsapp-solution" class="font-body">Solution WhatsApp</a></li>
+        <li><a href="#havenixci-card" class="font-body">Carte numérique</a></li>
         <li><a href="#securite-numerique" class="font-body">Sécurité</a></li>
         <li><a href="#pourquoi-havenixci" class="font-body">Pourquoi Havenixci</a></li>
         <li><a href="#services" class="font-body">Services</a></li>
@@ -119,18 +120,40 @@
       <div class="whatsapp-solution__action">
         <a href="#project-wizard" class="btn btn--primary font-body" data-open-project-wizard>Démarrer mon projet</a>
       </div>
+    </section>
 
-      <p class="whatsapp-solution__closing font-body">Une seule page peut répondre aux principales questions de vos clients avant même qu'ils vous écrivent. Vous gagnez du temps, vos échanges sont plus simples et vos commandes sont mieux organisées.</p>
+    <!-- ==================== HAVENIXCI CARD (CARTE DE VISITE NUMÉRIQUE) ==================== -->
+    <section id="havenixci-card" class="havenixci-card reveal" data-animate="fade-up" aria-labelledby="havenixci-card-title">
+      <header class="section__intro">
+        <h2 id="havenixci-card-title" class="font-heading">Votre carte de visite intelligente 🌐</h2>
+      </header>
 
-      <p class="whatsapp-solution__conclusion font-body">Une solution simple pour mieux présenter votre activité, faciliter les échanges avec vos clients et développer votre entreprise.</p>
+      <div class="havenixci-card__cards" role="list">
+        <article class="card" role="listitem">
+          <h3 class="font-heading">Carte numérique professionnelle</h3>
+          <p class="font-body"><strong>Le problème :</strong> Vos clients perdent vos cartes papier.</p>
+          <p class="font-body"><strong>Notre solution :</strong> Une carte numérique professionnelle accessible par lien ou QR Code.</p>
+        </article>
+      </div>
 
-      <aside class="whatsapp-solution__trust" aria-label="Points de confiance">
-        <ul class="whatsapp-solution__trust-list">
-          <li class="whatsapp-solution__trust-item font-body">Solution adaptée aux entreprises.</li>
-          <li class="whatsapp-solution__trust-item font-body">Compatible mobile, tablette et ordinateur.</li>
-          <li class="whatsapp-solution__trust-item font-body">Accompagnement personnalisé.</li>
-        </ul>
-      </aside>
+      <div class="havenixci-card__benefits" role="list" aria-label="Ce que vos clients peuvent faire">
+        <div class="havenixci-card__benefit" role="listitem">
+          <p class="font-body">✅ Vous appeler</p>
+        </div>
+        <div class="havenixci-card__benefit" role="listitem">
+          <p class="font-body">✅ Vous écrire sur WhatsApp</p>
+        </div>
+        <div class="havenixci-card__benefit" role="listitem">
+          <p class="font-body">✅ Voir vos services</p>
+        </div>
+        <div class="havenixci-card__benefit" role="listitem">
+          <p class="font-body">✅ Prendre rendez-vous</p>
+        </div>
+      </div>
+
+      <div class="havenixci-card__action">
+        <a href="#project-wizard" class="btn btn--primary font-body" data-open-project-wizard data-start-branch="havenixci-card">Créer ma carte</a>
+      </div>
     </section>
 
     <!-- ==================== SÉCURITÉ NUMÉRIQUE ==================== -->
@@ -425,6 +448,20 @@
           </div>
         </article>
 
+        <article class="portfolio-card reveal" data-animate="fade-up" data-category="Carte numérique" role="listitem">
+          <figure class="portfolio-card__media">
+            <picture>
+              <img src="carte-commerciale/images/Simple and clean business card with print ready files _ Premium Vector.jpg" alt="" loading="lazy" class="portfolio-card__image" width="600" height="400">
+            </picture>
+          </figure>
+          <div class="portfolio-card__content">
+            <span class="portfolio-card__category font-body" data-category-label>Carte Numérique</span>
+            <h3 class="portfolio-card__title font-heading" data-project-name>Carte de visite numérique</h3>
+            <p class="portfolio-card__description font-body" data-project-description>Offrez une expérience moderne à vos clients grâce à une carte de visite numérique facile à partager par QR Code, WhatsApp ou lien.</p>
+            <a href="carte-commerciale/carte.html" class="btn btn--secondary font-body portfolio-card__link" target="_blank" rel="noopener noreferrer" data-project-link>Visiter le site</a>
+          </div>
+        </article>
+
       </div>
 
       <!--
@@ -513,6 +550,10 @@
     - Branche C (Visibilité locale) : fusionne les anciennes offres "Google Maps" et "Google Maps + Yango" en une seule branche ;
       le tarif dépend du choix de formule ([data-price-trigger] / [data-price-info]), sur le même principe que l'ancien palier
       de volume de produits de la branche A.
+    - Branche F (HAVENIXCI CARD) : reprend le mécanisme de sous-parcours ([data-subbranch]) déjà utilisé par la Branche E
+      (Sécurité numérique). Le choix de formule à l'étape "havenixci-card-formule" ([data-security-type-choice], valeurs
+      "simple" / "pro" / "business") pilote l'affichage du sous-parcours [data-subbranch] correspondant, exactement comme
+      le choix du type de protection pilote les sous-parcours de la Branche E.
   -->
   <section id="project-wizard" class="project-wizard" aria-labelledby="project-wizard-title" hidden>
     <div class="project-wizard__overlay" data-close-project-wizard></div>
@@ -580,6 +621,10 @@
             <label class="project-wizard__choice font-body">
               <input type="radio" name="service" value="whatsapp-link" data-service-choice required data-required="true">
               Lien personnalisé WhatsApp <span class="project-wizard__choice-hint">(Idéal pour vendre rapidement sur catalogue)</span>
+            </label>
+            <label class="project-wizard__choice font-body">
+              <input type="radio" name="service" value="havenixci-card" data-service-choice>
+              Carte de visite numérique (HAVENIXCI CARD) <span class="project-wizard__choice-hint">(Idéal pour centraliser vos contacts et services en un seul lien)</span>
             </label>
             <label class="project-wizard__choice font-body">
               <input type="radio" name="service" value="website" data-service-choice>
@@ -1127,6 +1172,202 @@
 
         </div>
 
+        <!-- ==================== BRANCHE F : HAVENIXCI CARD (CARTE DE VISITE NUMÉRIQUE) ==================== -->
+        <div class="project-wizard__branch" data-branch="havenixci-card" hidden>
+
+          <fieldset class="project-wizard__step" data-step="havenixci-card-formule" hidden>
+            <legend class="font-heading">Quelle formule souhaitez-vous ?</legend>
+            <div class="project-wizard__choices" role="radiogroup" aria-label="Formule HAVENIXCI CARD">
+              <label class="project-wizard__choice font-body">
+                <input type="radio" name="formule-card" value="simple" data-security-type-choice data-price-trigger required data-required="true">
+                Formule SIMPLE
+              </label>
+              <label class="project-wizard__choice font-body">
+                <input type="radio" name="formule-card" value="pro" data-security-type-choice data-price-trigger>
+                Formule PRO
+              </label>
+              <label class="project-wizard__choice font-body">
+                <input type="radio" name="formule-card" value="business" data-security-type-choice data-price-trigger>
+                Formule BUSINESS
+              </label>
+            </div>
+
+            <div class="project-wizard__price-info" data-price-info="simple" hidden>
+              <p class="project-wizard__price font-heading">🟦 SIMPLE — 15 000 FCFA</p>
+              <p class="project-wizard__price-note font-body">Cette formule comprend notamment :</p>
+              <ul class="project-wizard__price-list font-body">
+                <li>Carte numérique</li>
+                <li>QR Code</li>
+                <li>WhatsApp</li>
+                <li>Téléphone</li>
+                <li>Réseaux sociaux</li>
+              </ul>
+            </div>
+
+            <div class="project-wizard__price-info" data-price-info="pro" hidden>
+              <p class="project-wizard__price font-heading">🟧 PRO — 20 000 FCFA</p>
+              <p class="project-wizard__price-note font-body">Tout SIMPLE, avec en plus :</p>
+              <ul class="project-wizard__price-list font-body">
+                <li>Personnaliser les liens des réseaux</li>
+                <li>📞 Appel instantané en un clic</li>
+                <li>💬 Contact WhatsApp en un clic</li>
+                <li>✉️ Envoi d'un e-mail en un clic</li>
+              </ul>
+            </div>
+
+            <div class="project-wizard__price-info" data-price-info="business" hidden>
+              <p class="project-wizard__price font-heading">🟩 BUSINESS — 25 000 FCFA</p>
+              <p class="project-wizard__price-note font-body">Tout PRO, avec en plus :</p>
+              <ul class="project-wizard__price-list font-body">
+                <li>📍 Localisation de l'entreprise en un clic</li>
+                <li>👤 Enregistrement du contact en un clic</li>
+                <li>🌐 Votre site web</li>
+              </ul>
+            </div>
+
+            <div class="project-wizard__actions">
+              <button type="button" class="btn btn--secondary font-body" data-prev-step>Retour</button>
+              <button type="button" class="btn btn--primary font-body" data-next-step>Continuer</button>
+            </div>
+          </fieldset>
+
+          <!-- ==================== SOUS-PARCOURS : FORMULE SIMPLE ==================== -->
+          <div class="project-wizard__subbranch" data-subbranch="simple" hidden>
+
+            <fieldset class="project-wizard__step" data-step="havenixci-card-simple-informations" hidden>
+              <legend class="font-heading">Quelles informations souhaitez-vous afficher sur votre carte ?</legend>
+              <div class="project-wizard__choices" role="group" aria-label="Informations à afficher">
+                <label class="project-wizard__choice font-body"><input type="checkbox" name="infos-card-simple" value="telephone">Téléphone</label>
+                <label class="project-wizard__choice font-body"><input type="checkbox" name="infos-card-simple" value="whatsapp">WhatsApp</label>
+                <label class="project-wizard__choice font-body"><input type="checkbox" name="infos-card-simple" value="services">Services</label>
+                <label class="project-wizard__choice font-body"><input type="checkbox" name="infos-card-simple" value="reseaux-sociaux">Réseaux sociaux</label>
+              </div>
+              <div class="project-wizard__actions">
+                <button type="button" class="btn btn--secondary font-body" data-prev-step>Retour</button>
+                <button type="button" class="btn btn--primary font-body" data-next-step>Continuer</button>
+              </div>
+            </fieldset>
+
+            <fieldset class="project-wizard__step" data-step="havenixci-card-simple-visuels" hidden>
+              <legend class="font-heading">Disposez-vous déjà d'un logo ou d'une photo de profil professionnelle ?</legend>
+              <div class="project-wizard__choices" role="radiogroup" aria-label="Disponibilité des visuels">
+                <label class="project-wizard__choice font-body"><input type="radio" name="visuels-card-simple" value="oui" data-photo-trigger required data-required="true">Oui</label>
+                <label class="project-wizard__choice font-body"><input type="radio" name="visuels-card-simple" value="non" data-photo-trigger>Non</label>
+              </div>
+              <p class="project-wizard__notice font-body" data-photo-notice hidden>Ils vous seront demandés après validation pour concevoir votre carte.</p>
+              <div class="project-wizard__actions">
+                <button type="button" class="btn btn--secondary font-body" data-prev-step>Retour</button>
+                <button type="button" class="btn btn--primary font-body" data-next-step data-goto-summary>Voir le résumé</button>
+              </div>
+            </fieldset>
+
+          </div>
+
+          <!-- ==================== SOUS-PARCOURS : FORMULE PRO ==================== -->
+          <div class="project-wizard__subbranch" data-subbranch="pro" hidden>
+
+            <fieldset class="project-wizard__step" data-step="havenixci-card-pro-informations" hidden>
+              <legend class="font-heading">Quelles informations souhaitez-vous afficher sur votre carte ?</legend>
+              <div class="project-wizard__choices" role="group" aria-label="Informations à afficher">
+                <label class="project-wizard__choice font-body"><input type="checkbox" name="infos-card-pro" value="telephone">Téléphone</label>
+                <label class="project-wizard__choice font-body"><input type="checkbox" name="infos-card-pro" value="whatsapp">WhatsApp</label>
+                <label class="project-wizard__choice font-body"><input type="checkbox" name="infos-card-pro" value="services">Services</label>
+                <label class="project-wizard__choice font-body"><input type="checkbox" name="infos-card-pro" value="reseaux-sociaux">Réseaux sociaux</label>
+              </div>
+              <div class="project-wizard__actions">
+                <button type="button" class="btn btn--secondary font-body" data-prev-step>Retour</button>
+                <button type="button" class="btn btn--primary font-body" data-next-step>Continuer</button>
+              </div>
+            </fieldset>
+
+            <fieldset class="project-wizard__step" data-step="havenixci-card-pro-personnalisation" hidden>
+              <legend class="font-heading">Personnalisation des liens de vos réseaux</legend>
+              <div class="form__group form__group--full" data-field-group>
+                <label for="wizard-card-pro-liens" class="font-body">Indiquez les liens de vos réseaux sociaux à personnaliser (Facebook, Instagram, TikTok...)</label>
+                <textarea id="wizard-card-pro-liens" name="liens-reseaux-card-pro" rows="4" data-required="false"></textarea>
+                <span class="form__check" data-field-check hidden aria-hidden="true">✅</span>
+              </div>
+              <div class="project-wizard__actions">
+                <button type="button" class="btn btn--secondary font-body" data-prev-step>Retour</button>
+                <button type="button" class="btn btn--primary font-body" data-next-step>Continuer</button>
+              </div>
+            </fieldset>
+
+            <fieldset class="project-wizard__step" data-step="havenixci-card-pro-visuels" hidden>
+              <legend class="font-heading">Disposez-vous déjà d'un logo ou d'une photo de profil professionnelle ?</legend>
+              <div class="project-wizard__choices" role="radiogroup" aria-label="Disponibilité des visuels">
+                <label class="project-wizard__choice font-body"><input type="radio" name="visuels-card-pro" value="oui" data-photo-trigger required data-required="true">Oui</label>
+                <label class="project-wizard__choice font-body"><input type="radio" name="visuels-card-pro" value="non" data-photo-trigger>Non</label>
+              </div>
+              <p class="project-wizard__notice font-body" data-photo-notice hidden>Ils vous seront demandés après validation pour concevoir votre carte.</p>
+              <div class="project-wizard__actions">
+                <button type="button" class="btn btn--secondary font-body" data-prev-step>Retour</button>
+                <button type="button" class="btn btn--primary font-body" data-next-step data-goto-summary>Voir le résumé</button>
+              </div>
+            </fieldset>
+
+          </div>
+
+          <!-- ==================== SOUS-PARCOURS : FORMULE BUSINESS ==================== -->
+          <div class="project-wizard__subbranch" data-subbranch="business" hidden>
+
+            <fieldset class="project-wizard__step" data-step="havenixci-card-business-informations" hidden>
+              <legend class="font-heading">Quelles informations souhaitez-vous afficher sur votre carte ?</legend>
+              <div class="project-wizard__choices" role="group" aria-label="Informations à afficher">
+                <label class="project-wizard__choice font-body"><input type="checkbox" name="infos-card-business" value="telephone">Téléphone</label>
+                <label class="project-wizard__choice font-body"><input type="checkbox" name="infos-card-business" value="whatsapp">WhatsApp</label>
+                <label class="project-wizard__choice font-body"><input type="checkbox" name="infos-card-business" value="services">Services</label>
+                <label class="project-wizard__choice font-body"><input type="checkbox" name="infos-card-business" value="reseaux-sociaux">Réseaux sociaux</label>
+              </div>
+              <div class="project-wizard__actions">
+                <button type="button" class="btn btn--secondary font-body" data-prev-step>Retour</button>
+                <button type="button" class="btn btn--primary font-body" data-next-step>Continuer</button>
+              </div>
+            </fieldset>
+
+            <fieldset class="project-wizard__step" data-step="havenixci-card-business-personnalisation" hidden>
+              <legend class="font-heading">Personnalisation des liens de vos réseaux</legend>
+              <div class="form__group form__group--full" data-field-group>
+                <label for="wizard-card-business-liens" class="font-body">Indiquez les liens de vos réseaux sociaux à personnaliser (Facebook, Instagram, TikTok...)</label>
+                <textarea id="wizard-card-business-liens" name="liens-reseaux-card-business" rows="4" data-required="false"></textarea>
+                <span class="form__check" data-field-check hidden aria-hidden="true">✅</span>
+              </div>
+              <div class="project-wizard__actions">
+                <button type="button" class="btn btn--secondary font-body" data-prev-step>Retour</button>
+                <button type="button" class="btn btn--primary font-body" data-next-step>Continuer</button>
+              </div>
+            </fieldset>
+
+            <fieldset class="project-wizard__step" data-step="havenixci-card-business-localisation" hidden>
+              <legend class="font-heading">Localisation de votre établissement</legend>
+              <div class="form__group" data-field-group>
+                <label for="wizard-card-business-adresse" class="font-body">Ville, commune, quartier et repères physiques précis</label>
+                <input type="text" id="wizard-card-business-adresse" name="adresse-card-business" required data-required="true">
+                <span class="form__check" data-field-check hidden aria-hidden="true">✅</span>
+              </div>
+              <div class="project-wizard__actions">
+                <button type="button" class="btn btn--secondary font-body" data-prev-step>Retour</button>
+                <button type="button" class="btn btn--primary font-body" data-next-step>Continuer</button>
+              </div>
+            </fieldset>
+
+            <fieldset class="project-wizard__step" data-step="havenixci-card-business-visuels" hidden>
+              <legend class="font-heading">Disposez-vous déjà d'un logo ou d'une photo de profil professionnelle ?</legend>
+              <div class="project-wizard__choices" role="radiogroup" aria-label="Disponibilité des visuels">
+                <label class="project-wizard__choice font-body"><input type="radio" name="visuels-card-business" value="oui" data-photo-trigger required data-required="true">Oui</label>
+                <label class="project-wizard__choice font-body"><input type="radio" name="visuels-card-business" value="non" data-photo-trigger>Non</label>
+              </div>
+              <p class="project-wizard__notice font-body" data-photo-notice hidden>Ils vous seront demandés après validation pour concevoir votre carte.</p>
+              <div class="project-wizard__actions">
+                <button type="button" class="btn btn--secondary font-body" data-prev-step>Retour</button>
+                <button type="button" class="btn btn--primary font-body" data-next-step data-goto-summary>Voir le résumé</button>
+              </div>
+            </fieldset>
+
+          </div>
+
+        </div>
+
         <!-- ==================== RÉSUMÉ AVANT ENVOI ==================== -->
         <fieldset class="project-wizard__step project-wizard__summary" data-step="summary" hidden>
           <legend class="font-heading">Relisez votre projet avant de l'envoyer</legend>
@@ -1184,6 +1425,7 @@
       <ul>
         <li><a href="#accueil" class="font-body">Accueil</a></li>
         <li><a href="#whatsapp-solution" class="font-body">Solution WhatsApp</a></li>
+        <li><a href="#havenixci-card" class="font-body">Carte numérique</a></li>
         <li><a href="#pourquoi-havenixci" class="font-body">Pourquoi Havenixci</a></li>
         <li><a href="#services" class="font-body">Services</a></li>
         <li><a href="#methode" class="font-body">Notre méthode</a></li>
@@ -1198,7 +1440,7 @@
   <ul>
     <li class="font-body">
       <span class="footer__label">E-mail</span><br>
-      <a href="mailto:votreadresse@gmail.com">votreadresse@gmail.com</a>
+      <a href="mailto:votreadresse@gmail.com">reservationhavenixci@gmail.com</a>
     </li>
 
     <li class="font-body">
