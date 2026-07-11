@@ -726,28 +726,28 @@
       if (service === 'whatsapp-link') {
         const secteur = form.querySelector('input[name="secteur"]:checked');
         const tier = secteur ? secteur.dataset.priceTier : 'standard';
-        return tier === 'premium' ? 'À partir de 30 000 FCFA' : 'À partir de 15 000 FCFA';
+        return tier === 'premium' ? 'À partir de 35 000 FCFA' : 'À partir de 10 000 FCFA';
       }
       if (service === 'website') {
-        return 'À partir de 100 000 FCFA (tarif final selon le cahier des charges)';
+        return 'À partir de 150 000 FCFA (tarif final selon le cahier des charges)';
       }
       if (service === 'local-visibility') {
         const formule = form.querySelector('input[name="formule-locale"]:checked');
-        return formule && formule.value === 'maps-yango' ? '15 000 FCFA' : '10 000 FCFA';
+        return formule && formule.value === 'maps-yango' ? '20 000 FCFA' : '10 000 FCFA';
       }
       if (service === 'securite-numerique') {
         const type = form.querySelector('input[name="type-securite"]:checked')?.value;
         if (type === 'localisation') return 'À partir de 15 000 FCFA';
-        if (type === 'sauvegarde') return 'À partir de 15 000 FCFA';
-        if (type === 'localisation-sauvegarde') return 'À partir de 20 000 FCFA';
-        if (type === 'dossiers') return 'À partir de 20 000 FCFA';
+        if (type === 'sauvegarde') return 'À partir de 20 000 FCFA';
+        if (type === 'localisation-sauvegarde') return 'À partir de 30 000 FCFA';
+        if (type === 'dossiers') return 'À partir de 35 000 FCFA';
         return 'Tarif selon la protection choisie';
       }
       if (service === 'havenixci-card') {
         const formule = form.querySelector('input[name="formule-card"]:checked')?.value;
         if (formule === 'simple') return '15 000 FCFA';
-        if (formule === 'pro') return '20 000 FCFA';
-        if (formule === 'business') return '25 000 FCFA';
+        if (formule === 'pro') return '25 000 FCFA';
+        if (formule === 'business') return '35 000 FCFA';
         return 'Tarif selon la formule choisie';
       }
       return 'Devis personnalisé selon votre demande';
