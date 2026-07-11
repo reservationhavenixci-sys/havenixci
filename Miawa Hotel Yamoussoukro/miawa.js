@@ -168,7 +168,7 @@
   /* -------------------------------------------------------------------
      6. MOTEUR DE RÉSERVATION — GÉNÉRATION DU MESSAGE WHATSAPP
      ------------------------------------------------------------------- */
-  var WHATSAPP_NUMBER = "2250504800733"; // 05 04 80 07 33, format international sans le +
+  var WHATSAPP_NUMBER = "225050151030957"; // 05 04 80 07 33, format international sans le +
 
   var bookingForm = qs("#booking-form");
 
