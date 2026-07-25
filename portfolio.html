@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio — HavenixCI</title>
+  <meta name="description" content="Découvrez les réalisations de HavenixCI : hôtels, restaurants, boutiques, agences immobilières et bien plus.">
+
+  <!-- ==================== FAVICON ====================
+       Déposez vos fichiers d'icône dans un dossier "assets/" placé à la
+       racine du site (au même niveau que ce fichier index.html), avec
+       EXACTEMENT ces noms de fichiers :
+         assets/favicon.ico
+         assets/favicon-32x32.png
+         assets/favicon-16x16.png
+         assets/apple-touch-icon.png
+       Le plus simple : donnez votre logo à https://realfavicongenerator.net
+       qui génère automatiquement les 4 fichiers ci-dessus à télécharger.
+       Tant que ces fichiers n'existent pas, le navigateur affiche juste
+       une icône par défaut — aucune erreur visible pour vos visiteurs. -->
+  <link rel="icon" href="assets/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+
+  <!-- ==================== OPEN GRAPH ====================
+       Ces balises définissent l'aperçu affiché quand le lien du site est
+       partagé sur WhatsApp, LinkedIn, Facebook, etc.
+       À FAIRE avant mise en ligne :
+         Déposer une image assets/og-image.jpg (1200 x 630 px recommandé,
+         avec le logo + un visuel représentatif du portfolio) — c'est
+         l'image qui apparaîtra dans l'aperçu du lien ci-dessous. -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="HavenixCI">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:url" content="https://havenixci.com/portfolio">
+  <meta property="og:title" content="Portfolio — HavenixCI">
+  <meta property="og:description" content="Découvrez les réalisations de HavenixCI : hôtels, restaurants, boutiques, agences immobilières et bien plus.">
+  <meta property="og:image" content="https://havenixci.com/portfolio/assets/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- ==================== TWITTER CARD ==================== -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Portfolio — HavenixCI">
+  <meta name="twitter:description" content="Découvrez les réalisations de HavenixCI : hôtels, restaurants, boutiques, agences immobilières et bien plus.">
+  <meta name="twitter:image" content="https://havenixci.com/portfolio/assets/og-image.jpg">
+
+  <link rel="stylesheet" href="havenixfolio.css">
+</head>
+<body>
+
+  <!-- Barre de progression du défilement -->
+  <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
+
+  <!-- ==================== HEADER / NAVIGATION ==================== -->
+  <header class="site-header" data-animate="header">
+    <nav class="navbar">
+      <a href="#top" class="logo font-heading" aria-label="HavenixCI — Accueil">
+        <!--
+          Emplacement prêt pour le vrai logo : déposez votre fichier
+          assets/logo.png (fond transparent recommandé) et il remplacera
+          automatiquement le texte "HavenixCI". Tant que le fichier
+          n'existe pas, le texte s'affiche seul, sans icône d'image
+          cassée (géré par onerror).
+        -->
+        <img src="assets/logo.png" alt="HavenixCI" class="logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';">
+        <span class="logo-text-fallback" style="display:none;">HavenixCI</span>
+      </a>
+      <div class="navbar-actions">
+        <div class="lang-switch" role="group" aria-label="Choisir la langue / Choose language">
+          <button type="button" class="lang-switch__btn is-active" data-lang="fr" aria-pressed="true">FR</button>
+          <button type="button" class="lang-switch__btn" data-lang="en" aria-pressed="false">EN</button>
+        </div>
+        <a href="#contact" class="btn btn-contact font-body" data-i18n="nav.contact">Nous contacter</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="top">
+
+    <!-- ==================== HERO ==================== -->
+    <section class="hero" id="hero" data-animate="hero">
+      <div class="hero-bg" aria-hidden="true"></div>
+
+      <div class="hero-inner">
+        <div class="hero-content">
+          <p class="hero-eyebrow font-body" data-reveal="1" data-i18n="hero.eyebrow">Portfolio Havenix</p>
+          <h1 class="hero-title font-heading" data-reveal="2" data-i18n="hero.title">
+            Des sites qui donnent envie de rester, <span class="hero-title-accent">pas seulement de passer.</span>
+          </h1>
+          <p class="hero-text font-body" data-reveal="3" data-i18n="hero.text">
+            Chaque projet ci-dessous a été conçu, codé et livré par notre équipe : hôtels, restaurants, boutiques,
+            agences immobilières. Regardez, cliquez, comparez — puis parlons du vôtre.
+          </p>
+          <div class="hero-cta" data-reveal="4">
+            <a href="#realisations" class="btn btn-primary font-body" data-i18n="hero.cta.primary">Voir nos réalisations</a>
+            <a href="#contact" class="btn btn-ghost font-body" data-i18n="hero.cta.secondary">Démarrer un projet</a>
+          </div>
+        </div>
+
+        <div class="hero-visual" data-reveal="5" aria-hidden="true">
+          <div class="hero-visual-halo"></div>
+          <div class="hero-browser-mock">
+            <div class="hero-browser-mock__bar">
+              <span class="hero-browser-mock__dot"></span>
+              <span class="hero-browser-mock__dot"></span>
+              <span class="hero-browser-mock__dot"></span>
+              <span class="hero-browser-mock__url font-body">votre-site.ci</span>
+            </div>
+            <div class="hero-browser-mock__body">
+              <span class="hero-browser-mock__pill font-body" data-i18n="hero.mock.pill1">Réservation</span>
+              <span class="hero-browser-mock__pill font-body" data-i18n="hero.mock.pill2">Catalogue</span>
+              <span class="hero-browser-mock__pill font-body" data-i18n="hero.mock.pill3">Contact rapide</span>
+            </div>
+          </div>
+          <span class="hero-badge-floating font-body" data-i18n="hero.badge">Conçu par Havenix</span>
+        </div>
+      </div>
+
+      <dl class="hero-stats">
+        <div class="hero-stat">
+          <dt class="hero-stat-label font-body" data-i18n="hero.stat1.label">Sites livrés</dt>
+          <dd class="hero-stat-value font-heading" data-counter data-target="8" data-suffix="+">0</dd>
+        </div>
+        <div class="hero-stat">
+          <dt class="hero-stat-label font-body" data-i18n="hero.stat2.label">Secteurs différents</dt>
+          <dd class="hero-stat-value font-heading" data-counter data-target="7" data-suffix="+">0</dd>
+        </div>
+        <div class="hero-stat">
+          <dt class="hero-stat-label font-body" data-i18n="hero.stat3.label">Adaptés mobile</dt>
+          <dd class="hero-stat-value font-heading" data-counter data-target="100" data-suffix="%">0</dd>
+        </div>
+      </dl>
+    </section>
+
+    <!-- ==================== NOS RÉALISATIONS ==================== -->
+    <section id="realisations" class="portfolio reveal" data-animate="fade-up" aria-labelledby="portfolio-title">
+      <header class="section__intro">
+        <h2 id="portfolio-title" class="font-heading" data-i18n="portfolio.title">Chaque projet reflète notre engagement envers la qualité.</h2>
+        <p class="font-body" data-i18n="portfolio.text">Nos réalisations illustrent notre volonté de concevoir des solutions digitales élégantes, fonctionnelles et adaptées aux objectifs de chaque entreprise.</p>
+      </header>
+
+      <!--
+        ==================== NAVIGATION PAR ONGLETS (catégories) ====================
+        Le bouton "Toutes" est fixe et sélectionné par défaut au chargement de la page :
+        toutes les cartes sont alors visibles (comportement volontaire, utile pour un
+        portfolio). Les boutons de catégorie (Hôtel, Restaurant, Pâtisserie, Immobilier,
+        Boutique, Cabinet médical, etc.) sont injectés automatiquement en JavaScript à
+        partir de l'attribut [data-category] de chaque carte présente dans #portfolio-grid
+        — aucune intervention manuelle n'est nécessaire lorsqu'une nouvelle catégorie
+        apparaît dans le portfolio. Logique portée par havenixfolio.js (initCategoryTabs).
+
+        IMPORTANT : la génération des boutons de catégorie est gérée UNIQUEMENT par
+        havenixfolio.js (initCategoryTabs, section 3). Il ne doit y avoir aucun second
+        script inline dans cette page qui reconstruit les mêmes boutons ou qui
+        filtre les cartes via `card.style.display` — cela créerait des doublons de
+        boutons et un mécanisme de masquage incompatible avec l'animation CSS
+        (.portfolio-card--fade-in).
+
+        Le libellé de chaque bouton de catégorie est synchronisé avec la langue
+        active via syncFilterButtonLabels() (havenixfolio.js, section 6bis).
+      -->
+      <div class="portfolio__filters" id="portfolio-filters" role="list" aria-label="Filtrer les réalisations par catégorie">
+        <button type="button" class="filter-btn is-active font-body" data-filter="all" role="listitem" aria-pressed="true" data-i18n="filter.all">Toutes</button>
+        <!-- Les boutons de catégorie sont injectés ici dynamiquement en JavaScript. -->
+      </div>
+
+      <!--
+        Grille évolutive : chaque réalisation est une carte <article class="portfolio-card">
+        avec un attribut data-category. L'ajout d'un nouveau projet ne nécessite
+        aucune modification de la structure HTML : il suffit d'ajouter une carte
+        (ou de générer une carte via le template ci-dessous en JavaScript) — le
+        nouvel onglet de catégorie apparaîtra automatiquement si besoin.
+      -->
+      <div class="portfolio__grid" id="portfolio-grid" role="list">
+
+        <article class="portfolio-card reveal" data-animate="fade-up" data-category="cosmétique" role="listitem">
+          <figure class="portfolio-card__media">
+            <picture>
+              <img src="ayoh luxury bouake/produits/baby-moon.jpg" alt="" loading="lazy" class="portfolio-card__image" width="600" height="400">
+            </picture>
+          </figure>
+          <div class="portfolio-card__content">
+            <span class="portfolio-card__category font-body" data-category-label data-i18n="card.ayoh.category">cosmétique</span>
+            <h3 class="portfolio-card__title font-heading" data-project-name>Ayoh Luxury Bouake</h3>
+            <p class="portfolio-card__description font-body" data-project-description data-i18n="card.miawa.description">Ayoh Luxury Bouaké est un institut de beauté et de bien-être spécialisé dans l'éclat de la peau, les soins corporels et les massages professionnels.</p>
+            <a href="ayoh luxury bouake/index.html" class="btn btn--secondary font-body portfolio-card__link" target="_blank" rel="noopener noreferrer" data-project-link><span data-i18n="link.project">Voir le projet</span> <span class="arrow" aria-hidden="true">→</span></a>
+          </div>
+        </article>
+
+        <article class="portfolio-card reveal" data-animate="fade-up" data-category="hôtel" role="listitem">
+          <figure class="portfolio-card__media">
+            <picture>
+              <img src="Miawa Hotel Yamoussoukro/image-miawa/standar.jpeg" alt="" loading="lazy" class="portfolio-card__image" width="600" height="400">
+            </picture>
+          </figure>
+          <div class="portfolio-card__content">
+            <span class="portfolio-card__category font-body" data-category-label data-i18n="card.miawa.category">Hôtel</span>
+            <h3 class="portfolio-card__title font-heading" data-project-name>Miwa Hôtel Yamoussoukro</h3>
+            <p class="portfolio-card__description font-body" data-project-description data-i18n="card.miawa.description">Hôtel confortable à Yamoussoukro — présentation des chambres et réservation en ligne.</p>
+            <a href="Miawa Hotel Yamoussoukro/miawa.html" class="btn btn--secondary font-body portfolio-card__link" target="_blank" rel="noopener noreferrer" data-project-link><span data-i18n="link.project">Voir le projet</span> <span class="arrow" aria-hidden="true">→</span></a>
+          </div>
+        </article>
+
+        <article class="portfolio-card reveal" data-animate="fade-up" data-category="patisserie" role="listitem">
+          <figure class="portfolio-card__media">
+            <picture>
+              <img src="delice d'ebène/image/téléchargement (6).jpg" alt="" loading="lazy" class="portfolio-card__image" width="600" height="400">
+            </picture>
+          </figure>
+          <div class="portfolio-card__content">
+            <span class="portfolio-card__category font-body" data-category-label data-i18n="card.delices.category">Pâtisserie</span>
+            <h3 class="portfolio-card__title font-heading" data-project-name>Delices D'Ebène</h3>
+            <p class="portfolio-card__description font-body" data-project-description data-i18n="card.delices.description">Des créations gourmandes pour célébrer vos plus beaux moments.</p>
+            <a href="delice d'ebène/delice.html" class="btn btn--secondary font-body portfolio-card__link" target="_blank" rel="noopener noreferrer" data-project-link><span data-i18n="link.project">Voir le projet</span> <span class="arrow" aria-hidden="true">→</span></a>
+          </div>
+        </article>
+
+        <article class="portfolio-card reveal" data-animate="fade-up" data-category="Penture" role="listitem">
+          <figure class="portfolio-card__media">
+            <picture>
+              <img src="entreprise-peinte/image/Essential Painting Techniques for a Professional Finish.jpg" alt="" loading="lazy" class="portfolio-card__image" width="600" height="400">
+            </picture>
+          </figure>
+          <div class="portfolio-card__content">
+            <span class="portfolio-card__category font-body" data-category-label data-i18n="card.peinture.category">Peinture</span>
+            <h3 class="portfolio-card__title font-heading" data-project-name>Peinture Pro</h3>
+            <p class="portfolio-card__description font-body" data-project-description data-i18n="card.peinture.description">Donnez une nouvelle vie à vos espaces grâce à une peinture professionnelle.</p>
+            <a href="entreprise-peinte/peinte.html" class="btn btn--secondary font-body portfolio-card__link" target="_blank" rel="noopener noreferrer" data-project-link><span data-i18n="link.project">Voir le projet</span> <span class="arrow" aria-hidden="true">→</span></a>
+          </div>
+        </article>
+
+        <article class="portfolio-card reveal" data-animate="fade-up" data-category="restaurant" role="listitem">
+          <figure class="portfolio-card__media">
+            <picture>
+              <img src="black and white/images/téléchargement.jpg" alt="" loading="lazy" class="portfolio-card__image" width="600" height="400">
+            </picture>
+          </figure>
+          <div class="portfolio-card__content">
+            <span class="portfolio-card__category font-body" data-category-label data-i18n="card.blackwhite.category">Restaurant</span>
+            <h3 class="portfolio-card__title font-heading" data-project-name>Black and White — Bouaké</h3>
+            <p class="portfolio-card__description font-body" data-project-description data-i18n="card.blackwhite.description">Cuisine africaine et européenne, dans un cadre chaleureux.</p>
+            <a href="black and white/index.html" class="btn btn--secondary font-body portfolio-card__link" target="_blank" rel="noopener noreferrer" data-project-link><span data-i18n="link.project">Voir le projet</span> <span class="arrow" aria-hidden="true">→</span></a>
+          </div>
+        </article>
+
+        <article class="portfolio-card reveal" data-animate="fade-up" data-category="immobilier" role="listitem">
+          <figure class="portfolio-card__media">
+            <picture>
+              <img src="immobilier/image/immobilier.jpg" alt="" loading="lazy" class="portfolio-card__image" width="600" height="400">
+            </picture>
+          </figure>
+          <div class="portfolio-card__content">
+            <span class="portfolio-card__category font-body" data-category-label data-i18n="card.immobilier.category">Immobilier</span>
+            <h3 class="portfolio-card__title font-heading" data-project-name data-i18n="card.immobilier.title">Agence immobilière — Côte d'Ivoire</h3>
+            <p class="portfolio-card__description font-body" data-project-description data-i18n="card.immobilier.description">Votre partenaire pour vos projets immobiliers en Côte d'Ivoire.</p>
+            <a href="immobilier/immobilier.html" class="btn btn--secondary font-body portfolio-card__link" target="_blank" rel="noopener noreferrer" data-project-link><span data-i18n="link.project">Voir le projet</span> <span class="arrow" aria-hidden="true">→</span></a>
+          </div>
+        </article>
+
+        <article class="portfolio-card reveal" data-animate="fade-up" data-category="cosmétique" role="listitem">
+          <figure class="portfolio-card__media">
+            <picture>
+              <img src="produitcosmetique/image/Savon à froid fait maison _ la recette facile.jpg" alt="" loading="lazy" class="portfolio-card__image" width="600" height="400">
+            </picture>
+          </figure>
+          <div class="portfolio-card__content">
+            <span class="portfolio-card__category font-body" data-category-label data-i18n="card.cosmetique.category">Cosmétique</span>
+            <h3 class="portfolio-card__title font-heading" data-project-name>Grace Cosmetics</h3>
+            <p class="portfolio-card__description font-body" data-project-description data-i18n="card.cosmetique.description">Prenez soin de votre peau avec des produits adaptés à vos besoins.</p>
+            <a href="produitcosmetique/cosmetique.html" class="btn btn--secondary font-body portfolio-card__link" target="_blank" rel="noopener noreferrer" data-project-link><span data-i18n="link.project">Voir le projet</span> <span class="arrow" aria-hidden="true">→</span></a>
+          </div>
+        </article>
+
+        <article class="portfolio-card reveal" data-animate="fade-up" data-category="restaurant" role="listitem">
+          <figure class="portfolio-card__media">
+            <picture>
+              <img src="saveur d abidjan/image/Poulet braisé aux marinades _….jpg" alt="" loading="lazy" class="portfolio-card__image" width="600" height="400">
+            </picture>
+          </figure>
+          <div class="portfolio-card__content">
+            <span class="portfolio-card__category font-body" data-category-label data-i18n="card.saveurs.category">Restaurant</span>
+            <h3 class="portfolio-card__title font-heading" data-project-name>Saveurs D'Abidjan</h3>
+            <p class="portfolio-card__description font-body" data-project-description data-i18n="card.saveurs.description">Les saveurs ivoiriennes dans un cadre moderne.</p>
+            <a href="saveur d abidjan/saveur.html" class="btn btn--secondary font-body portfolio-card__link" target="_blank" rel="noopener noreferrer" data-project-link><span data-i18n="link.project">Voir le projet</span> <span class="arrow" aria-hidden="true">→</span></a>
+          </div>
+        </article>
+
+        <article class="portfolio-card reveal" data-animate="fade-up" data-category="Carte numérique" role="listitem">
+          <figure class="portfolio-card__media">
+            <picture>
+              <img src="carte-commerciale/images/Simple and clean business card with print ready files _ Premium Vector.jpg" alt="" loading="lazy" class="portfolio-card__image" width="600" height="400">
+            </picture>
+          </figure>
+          <div class="portfolio-card__content">
+            <span class="portfolio-card__category font-body" data-category-label data-i18n="card.carte.category">Carte Numérique</span>
+            <h3 class="portfolio-card__title font-heading" data-project-name data-i18n="card.carte.title">Carte de visite numérique</h3>
+            <p class="portfolio-card__description font-body" data-project-description data-i18n="card.carte.description">Offrez une expérience moderne à vos clients grâce à une carte de visite numérique facile à partager par QR Code, WhatsApp ou lien.</p>
+            <a href="carte-commerciale/carte.html" class="btn btn--secondary font-body portfolio-card__link" target="_blank" rel="noopener noreferrer" data-project-link><span data-i18n="link.project">Voir le projet</span> <span class="arrow" aria-hidden="true">→</span></a>
+          </div>
+        </article>
+
+      </div>
+
+      <!--
+        Modèle réutilisable pour la génération dynamique des cartes en JavaScript.
+        Non affiché (voir CSS : display:none par défaut sur les <template>).
+        Note : les cartes ajoutées via ce template ne sont pas traduites
+        automatiquement — ajoutez vous-même des attributs data-i18n si besoin.
+      -->
+      <template id="portfolio-card-template">
+        <article class="portfolio-card reveal" data-animate="fade-up" role="listitem">
+          <figure class="portfolio-card__media">
+            <picture>
+              <img src="" alt="" loading="lazy" class="portfolio-card__image" width="600" height="400">
+            </picture>
+          </figure>
+          <div class="portfolio-card__content">
+            <span class="portfolio-card__category font-body" data-category-label></span>
+            <h3 class="portfolio-card__title font-heading" data-project-name></h3>
+            <p class="portfolio-card__description font-body" data-project-description></p>
+            <a href="#" class="btn btn--secondary font-body portfolio-card__link" target="_blank" rel="noopener noreferrer" data-project-link>Voir le projet <span class="arrow" aria-hidden="true">→</span></a>
+          </div>
+        </article>
+      </template>
+    </section>
+
+    <!-- ==================== CTA FINAL ==================== -->
+    <section class="cta-final" id="contact" data-animate="section">
+      <div class="cta-final-bg" aria-hidden="true"></div>
+      <div class="cta-final-inner">
+        <h2 class="cta-final-title font-heading" data-i18n="cta.title">Votre projet peut ressembler à ceux-ci.</h2>
+        <p class="cta-final-text font-body" data-i18n="cta.text">
+          Décrivez-nous votre activité, on vous propose une maquette et un délai clair — sans engagement.
+        </p>
+        <div class="cta-final-actions">
+          <a href="https://wa.me/225151030957" class="btn btn-primary font-body" target="_blank" rel="noopener" data-i18n="cta.whatsapp">Écrire sur WhatsApp</a>
+          <a href="mailto:reservationhavenix@gmail.com" class="btn btn-ghost font-body">reservationhavenix@gmail.com</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="site-footer">
+    <a href="#top" class="footer-logo font-heading" aria-label="HavenixCI — Accueil">HavenixCI</a>
+    <ul class="footer-links font-body">
+      <li><a href="#contact" data-i18n="footer.contact">Contact</a></li>
+      <li><a href="https://wa.me/225151030957" target="_blank" rel="noopener">WhatsApp</a></li>
+      <li><a href="mailto:reservationhavenix@gmail.com">reservationhavenix@gmail.com</a></li>
+    </ul>
+    <p class="footer-copyright font-body">&copy; <span id="current-year">2026</span> HavenixCI. <span data-i18n="footer.rights">Tous droits réservés.</span></p>
+  </footer>
+
+  <script src="havenixfolio.js" defer></script>
+</body>
+</html>

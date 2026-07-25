@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ayoh Luxury Bouaké — Boutique de cosmétiques éclaircissants</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ============================================= -->
+  <!-- EN-TÊTE : logo + icône menu hamburger -->
+  <!-- ============================================= -->
+  <header class="site-header">
+    <a href="index.html" class="logo">
+      <img src="logo-ayoh-luxury.png" alt="Ayoh Luxury Bouaké">
+    </a>
+
+    <button class="hamburger-btn" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="main-menu">
+      <span class="hamburger-icon"></span>
+    </button>
+  </header>
+
+  <!-- ============================================= -->
+  <!-- MENU PRINCIPAL (menu hamburger) -->
+  <!-- Ordre imposé : Accueil / Gammes / Produits Corporels -->
+  <!-- ============================================= -->
+  <nav id="main-menu" class="main-menu" aria-hidden="true">
+    <ul class="menu-list">
+
+      <li class="menu-item">
+        <a href="index.html">Accueil</a>
+      </li>
+
+      <li class="menu-item has-submenu">
+        <button class="submenu-toggle" type="button" aria-expanded="false">
+          <span class="menu-icon" aria-hidden="true">🌿</span> Gammes
+        </button>
+        <ul class="submenu">
+          <li><a href="catalogue.html?type=gamme&valeur=hoyibo-cacao">Hoyibo Cacao</a></li>
+          <li><a href="catalogue.html?type=gamme&valeur=yoyo-fresh">Yoyo Fresh</a></li>
+          <li><a href="catalogue.html?type=gamme&valeur=yoyo-fresh-gold">Yoyo Fresh Gold</a></li>
+          <li><a href="catalogue.html?type=gamme&valeur=black-to-white">Black to White</a></li>
+          <li><a href="catalogue.html?type=gamme&valeur=skin-by-zaron">Skin by Zaron</a></li>
+        </ul>
+      </li>
+
+      <li class="menu-item has-submenu">
+        <button class="submenu-toggle" type="button" aria-expanded="false">
+          <span class="menu-icon" aria-hidden="true">🧴</span> Produits Corporels
+        </button>
+        <ul class="submenu">
+          <li><a href="catalogue.html?type=categorie&valeur=laits-corps">Laits Corps</a></li>
+          <li><a href="catalogue.html?type=categorie&valeur=huiles-corps">Huiles Corps</a></li>
+          <li><a href="catalogue.html?type=categorie&valeur=gels-douche">Gels Douche</a></li>
+          <li><a href="catalogue.html?type=categorie&valeur=savons-corps">Savons Corps</a></li>
+          <li><a href="catalogue.html?type=categorie&valeur=gommages-corps">Gommages Corps</a></li>
+          <li><a href="catalogue.html?type=categorie&valeur=cremes-visage">Crèmes Visage</a></li>
+          <li><a href="catalogue.html?type=categorie&valeur=savons-visage">Savons Visage</a></li>
+          <li><a href="catalogue.html?type=categorie&valeur=serums">Sérums</a></li>
+          <li><a href="catalogue.html?type=categorie&valeur=toners">Toners</a></li>
+          <li><a href="catalogue.html?type=categorie&valeur=demaquillants">Démaquillants</a></li>
+          <li><a href="catalogue.html?type=categorie&valeur=protection-solaire">Protection solaire</a></li>
+        </ul>
+      </li>
+
+    </ul>
+  </nav>
+
+  <!-- ============================================= -->
+  <!-- CONTENU PRINCIPAL DE LA PAGE D'ACCUEIL -->
+  <!-- ============================================= -->
+  <main>
+
+    <!-- 3.2 Carrousel d'images / diaporama -->
+    <section class="carousel" aria-label="Affiches promotionnelles">
+      <div class="carousel-track">
+        <figure class="carousel-slide is-active">
+          <img src="affiches/affiche-1.jpg" alt="Affiche promotionnelle 1">
+        </figure>
+        <figure class="carousel-slide">
+          <img src="affiches/affiche-2.jpg" alt="Affiche promotionnelle 2">
+        </figure>
+        <figure class="carousel-slide">
+          <img src="affiches/affiche-3.jpg" alt="Affiche promotionnelle 3">
+        </figure>
+        <figure class="carousel-slide">
+          <img src="affiches/affiche-4.jpg" alt="Affiche promotionnelle 3">
+        </figure>
+        <figure class="carousel-slide">
+          <img src="affiches/affiche-5.jpg" alt="Affiche promotionnelle 3">
+        </figure>
+        <figure class="carousel-slide">
+          <img src="affiches/affiche-6.jpg" alt="Affiche promotionnelle 3">
+        </figure>
+        <figure class="carousel-slide">
+          <img src="affiches/affiche-7.jpg" alt="Affiche promotionnelle 3">
+        </figure>
+        <figure class="carousel-slide">
+          <img src="affiches/affiche-8.jpg" alt="Affiche promotionnelle 3">
+        </figure>
+        <figure class="carousel-slide">
+          <img src="affiches/affiche-9.jpg" alt="Affiche promotionnelle 3">
+        </figure>
+        <figure class="carousel-slide">
+          <img src="affiches/affiche-10.jpg" alt="Affiche promotionnelle 3">
+        </figure>
+        <figure class="carousel-slide">
+          <img src="affiches/affiche-11.jpg" alt="Affiche promotionnelle 3">
+        </figure>
+        <figure class="carousel-slide">
+          <img src="affiches/affiche-12.jpg" alt="Affiche promotionnelle 3">
+        </figure>
+      </div>
+
+      <button class="carousel-arrow carousel-arrow--prev" type="button" aria-label="Image précédente">&#10094;</button>
+      <button class="carousel-arrow carousel-arrow--next" type="button" aria-label="Image suivante">&#10095;</button>
+
+      <div class="carousel-dots" role="tablist" aria-label="Sélection de l'affiche">
+        <button class="carousel-dot is-active" type="button" aria-label="Aller à l'affiche 1"></button>
+        <button class="carousel-dot" type="button" aria-label="Aller à l'affiche 2"></button>
+        <button class="carousel-dot" type="button" aria-label="Aller à l'affiche 3"></button>
+      </div>
+    </section>
+
+    <!-- ============================================= -->
+    <!-- CARROUSEL DES SERVICES / PRESTATIONS -->
+    <!-- 3 images défilables (glisser au doigt), chacune avec sa légende
+         (info + tarif) affichée juste en dessous. Défilement automatique
+         toutes les 5 secondes, mis en pause dès que la personne glisse,
+         puis reprise après un temps d'inactivité — même logique que le
+         bandeau des produits vedettes. -->
+    <!-- ============================================= -->
+    <section class="services-carousel" aria-label="Nos prestations">
+      <h2>Bien-être</h2>
+      <div class="services-carousel-track">
+        <article class="services-slide">
+          <figure class="services-visual">
+            <img src="services/service-visage.jpg" alt="Soin de visage">
+          </figure>
+          <p class="services-caption">Soin de visage à partir de 7 000 FCFA</p>
+        </article>
+        <article class="services-slide">
+          <figure class="services-visual">
+            <img src="services/service-corps.jpg" alt="Soin de corps">
+          </figure>
+          <p class="services-caption">Soin de corps à partir de 10 000 FCFA</p>
+        </article>
+        <article class="services-slide">
+          <figure class="services-visual">
+            <img src="services/service-massage.jpg" alt="Massage">
+          </figure>
+          <p class="services-caption">Massage 20 000 FCFA la séance</p>
+        </article>
+      </div>
+      <div class="services-dots" role="tablist" aria-label="Sélection de la prestation">
+        <button class="services-dot is-active" type="button" aria-label="Aller à la prestation 1"></button>
+        <button class="services-dot" type="button" aria-label="Aller à la prestation 2"></button>
+        <button class="services-dot" type="button" aria-label="Aller à la prestation 3"></button>
+      </div>
+    </section>
+
+    <!-- Localisation de la boutique -->
+    <!-- Le lien ci-dessous ouvre l'itinéraire Google Maps vers le magasin.
+         Remplace l'URL par le lien Google Maps exact du magasin si tu l'as,
+         pour un itinéraire plus précis que la recherche par nom. -->
+    <!-- Localisation de la boutique -->
+<section class="location">
+  <h2>Où nous trouver</h2>
+  <a class="location-card"
+     href="https://www.google.com/maps/dir/?api=1&destination=Ayoh+Luxury+Bouak%C3%A9%2C+Bouak%C3%A9%2C+C%C3%B4te+d%27Ivoire"
+     target="_blank" rel="noopener noreferrer"
+     aria-label="Voir l'itinéraire vers Ayoh Luxury Bouaké sur Google Maps">
+    <span class="location-icon">
+      <img src="services/Location, address position icon vector in trendy style.jpg"
+           alt=""
+           loading="lazy"
+           onerror="this.closest('.location-icon').classList.add('icon-missing'); this.remove();">
+    </span>
+    <span class="location-info">
+      <span class="location-address-text">Ayoh Luxury Bouaké — Bouaké, Côte d'Ivoire</span>
+      <span class="location-link-hint">Voir l'itinéraire →</span>
+    </span>
+  </a>
+</section>
+
+    <!-- Mise en avant des produits phares : les 5 gammes, défilement horizontal,
+         auto-défilement toutes les 5 secondes, mis en pause dès que la personne
+         pose le doigt/scrolle pour lire tranquillement -->
+    <section class="featured-products" aria-label="Produits vedettes">
+      <h2>Nos produits vedettes</h2>
+      <div class="featured-products-track">
+        <article class="featured-product-slide">
+          <figure class="featured-product-visual">
+            <img src="produits/kit-hoyibo-cacao.jpg" alt="Kit Hoyibo Cacao">
+          </figure>
+          <p class="featured-product-name">Hoyibo Cacao</p>
+        </article>
+        <article class="featured-product-slide">
+          <figure class="featured-product-visual">
+            <img src="produits/kit-yoyo-fresh.jpg" alt="Kit Yoyo Fresh">
+          </figure>
+          <p class="featured-product-name">Yoyo Fresh</p>
+        </article>
+        <article class="featured-product-slide">
+          <figure class="featured-product-visual">
+            <img src="produits/kit-yoyo-fresh-gold.jpg" alt="Kit Yoyo Fresh Gold">
+          </figure>
+          <p class="featured-product-name">Yoyo Fresh Gold</p>
+        </article>
+        <article class="featured-product-slide">
+          <figure class="featured-product-visual">
+            <img src="produits/kit-black-to-white.jpg" alt="Kit Black to White">
+          </figure>
+          <p class="featured-product-name">Black to White</p>
+        </article>
+        <article class="featured-product-slide">
+          <figure class="featured-product-visual">
+            <img src="produits/kit-corps-skin-by-zaron.jpg" alt="Kit Skin by Zaron">
+          </figure>
+          <p class="featured-product-name">Skin by Zaron</p>
+        </article>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================= -->
+  <!-- BARRE PANIER FLOTTANTE (visible sur toutes les pages) -->
+  <!-- ============================================= -->
+  <div class="cart-bar" role="button" tabindex="0" aria-label="Voir le panier">
+    <span class="cart-icon" aria-hidden="true">
+      <!-- icône panier professionnelle, remplacée en CSS/SVG -->
+    </span>
+    <span class="cart-count">0 article</span>
+    <span class="cart-total">0 FCFA</span>
+  </div>
+
+  <!-- Panneau détail du panier (fermé par défaut) -->
+  <div class="cart-panel" aria-hidden="true">
+    <div class="cart-panel-header">
+      <h2>Votre panier</h2>
+      <button class="cart-panel-close" type="button" aria-label="Fermer le panier">&times;</button>
+    </div>
+
+    <ul class="cart-items">
+      <!-- Lignes d'articles du panier générées dynamiquement -->
+    </ul>
+
+    <div class="cart-subtotal">
+      <span>Sous-total</span>
+      <span class="cart-subtotal-amount">0 FCFA</span>
+    </div>
+
+    <button class="cart-checkout-whatsapp" type="button">
+      Commander sur WhatsApp
+    </button>
+  </div>
+
+  <!-- ============================================= -->
+  <!-- PIED DE PAGE : coordonnées complètes de la boutique -->
+  <!-- ============================================= -->
+  <footer class="site-footer">
+    <div class="footer-brand">
+      <p class="footer-shop-name">Ayoh Luxury Bouaké</p>
+    </div>
+
+    <div class="footer-contact">
+      <p class="footer-address">Bouaké, Côte d'Ivoire</p>
+
+      <p class="footer-phone">
+        <span class="footer-label">Commande / WhatsApp :</span>
+        <a href="tel:0767647409">07 67 64 74 09</a>
+      </p>
+
+      <p class="footer-phone-alt">
+        <span class="footer-label">Autres contacts :</span>
+        <a href="tel:0759546256">07 59 54 62 56</a> ·
+        <a href="tel:0102743128">01 02 74 31 28</a>
+      </p>
+    </div>
+
+    <div class="footer-hours">
+      <h3>Horaires d'ouverture</h3>
+      <p><!-- à compléter --></p>
+    </div>
+
+    <div class="footer-social">
+      <h3>Suivez-nous</h3>
+      <ul class="footer-social-list">
+        <li><a href="#" aria-label="Facebook">Facebook</a></li>
+        <li><a href="#" aria-label="Instagram">Instagram</a></li>
+      </ul>
+    </div>
+
+    <p class="footer-copyright">&copy; 2026 Ayoh Luxury Bouaké. Tous droits réservés.</p>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

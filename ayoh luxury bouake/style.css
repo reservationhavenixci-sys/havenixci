@@ -1,0 +1,1096 @@
+/* =================================================================
+   AYOH LUXURY BOUAKÉ — style.css
+   Palette : noir profond + jaune éclatant + ivoire
+   Typo : Fraunces (titres) + Inter (texte)
+   ================================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap');
+
+/* -----------------------------------------------------------------
+   1. TOKENS
+   ----------------------------------------------------------------- */
+:root {
+  /* Couleurs — dominante jaune / noir, premium et bien contrastée */
+  --color-black:        #0D0D0A;
+  --color-black-soft:   #1A1912;
+  --color-gold:         #F2B705;
+  --color-gold-light:   #FFD23F;
+  --color-gold-pale:    #FCEBA6;
+  --color-ivory:        #FAF6EC;
+  --color-white:        #FFFFFF;
+  --color-text:         #1A1811;
+  --color-text-muted:   #6B6555;
+  --color-line:         #E7DFC9;
+
+  /* Typographie */
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* Espacements */
+  --space-xs: 0.5rem;
+  --space-sm: 0.875rem;
+  --space-md: 1.5rem;
+  --space-lg: 2.5rem;
+  --space-xl: 4rem;
+
+  /* Rayons / ombres */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-pill: 999px;
+  --shadow-card: 0 4px 18px rgba(13, 13, 10, 0.08);
+  --shadow-card-hover: 0 12px 28px rgba(13, 13, 10, 0.16);
+  --shadow-gold: 0 8px 24px rgba(242, 183, 5, 0.4);
+
+  /* Transitions */
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --t-fast: 0.2s var(--ease);
+  --t-base: 0.35s var(--ease);
+  --t-slow: 0.6s var(--ease);
+
+  /* Hauteur barre panier (utilisée pour le padding-bottom du body) */
+  --cart-bar-height: 64px;
+}
+
+/* -----------------------------------------------------------------
+   2. RESET & BASE
+   ----------------------------------------------------------------- */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--color-text);
+  background: var(--color-ivory);
+  line-height: 1.55;
+  padding-bottom: calc(var(--cart-bar-height) + var(--space-md));
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; display: block; }
+
+a { color: inherit; text-decoration: none; }
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: inherit;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  margin: 0 0 var(--space-sm);
+  color: var(--color-black);
+  letter-spacing: -0.01em;
+}
+
+h1 { font-size: clamp(1.8rem, 5vw, 2.6rem); }
+h2 { font-size: clamp(1.35rem, 4vw, 1.8rem); }
+h3 { font-size: 1.1rem; }
+
+p { margin: 0 0 var(--space-sm); color: var(--color-text-muted); }
+
+ul { list-style: none; margin: 0; padding: 0; }
+
+/* Focus clavier visible (accessibilité) */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Petit liseré or "signature" — réutilisé sous les titres de section */
+.section-heading {
+  position: relative;
+  padding-bottom: var(--space-sm);
+}
+.section-heading::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 46px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-gold), var(--color-gold-light));
+  border-radius: var(--radius-pill);
+}
+
+/* -----------------------------------------------------------------
+   3. EN-TÊTE
+   ----------------------------------------------------------------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-sm) var(--space-md);
+  background: var(--color-black);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+}
+
+.logo img {
+  height: 40px;
+  width: auto;
+}
+
+.hamburger-btn {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background var(--t-fast);
+}
+.hamburger-btn:hover { background: rgba(242, 183, 5, 0.14); }
+
+.hamburger-icon,
+.hamburger-icon::before,
+.hamburger-icon::after {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--color-gold-light);
+  border-radius: 2px;
+  transition: transform var(--t-base), opacity var(--t-base);
+}
+.hamburger-icon { position: relative; }
+.hamburger-icon::before,
+.hamburger-icon::after {
+  content: '';
+  position: absolute;
+  left: 0;
+}
+.hamburger-icon::before { top: -7px; }
+.hamburger-icon::after { top: 7px; }
+
+/* Quand le menu est ouvert (classe ajoutée en JS à l'étape 3) : X animé */
+.hamburger-btn[aria-expanded="true"] .hamburger-icon { background: transparent; }
+.hamburger-btn[aria-expanded="true"] .hamburger-icon::before { transform: translateY(7px) rotate(45deg); }
+.hamburger-btn[aria-expanded="true"] .hamburger-icon::after { transform: translateY(-7px) rotate(-45deg); }
+
+/* -----------------------------------------------------------------
+   4. MENU PRINCIPAL (panneau plein écran, glisse depuis la droite)
+   ----------------------------------------------------------------- */
+.main-menu {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  background: var(--color-black);
+  padding: calc(var(--space-xl) + 56px) var(--space-lg) var(--space-lg);
+  overflow-y: auto;
+  transform: translateX(100%);
+  transition: transform var(--t-slow);
+}
+
+/* Ouvert : JS (étape 3) ajoutera la classe .is-open sur <nav> */
+.main-menu.is-open { transform: translateX(0); }
+
+.menu-list { display: flex; flex-direction: column; gap: var(--space-xs); }
+
+.menu-item > a,
+.submenu-toggle {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  width: 100%;
+  padding: var(--space-sm) 0;
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  color: var(--color-ivory);
+  border-bottom: 1px solid rgba(250, 246, 236, 0.1);
+  transition: color var(--t-fast), padding-left var(--t-fast);
+}
+
+.menu-item > a:hover,
+.submenu-toggle:hover {
+  color: var(--color-gold-light);
+  padding-left: var(--space-xs);
+}
+
+.submenu-toggle {
+  justify-content: space-between;
+}
+.submenu-toggle::after {
+  content: '›';
+  font-size: 1.4rem;
+  color: var(--color-gold);
+  transition: transform var(--t-base);
+}
+.submenu-toggle[aria-expanded="true"]::after { transform: rotate(90deg); }
+
+.menu-icon { font-size: 1rem; }
+
+.submenu {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height var(--t-base);
+}
+.submenu-toggle[aria-expanded="true"] + .submenu {
+  max-height: 600px;
+}
+
+.submenu li a {
+  display: block;
+  padding: var(--space-xs) 0 var(--space-xs) var(--space-md);
+  font-size: 0.95rem;
+  color: rgba(250, 246, 236, 0.75);
+  transition: color var(--t-fast), padding-left var(--t-fast);
+}
+.submenu li a:hover {
+  color: var(--color-gold-light);
+  padding-left: calc(var(--space-md) + 4px);
+}
+
+/* -----------------------------------------------------------------
+   5. CARROUSEL
+   ----------------------------------------------------------------- */
+.carousel {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  max-height: 78vh;
+  overflow: hidden;
+  background: var(--color-black-soft);
+}
+
+.carousel-track {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.carousel-slide {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  opacity: 0;
+  transition: opacity var(--t-slow);
+}
+.carousel-slide.is-active { opacity: 1; }
+
+.carousel-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.carousel-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(13, 13, 10, 0.5);
+  color: var(--color-ivory);
+  backdrop-filter: blur(4px);
+  transition: background var(--t-fast), transform var(--t-fast);
+}
+.carousel-arrow:hover { background: var(--color-gold); color: var(--color-black); transform: translateY(-50%) scale(1.08); }
+.carousel-arrow--prev { left: var(--space-sm); }
+.carousel-arrow--next { right: var(--space-sm); }
+
+.carousel-dots {
+  position: absolute;
+  bottom: var(--space-md);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+}
+.carousel-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(250, 246, 236, 0.4);
+  transition: background var(--t-base), width var(--t-base);
+}
+.carousel-dot.is-active {
+  background: var(--color-gold-light);
+  width: 22px;
+  border-radius: var(--radius-pill);
+}
+
+/* -----------------------------------------------------------------
+   5bis. CARROUSEL DES SERVICES / PRESTATIONS
+   Placé entre le carrousel d'affiches et la section "Où nous trouver".
+   3 images défilables au doigt (glissement horizontal avec snap),
+   chaque image affiche sa légende (prestation + tarif) juste en
+   dessous. Même logique d'auto-défilement / pause que le bandeau des
+   produits vedettes (section 7).
+   ----------------------------------------------------------------- */
+.services-carousel {
+  padding: var(--space-lg) 0 var(--space-lg) var(--space-md);
+}
+.services-carousel h2 {
+  padding-right: var(--space-md);
+}
+
+.services-carousel-track {
+  display: flex;
+  gap: var(--space-sm);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding-right: var(--space-md);
+  padding-bottom: var(--space-xs);
+  scrollbar-width: none;
+}
+.services-carousel-track::-webkit-scrollbar { display: none; }
+
+.services-slide {
+  flex: 0 0 100%;
+  scroll-snap-align: start;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--color-black);
+  box-shadow: var(--shadow-card-hover);
+}
+
+.services-visual {
+  margin: 0;
+  aspect-ratio: 4 / 3;
+  background: var(--color-black-soft);
+}
+.services-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.services-caption {
+  margin: 0;
+  padding: var(--space-sm) var(--space-md);
+  text-align: center;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: var(--color-gold-light);
+}
+
+.services-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: var(--space-sm);
+  padding-right: var(--space-md);
+}
+.services-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(107, 101, 85, 0.3);
+  transition: background var(--t-base), width var(--t-base);
+}
+.services-dot.is-active {
+  background: var(--color-gold);
+  width: 22px;
+  border-radius: var(--radius-pill);
+}
+
+/* -----------------------------------------------------------------
+   6. LOCALISATION
+   ----------------------------------------------------------------- */
+/* -----------------------------------------------------------------
+   6. LOCALISATION
+   ----------------------------------------------------------------- */
+.location {
+  padding: var(--space-lg) var(--space-md);
+}
+
+.location-card {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-sm) var(--space-md);
+  background: var(--color-white);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+  border: 1.5px solid transparent;
+  transition: transform var(--t-base), box-shadow var(--t-base), border-color var(--t-base);
+}
+.location-card:hover,
+.location-card:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-card-hover);
+  border-color: var(--color-gold);
+}
+
+/* Icône de localisation — même logique que les autres visuels du site :
+   cadre fixe, image en object-fit, repli propre si l'image manque */
+.location-icon {
+  flex-shrink: 0;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: var(--color-gold-pale);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-gold);
+}
+.location-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.location-icon.icon-missing::after {
+  content: '📍';
+  font-size: 1.4rem;
+}
+
+.location-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+.location-address-text {
+  font-size: 1.02rem;
+  font-weight: 500;
+  color: var(--color-text);
+  transition: color var(--t-fast);
+}
+.location-card:hover .location-address-text,
+.location-card:focus-visible .location-address-text {
+  color: var(--color-gold);
+}
+.location-link-hint {
+  display: block;
+  margin-top: 2px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-gold);
+}
+
+@media (min-width: 900px) {
+  .location-icon { width: 64px; height: 64px; }
+}
+
+/* -----------------------------------------------------------------
+   7. PRODUITS VEDETTES — bandeau horizontal des 5 gammes
+   La personne peut glisser/scroller pour parcourir les 5 cartes ;
+   un défilement automatique change de carte toutes les 5 secondes
+   et se met en pause dès qu'elle pose le doigt dessus (JS).
+   ----------------------------------------------------------------- */
+.featured-products {
+  padding: var(--space-lg) 0 var(--space-lg) var(--space-md);
+}
+.featured-products h2 {
+  padding-right: var(--space-md);
+}
+
+.featured-products-track {
+  display: flex;
+  gap: var(--space-sm);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding-right: var(--space-md);
+  padding-bottom: var(--space-xs);
+  scrollbar-width: none;
+}
+.featured-products-track::-webkit-scrollbar { display: none; }
+
+.featured-product-slide {
+  flex: 0 0 76%;
+  max-width: 320px;
+  scroll-snap-align: start;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--color-black);
+  box-shadow: var(--shadow-card-hover);
+}
+
+.featured-product-visual {
+  margin: 0;
+  aspect-ratio: 1 / 1;
+}
+.featured-product-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.9;
+  transition: transform var(--t-slow), opacity var(--t-slow);
+}
+.featured-product-slide:hover .featured-product-visual img {
+  transform: scale(1.04);
+  opacity: 1;
+}
+
+.featured-product-name {
+  margin: 0;
+  padding: var(--space-sm) var(--space-md);
+  text-align: center;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--color-gold-light);
+}
+
+/* -----------------------------------------------------------------
+   8. CATALOGUE — en-tête de page
+   ----------------------------------------------------------------- */
+.catalogue-header {
+  padding: var(--space-lg) var(--space-md) var(--space-md);
+}
+.catalogue-title { }
+.catalogue-description {
+  max-width: 60ch;
+}
+
+/* -----------------------------------------------------------------
+   9. LISTE DE PRODUITS / CARTES
+   ----------------------------------------------------------------- */
+.product-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-sm);
+  /* CORRECTIF : on réserve, en plus de l'espacement habituel, la
+     hauteur totale de la barre panier flottante + une marge de
+     sécurité. Ainsi, même si la page catalogue est courte (peu de
+     produits) et ne force pas de défilement jusqu'au pied de page,
+     la dernière ligne de produits n'est jamais recouverte par la
+     barre panier fixe et reste entièrement cliquable. */
+  padding: 0 var(--space-md) calc(var(--cart-bar-height) + var(--space-lg));
+}
+
+.product-card {
+  position: relative;
+  background: var(--color-white);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+  transition: transform var(--t-base), box-shadow var(--t-base);
+}
+.product-card:hover,
+.product-card:focus-within {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-card-hover);
+}
+/* Liseré jaune au survol (signature) */
+.product-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-md);
+  border: 1.5px solid transparent;
+  transition: border-color var(--t-base);
+  pointer-events: none;
+}
+.product-card:hover::before { border-color: var(--color-gold); }
+
+.product-card-link {
+  display: block;
+  padding-bottom: var(--space-xs);
+}
+
+.product-card-photo {
+  margin: 0;
+  aspect-ratio: 1 / 1;
+  background: var(--color-line);
+  overflow: hidden;
+}
+.product-card-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--t-slow);
+}
+.product-card:hover .product-card-photo img { transform: scale(1.06); }
+
+.product-card-name {
+  margin: var(--space-xs) var(--space-sm) 2px;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--color-text);
+  line-height: 1.3;
+}
+.product-card-price {
+  margin: 0 var(--space-sm);
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-gold);
+}
+
+.product-card-qty {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: var(--space-xs) var(--space-sm) 0;
+}
+.qty-btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--color-ivory);
+  border: 1px solid var(--color-line);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--color-black);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--t-fast), transform var(--t-fast);
+}
+.qty-btn:hover {
+  background: var(--color-gold-light);
+  transform: scale(1.08);
+}
+.qty-value {
+  font-weight: 600;
+  min-width: 20px;
+  text-align: center;
+}
+
+.product-card-expand {
+  margin: var(--space-xs) var(--space-sm) var(--space-sm);
+}
+.expand-toggle {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  padding: 4px 0;
+  transition: color var(--t-fast);
+}
+.expand-toggle:hover { color: var(--color-gold); }
+.expand-icon { transition: transform var(--t-base); }
+.expand-toggle[aria-expanded="true"] .expand-icon { transform: rotate(180deg); }
+
+.expand-content {
+  padding-top: var(--space-xs);
+  font-size: 0.82rem;
+}
+.expand-content .product-description { margin-bottom: var(--space-xs); }
+.expand-content .product-ingredients {
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+/* -----------------------------------------------------------------
+   10. FICHE DÉTAIL PRODUIT (overlay)
+   ----------------------------------------------------------------- */
+.product-detail-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  display: flex;
+  align-items: flex-end;
+  background: rgba(13, 13, 10, 0.6);
+  backdrop-filter: blur(2px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--t-base);
+}
+.product-detail-overlay.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.product-detail-panel {
+  position: relative;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  background: var(--color-white);
+  border-radius: 20px 20px 0 0;
+  padding: var(--space-lg) var(--space-md) var(--space-xl);
+  transform: translateY(24px);
+  transition: transform var(--t-base);
+}
+.product-detail-overlay.is-open .product-detail-panel {
+  transform: translateY(0);
+}
+
+.product-detail-close {
+  position: absolute;
+  top: var(--space-sm);
+  right: var(--space-sm);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--color-ivory);
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--t-fast), transform var(--t-fast);
+}
+.product-detail-close:hover {
+  background: var(--color-gold-light);
+  transform: rotate(90deg);
+}
+
+.product-detail-photo {
+  margin: 0 0 var(--space-md);
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--color-line);
+}
+.product-detail-photo img { width: 100%; height: 100%; object-fit: cover; }
+
+.product-detail-name { margin-bottom: var(--space-xs); }
+.product-detail-description { }
+.product-detail-ingredients {
+  font-size: 0.85rem;
+  padding: var(--space-xs) var(--space-sm);
+  background: var(--color-ivory);
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--color-gold);
+}
+.product-detail-price {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--color-gold);
+  margin: var(--space-sm) 0;
+}
+.product-detail-qty {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+.product-detail-qty .qty-btn { width: 40px; height: 40px; font-size: 1.2rem; }
+
+/* -----------------------------------------------------------------
+   11. BARRE PANIER FLOTTANTE
+   ----------------------------------------------------------------- */
+.cart-bar {
+  position: fixed;
+  left: var(--space-md);
+  right: var(--space-md);
+  bottom: var(--space-sm);
+  z-index: 55;
+  height: var(--cart-bar-height);
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: 0 var(--space-md);
+  background: linear-gradient(100deg, var(--color-black) 0%, var(--color-black-soft) 100%);
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-gold);
+  border: 1px solid rgba(242, 183, 5, 0.45);
+  cursor: pointer;
+  transition: transform var(--t-fast), box-shadow var(--t-fast);
+}
+.cart-bar:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(242, 183, 5, 0.5);
+}
+
+.cart-icon {
+  width: 26px;
+  height: 26px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--color-gold-light);
+  position: relative;
+}
+.cart-icon::before {
+  /* pictogramme panier simple, dessiné en CSS pur */
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 12px;
+  height: 9px;
+  border: 2px solid var(--color-black);
+  border-top: none;
+  border-radius: 0 0 3px 3px;
+  transform: translate(-50%, -35%);
+}
+
+.cart-count {
+  color: var(--color-ivory);
+  font-size: 0.85rem;
+  font-weight: 500;
+  flex: 1;
+}
+.cart-total {
+  color: var(--color-gold-light);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.05rem;
+}
+
+/* -----------------------------------------------------------------
+   12. PANNEAU DÉTAIL DU PANIER
+   ----------------------------------------------------------------- */
+.cart-panel {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  display: flex;
+  flex-direction: column;
+  background: var(--color-white);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity var(--t-base), visibility var(--t-base);
+}
+.cart-panel.is-open { opacity: 1; visibility: visible; pointer-events: auto; }
+
+/* Le panneau prend TOUT l'écran (pas un tiroir en bas) : en-tête fixe en haut,
+   liste d'articles qui prend tout l'espace disponible et défile si besoin,
+   sous-total et bouton de commande fixés en bas. Identique sur mobile et desktop. */
+.cart-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  flex-shrink: 0;
+  padding: var(--space-md);
+  background: var(--color-black);
+  border-bottom: 1px solid rgba(242, 183, 5, 0.25);
+}
+.cart-panel-header h2 {
+  color: var(--color-gold-light);
+  margin: 0;
+}
+.cart-panel-close {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  background: rgba(250, 246, 236, 0.1);
+  color: var(--color-ivory);
+  font-size: 1.3rem;
+  transition: background var(--t-fast);
+}
+.cart-panel-close:hover { background: var(--color-gold-light); color: var(--color-black); }
+
+.cart-items {
+  width: 100%;
+  flex: 1 1 auto;
+  background: var(--color-white);
+  padding: var(--space-sm) var(--space-md);
+  overflow-y: auto;
+}
+
+.cart-subtotal {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  width: 100%;
+  flex-shrink: 0;
+  padding: var(--space-md);
+  background: var(--color-white);
+  font-weight: 600;
+  border-top: 1px solid var(--color-line);
+}
+.cart-subtotal-amount {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  color: var(--color-gold);
+}
+
+.cart-checkout-whatsapp {
+  display: block;
+  flex-shrink: 0;
+  width: calc(100% - var(--space-md) * 2);
+  margin: 0 var(--space-md) var(--space-md);
+  padding: var(--space-sm);
+  text-align: center;
+  background: linear-gradient(100deg, var(--color-gold) 0%, var(--color-gold-light) 100%);
+  color: var(--color-black);
+  font-weight: 700;
+  border-radius: var(--radius-pill);
+  transition: transform var(--t-fast), box-shadow var(--t-fast);
+}
+.cart-checkout-whatsapp:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-gold);
+}
+
+/* -----------------------------------------------------------------
+   13. PIED DE PAGE
+   ----------------------------------------------------------------- */
+.site-footer {
+  background: var(--color-black);
+  color: rgba(250, 246, 236, 0.75);
+  padding: var(--space-xl) var(--space-md) var(--space-lg);
+  margin-top: var(--space-xl);
+}
+
+.footer-shop-name {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  color: var(--color-gold-light);
+  margin-bottom: var(--space-md);
+}
+
+.site-footer h3 {
+  color: var(--color-ivory);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin: var(--space-md) 0 var(--space-xs);
+}
+
+.footer-label {
+  display: block;
+  font-size: 0.75rem;
+  color: rgba(250, 246, 236, 0.5);
+}
+
+.footer-contact a,
+.footer-social-list a {
+  color: rgba(250, 246, 236, 0.85);
+  transition: color var(--t-fast);
+}
+.footer-contact a:hover,
+.footer-social-list a:hover { color: var(--color-gold-light); }
+
+.footer-social-list {
+  display: flex;
+  gap: var(--space-md);
+}
+
+.footer-copyright {
+  margin-top: var(--space-lg);
+  padding-top: var(--space-md);
+  border-top: 1px solid rgba(250, 246, 236, 0.12);
+  font-size: 0.75rem;
+  color: rgba(250, 246, 236, 0.45);
+}
+
+/* -----------------------------------------------------------------
+   14. RESPONSIVE — tablette / desktop
+   ----------------------------------------------------------------- */
+@media (min-width: 640px) {
+  .product-list { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* -----------------------------------------------------------------
+   15. ÉLÉMENTS GÉNÉRÉS PAR LE JAVASCRIPT (panier, image manquante)
+   ----------------------------------------------------------------- */
+
+/* Article du panier : mise en page VERTICALE.
+   Rangée 1 : nom du produit (pleine largeur)
+   Rangée 2 : quantité (gauche) + prix (droite)
+   Cette structure reste lisible et cohérente sur tous les écrans,
+   du plus petit téléphone au grand écran d'ordinateur. */
+.cart-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm) 0;
+  border-bottom: 1px solid var(--color-line);
+}
+.cart-item-image {
+  width: 56px;
+  height: 56px;
+  flex-shrink: 0;
+  border-radius: var(--radius-sm);
+  object-fit: cover;
+  background: var(--color-line);
+}
+.cart-item-image--placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px dashed var(--color-line);
+}
+.cart-item-image--placeholder::after {
+  content: '?';
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--color-text-muted);
+}
+.cart-item-main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.cart-item-name {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-text);
+  line-height: 1.3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.cart-item-qty {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.cart-item-qty .qty-btn { width: 28px; height: 28px; font-size: 0.9rem; }
+.cart-item-price {
+  flex-shrink: 0;
+  font-family: var(--font-display);
+  font-weight: 600;
+  color: var(--color-gold);
+  font-size: 0.95rem;
+  white-space: nowrap;
+}
+.cart-item-empty {
+  padding: var(--space-lg) 0;
+  text-align: center;
+  color: var(--color-text-muted);
+}
+
+/* Cadre vide propre quand une photo produit n'a pas encore été fournie */
+.product-card-photo.img-missing,
+.product-detail-photo:has(img[src=""]) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.product-card-photo.img-missing::after {
+  content: 'Photo à venir';
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}
+
+@media (min-width: 900px) {
+  body { padding-bottom: 0; }
+  .cart-bar { left: auto; right: var(--space-lg); bottom: var(--space-lg); width: 340px; }
+
+  .site-header { padding: var(--space-md) var(--space-xl); }
+  .location, .catalogue-header { padding-left: var(--space-xl); padding-right: var(--space-xl); }
+  .product-list { grid-template-columns: repeat(4, 1fr); padding-left: var(--space-xl); padding-right: var(--space-xl); }
+  .featured-products { padding-left: var(--space-xl); }
+  .featured-product-slide { flex-basis: 280px; }
+  .services-carousel { padding-left: var(--space-xl); }
+  .services-slide { flex-basis: 460px; }
+  .site-footer { padding-left: var(--space-xl); padding-right: var(--space-xl); }
+
+  .main-menu { width: 420px; left: auto; }
+
+  .product-detail-overlay { align-items: center; justify-content: center; }
+  .product-detail-panel {
+    max-width: 560px;
+    border-radius: var(--radius-md);
+    transform: translateY(16px) scale(0.98);
+  }
+  .product-detail-overlay.is-open .product-detail-panel { transform: translateY(0) scale(1); }
+}

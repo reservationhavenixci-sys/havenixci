@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ayoh Luxury Bouaké — Nos produits</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ============================================= -->
+  <!-- EN-TÊTE (identique à index.html) -->
+  <!-- ============================================= -->
+  <header class="site-header">
+    <a href="index.html" class="logo">
+      <img src="logo-ayoh-luxury.png" alt="Ayoh Luxury Bouaké">
+    </a>
+
+    <button class="hamburger-btn" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="main-menu">
+      <span class="hamburger-icon"></span>
+    </button>
+  </header>
+
+  <!-- ============================================= -->
+  <!-- MENU PRINCIPAL (identique à index.html) -->
+  <!-- ============================================= -->
+  <nav id="main-menu" class="main-menu" aria-hidden="true">
+    <ul class="menu-list">
+
+      <li class="menu-item">
+        <a href="index.html">Accueil</a>
+      </li>
+
+      <li class="menu-item has-submenu">
+        <button class="submenu-toggle" type="button" aria-expanded="false">
+          <span class="menu-icon" aria-hidden="true">🌿</span> Gammes
+        </button>
+        <ul class="submenu">
+          <li><a href="catalogue.html?type=gamme&valeur=hoyibo-cacao">Hoyibo Cacao</a></li>
+          <li><a href="catalogue.html?type=gamme&valeur=yoyo-fresh">Yoyo Fresh</a></li>
+          <li><a href="catalogue.html?type=gamme&valeur=yoyo-fresh-gold">Yoyo Fresh Gold</a></li>
+          <li><a href="catalogue.html?type=gamme&valeur=black-to-white">Black to White</a></li>
+          <li><a href="catalogue.html?type=gamme&valeur=skin-by-zaron">Skin by Zaron</a></li>
+        </ul>
+      </li>
+
+      <li class="menu-item has-submenu">
+        <button class="submenu-toggle" type="button" aria-expanded="false">
+          <span class="menu-icon" aria-hidden="true">🧴</span> Produits Corporels
+        </button>
+        <ul class="submenu">
+          <li><a href="catalogue.html?type=categorie&valeur=laits-corps">Laits Corps</a></li>
+          <li><a href="catalogue.html?type=categorie&valeur=huiles-corps">Huiles Corps</a></li>
+          <li><a href="catalogue.html?type=categorie&valeur=gels-douche">Gels Douche</a></li>
+          <li><a href="catalogue.html?type=categorie&valeur=savons-corps">Savons Corps</a></li>
+          <li><a href="catalogue.html?type=categorie&valeur=gommages-corps">Gommages Corps</a></li>
+          <li><a href="catalogue.html?type=categorie&valeur=cremes-visage">Crèmes Visage</a></li>
+          <li><a href="catalogue.html?type=categorie&valeur=savons-visage">Savons Visage</a></li>
+          <li><a href="catalogue.html?type=categorie&valeur=serums">Sérums</a></li>
+          <li><a href="catalogue.html?type=categorie&valeur=toners">Toners</a></li>
+          <li><a href="catalogue.html?type=categorie&valeur=demaquillants">Démaquillants</a></li>
+          <li><a href="catalogue.html?type=categorie&valeur=protection-solaire">Protection solaire</a></li>
+        </ul>
+      </li>
+
+    </ul>
+  </nav>
+
+  <!-- ============================================= -->
+  <!-- CONTENU PRINCIPAL : liste des produits filtrés -->
+  <!-- Le titre et la liste sont remplis dynamiquement en JS (étape 3) -->
+  <!-- selon le paramètre d'URL ?type=gamme|categorie&valeur=... -->
+  <!-- ============================================= -->
+  <main>
+
+    <section class="catalogue-header">
+      <h1 class="catalogue-title"><!-- ex : "Hoyibo Cacao" ou "Laits Corps", injecté en JS --></h1>
+      <p class="catalogue-description">
+        <!-- Texte de présentation de la gamme/catégorie, injecté en JS.
+             C'est ICI que sont mentionnés les produits sans fiche dédiée
+             (ex. Kit Visage Yoyo Fresh Gold), en texte simple, sans carte ni bouton. -->
+      </p>
+    </section>
+
+    <!-- ============================================= -->
+    <!-- LISTE DE PRODUITS -->
+    <!-- Rempli automatiquement par app.js (fonction renderProductList),
+         à partir de data.js, filtré selon l'URL (?type=...&valeur=...) -->
+    <!-- ============================================= -->
+    <ul class="product-list">
+      <!-- Cartes produits générées dynamiquement en JavaScript -->
+    </ul>
+
+  </main>
+
+  <!-- ============================================= -->
+  <!-- FICHE DÉTAIL PRODUIT (overlay plein écran, fermée par défaut) -->
+  <!-- S'ouvre au clic sur une carte (hors boutons +/- et bloc rétractable) -->
+  <!-- Contenu rempli dynamiquement en JS à l'étape 3 -->
+  <!-- ============================================= -->
+  <div class="product-detail-overlay" aria-hidden="true">
+    <div class="product-detail-panel" role="dialog" aria-modal="true" aria-labelledby="product-detail-name">
+
+      <button class="product-detail-close" type="button" aria-label="Fermer la fiche produit">&times;</button>
+
+      <figure class="product-detail-photo">
+        <img src="" alt="">
+      </figure>
+
+      <h2 class="product-detail-name" id="product-detail-name"><!-- Nom du produit --></h2>
+
+      <p class="product-detail-description"><!-- Description --></p>
+
+      <p class="product-detail-ingredients">
+        <!-- Ingrédients, uniquement si disponibles. Omis entièrement sinon
+             (ni case vide, ni mention "non disponible") -->
+      </p>
+
+      <p class="product-detail-price"><!-- Prix --></p>
+
+      <div class="product-detail-qty">
+        <button class="qty-btn qty-btn--minus" type="button" aria-label="Retirer un exemplaire du panier">−</button>
+        <span class="qty-value">0</span>
+        <button class="qty-btn qty-btn--plus" type="button" aria-label="Ajouter un exemplaire au panier">+</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ============================================= -->
+  <!-- BARRE PANIER FLOTTANTE (identique à index.html) -->
+  <!-- ============================================= -->
+  <div class="cart-bar" role="button" tabindex="0" aria-label="Voir le panier">
+    <span class="cart-icon" aria-hidden="true"></span>
+    <span class="cart-count">0 article</span>
+    <span class="cart-total">0 FCFA</span>
+  </div>
+
+  <div class="cart-panel" aria-hidden="true">
+    <div class="cart-panel-header">
+      <h2>Votre panier</h2>
+      <button class="cart-panel-close" type="button" aria-label="Fermer le panier">&times;</button>
+    </div>
+
+    <ul class="cart-items">
+      <!-- Lignes d'articles du panier générées dynamiquement -->
+    </ul>
+
+    <div class="cart-subtotal">
+      <span>Sous-total</span>
+      <span class="cart-subtotal-amount">0 FCFA</span>
+    </div>
+
+    <button class="cart-checkout-whatsapp" type="button">
+      Commander sur WhatsApp
+    </button>
+  </div>
+
+  <!-- ============================================= -->
+  <!-- PIED DE PAGE (identique à index.html) -->
+  <!-- ============================================= -->
+  <footer class="site-footer">
+    <div class="footer-brand">
+      <p class="footer-shop-name">Ayoh Luxury Bouaké</p>
+    </div>
+
+    <div class="footer-contact">
+      <p class="footer-address">Bouaké, Côte d'Ivoire</p>
+
+      <p class="footer-phone">
+        <span class="footer-label">Commande / WhatsApp :</span>
+        <a href="tel:0767647409">07 67 64 74 09</a>
+      </p>
+
+      <p class="footer-phone-alt">
+        <span class="footer-label">Autres contacts :</span>
+        <a href="tel:0759546256">07 59 54 62 56</a> ·
+        <a href="tel:0102743128">01 02 74 31 28</a>
+      </p>
+    </div>
+
+    <div class="footer-hours">
+      <h3>Horaires d'ouverture</h3>
+      <p><!-- à compléter --></p>
+    </div>
+
+    <div class="footer-social">
+      <h3>Suivez-nous</h3>
+      <ul class="footer-social-list">
+        <li><a href="#" aria-label="Facebook">Facebook</a></li>
+        <li><a href="#" aria-label="Instagram">Instagram</a></li>
+      </ul>
+    </div>
+
+    <p class="footer-copyright">&copy; 2026 Ayoh Luxury Bouaké. Tous droits réservés.</p>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
