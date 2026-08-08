@@ -1,0 +1,515 @@
+:root{
+  --navy: #0a1c34;
+  --navy-deep: #061223;
+  --navy-mid: #12294a;
+  --gold: #d9ab3d;
+  --gold-bright: #f0c85e;
+  --white: #ffffff;
+  --paper: #f6f3ec;
+  --orange: #ff6a00;
+  --orange-deep: #d95700;
+  --moov: #00a99d;
+  --moov-deep: #00867d;
+  --whatsapp: #25d366;
+  --whatsapp-deep: #1da851;
+}
+
+*{ box-sizing: border-box; margin:0; padding:0; }
+
+html,body{
+  height:100%;
+  overscroll-behavior: none;
+}
+
+body{
+  font-family: 'Manrope', sans-serif;
+  background: var(--navy-deep);
+  color: var(--white);
+  display:flex;
+  flex-direction:column;
+  min-height:100vh;   /* filet de sécurité pour anciens navigateurs (ex: Samsung Internet sur Galaxy S8) qui ne connaissent pas "dvh" */
+  min-height:100dvh;
+  -webkit-font-smoothing: antialiased;
+}
+
+a{ color:inherit; text-decoration:none; }
+button{ font-family:inherit; border:none; cursor:pointer; }
+
+/* ---------- HEADER ---------- */
+header{
+  position: sticky;
+  top:0;
+  z-index: 50;
+  background: linear-gradient(180deg, var(--navy) 0%, var(--navy-mid) 100%);
+  box-shadow: 0 2px 18px rgba(0,0,0,0.35);
+  padding: 0.7rem 1rem;
+}
+
+.header-inner{
+  max-width: 720px;
+  margin: 0 auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: 0.75rem;
+}
+
+.logo{
+  display:flex;
+  align-items:center;
+  gap:0.55rem;
+  flex-shrink:0;
+}
+
+/* ---------- ZONE LOGO ----------
+   Emplacement réservé au logo officiel Havenix.
+   Déposez votre fichier logo dans assets/logo.png (ou .svg) :
+   l'image s'affichera automatiquement à la place du cadre pointillé
+   ci-dessous dès qu'elle sera présente. Voir LISEZ-MOI.txt.
+------------------------------------ */
+.logo-mark{
+  width:40px;
+  height:40px;
+  border-radius: 10px;
+  overflow:hidden;
+  flex-shrink:0;
+  position:relative;
+  background: linear-gradient(145deg, #0d2545, #071730);
+}
+
+.logo-mark img{
+  width:100%;
+  height:100%;
+  object-fit: contain;
+  display:block;
+}
+
+.logo-mark span{ display:none; }
+
+.logo-mark.placeholder{
+  border: 1.5px dashed rgba(217,171,61,0.55);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.logo-mark.placeholder span{
+  display:block;
+  font-size: 0.5rem;
+  font-weight:800;
+  letter-spacing: 0.06em;
+  color: var(--gold-bright);
+  text-transform: uppercase;
+  text-align:center;
+  line-height:1.1;
+}
+
+.logo-word{
+  font-family:'Fraunces', serif;
+  font-weight:600;
+  font-size: 1.15rem;
+  letter-spacing: 0.02em;
+  color: var(--white);
+}
+
+.header-numbers{
+  display:flex;
+  gap:0.4rem;
+}
+
+.num-pill{
+  display:flex;
+  align-items:center;
+  gap:0.32rem;
+  padding: 0.36rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight:700;
+  letter-spacing: 0.01em;
+  white-space:nowrap;
+  border:1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.04);
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+.num-pill:active{ transform: scale(0.96); }
+
+.num-pill.orange{ color: #ffcaa0; }
+.num-pill.orange .dot{ background: var(--orange); }
+.num-pill.moov{ color: #a6ede7; }
+.num-pill.moov .dot{ background: var(--moov); }
+
+.dot{ width:7px; height:7px; border-radius:50%; flex-shrink:0; }
+
+/* ---------- HERO ---------- */
+main{
+  flex:1;
+  position:relative;
+  display:flex;
+  align-items:center;
+  overflow:hidden;
+  min-height: 0;
+}
+
+.hero-bg{
+  position:absolute;
+  inset:0;
+  overflow:hidden;
+}
+
+/* ---------- PHOTO DE FOND (à intégrer) ----------
+   Déposez votre image dans assets/fond.jpg puis décommentez
+   la ligne background-image ci-dessous. L'opacité se règle
+   avec la valeur "opacity" (0 = invisible, 1 = pleine intensité).
+   Rien d'autre sur la page ne bouge : boutons, textes, numéros
+   restent strictement identiques. */
+.hero-photo{
+  position:absolute;
+  inset:0;
+  background-image: url('assets/fond.jpg');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.32; /* <-- réglez l'opacité de la photo ici */
+}
+
+/* Calque de teinte/assombrissement, TOUJOURS au-dessus de la photo :
+   c'est lui qui garantit que le texte et les boutons restent lisibles,
+   quelle que soit la photo utilisée. Ne pas supprimer. */
+.hero-overlay{
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(circle at 30% 15%, rgba(217,171,61,0.10), transparent 45%),
+    linear-gradient(180deg, rgba(6,18,35,0.5) 0%, rgba(6,18,35,0.68) 45%, rgba(6,18,35,0.97) 100%);
+}
+
+.hero-bg::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  opacity:0.5;
+  background-image:
+    repeating-linear-gradient(115deg, rgba(255,255,255,0.025) 0px, rgba(255,255,255,0.025) 1px, transparent 1px, transparent 90px);
+}
+
+.hero-bg::after{
+  content:"";
+  position:absolute;
+  width: 480px; height:480px;
+  border-radius:50%;
+  right:-140px; top:-140px;
+  background: radial-gradient(circle, rgba(240,200,94,0.16), transparent 70%);
+  filter: blur(10px);
+  animation: driftGlow 14s ease-in-out infinite;
+}
+
+/* Second halo, plus discret, décalé pour donner de la profondeur au fond
+   tant qu'aucune photo/vidéo réelle n'est en place */
+.hero-bg .glow-secondary{
+  content:"";
+  position:absolute;
+  width: 360px; height:360px;
+  border-radius:50%;
+  left:-120px; bottom:-100px;
+  background: radial-gradient(circle, rgba(0,169,157,0.13), transparent 70%);
+  filter: blur(14px);
+  animation: driftGlow2 18s ease-in-out infinite;
+}
+
+@keyframes driftGlow{
+  0%   { transform: translate(0,0) scale(1);      opacity:0.85; }
+  50%  { transform: translate(-30px, 40px) scale(1.12); opacity:1; }
+  100% { transform: translate(0,0) scale(1);      opacity:0.85; }
+}
+
+@keyframes driftGlow2{
+  0%   { transform: translate(0,0) scale(1);      opacity:0.7; }
+  50%  { transform: translate(25px, -30px) scale(1.08); opacity:0.95; }
+  100% { transform: translate(0,0) scale(1);      opacity:0.7; }
+}
+
+@media (prefers-reduced-motion: reduce){
+  .hero-bg::after, .hero-bg .glow-secondary{ animation:none; }
+}
+
+.hero-content{
+  position:relative;
+  z-index:2;
+  width:100%;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 2.2rem 1.25rem 1.9rem;
+  display:flex;
+  flex-direction:column;
+  gap: 1.15rem;
+}
+
+.eyebrow-row{
+  display:flex;
+  align-items:center;
+  gap:0.5rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold-bright);
+  font-weight: 700;
+  /* On empêche le mot qui s'écrit/s'efface (Hôtel <-> Résidence) de
+     passer à la ligne suivante (c'est ça qui faisait bouger les
+     boutons plus bas). On utilise une hauteur MINIMALE plutôt
+     qu'une hauteur fixe + overflow:hidden : sur certains écrans/
+     polices, l'overflow:hidden coupait le texte et le rendait
+     invisible. Avec min-height, le texte a toujours la place de
+     s'afficher en entier, sans jamais faire bouger le reste. */
+  min-height: 1.7em;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+}
+
+.eyebrow-row .line{
+  width: 26px; height:1px;
+  background: var(--gold);
+  opacity:0.7;
+  flex-shrink:0;
+}
+
+.type-toggle{
+  font-family:'Fraunces', serif;
+  font-weight: 500;
+  font-style: italic;
+  display:inline-block;
+  flex-shrink:0;
+  line-height: 1.3;
+  /* Largeur minimale réservée au plus long des deux mots ("Résidence")
+     pour que le texte juste après (le "H1") ne se décale jamais
+     horizontalement pendant l'animation. */
+  min-width: 6.4ch;
+}
+
+h1{
+  font-family:'Fraunces', serif;
+  font-weight: 600;
+  font-size: clamp(2.3rem, 8.5vw, 3.4rem);
+  line-height: 1.04;
+  letter-spacing: -0.01em;
+  color: var(--white);
+  text-wrap: balance;
+}
+
+h1 .accent{ color: var(--gold-bright); }
+
+.typewriter-line{
+  font-size: clamp(1rem, 3.6vw, 1.2rem);
+  line-height: 1.45;
+  color: rgba(255,255,255,0.88);
+  height: 5.4em;      /* hauteur FIXE : la boîte ne peut plus bouger */
+  overflow: hidden;    /* filet de sécurité si une ligne dépasse ponctuellement */
+  max-width: 30ch;
+}
+
+.typewriter-line .price{
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.cursor{
+  display:inline-block;
+  width: 2px;
+  height: 1em;
+  background: var(--gold-bright);
+  margin-left: 2px;
+  vertical-align: -0.15em;
+  animation: blink 0.9s step-end infinite;
+}
+
+@keyframes blink{ 50%{ opacity:0; } }
+
+/* ---------- ACTIONS ---------- */
+.actions{
+  display:flex;
+  flex-direction:column;
+  gap:0.65rem;
+  margin-top: 0.2rem;
+}
+
+.btn{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:0.6rem;
+  width:100%;
+  padding: 0.95rem 1.1rem;
+  border-radius: 14px;
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  box-shadow: 0 8px 22px -8px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.18);
+  transition: transform 0.12s ease, box-shadow 0.12s ease, filter 0.12s ease;
+}
+
+.btn:active{ transform: translateY(1px) scale(0.99); filter: brightness(0.96); }
+
+.btn svg{ width:20px; height:20px; flex-shrink:0; }
+
+.btn-row{
+  display:flex;
+  gap:0.65rem;
+}
+.btn-row .btn{ flex:1; padding-left:0.6rem; padding-right:0.6rem; }
+
+.btn-call-orange{
+  background: linear-gradient(155deg, var(--orange) 0%, var(--orange-deep) 100%);
+  color:#fff5ec;
+}
+.btn-call-moov{
+  background: linear-gradient(155deg, var(--moov) 0%, var(--moov-deep) 100%);
+  color:#eafffb;
+}
+.btn-whatsapp{
+  background: linear-gradient(155deg, var(--whatsapp) 0%, var(--whatsapp-deep) 100%);
+  color:#f4fff2;
+}
+
+.btn-sub{
+  display:block;
+  font-size: 0.7rem;
+  font-weight:600;
+  opacity:0.85;
+  margin-top: 0.1rem;
+}
+
+.btn-label-wrap{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  line-height:1.15;
+}
+
+/* ---------- FOOTER ---------- */
+footer{
+  background: var(--navy-deep);
+  border-top: 1px solid rgba(255,255,255,0.06);
+  /* Le bouton WhatsApp flottant fait 58px + 1rem de marge en bas,
+     soit ~90px avec la marge de sécurité de l'écran (encoche, barre
+     de gestes iPhone, etc.). On réserve cet espace ici pour que le
+     numéro/e-mail du footer ne se retrouve jamais caché derrière. */
+  padding: 1rem 1.25rem calc(1rem + env(safe-area-inset-bottom) + 90px);
+}
+
+.footer-inner{
+  max-width: 720px;
+  margin:0 auto;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:0.65rem;
+  text-align:center;
+}
+
+.social-row{
+  display:flex;
+  gap:0.9rem;
+}
+
+.social-icon{
+  width:36px; height:36px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background: rgba(255,255,255,0.06);
+  border:1px solid rgba(255,255,255,0.1);
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+.social-icon:active{ transform: scale(0.93); }
+.social-icon svg{ width:16px; height:16px; fill: var(--gold-bright); }
+
+.footer-meta{
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.5);
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap: 0.4rem 0.7rem;
+}
+.footer-meta a{ color: rgba(255,255,255,0.7); font-weight:600; }
+.footer-meta a:hover{ color: var(--gold-bright); }
+
+@media (max-width: 359px){
+  /* Très petits écrans (iPhone SE, vieux Android...) : on réduit
+     légèrement le texte pour que rien ne passe à la ligne dans les
+     boutons, sans jamais toucher à leur position. */
+  .btn{ font-size: 0.92rem; padding-left: 0.5rem; padding-right: 0.5rem; }
+  .btn-whatsapp{ font-size: 0.9rem; gap: 0.45rem; }
+  .header-numbers{ gap: 0.3rem; }
+  .num-pill{ font-size: 0.66rem; padding: 0.32rem 0.45rem; }
+}
+
+@media (min-width: 480px){
+  .btn{ font-size: 1.02rem; }
+  header{ padding: 0.85rem 1.5rem; }
+  .num-pill{ font-size: 0.78rem; padding: 0.4rem 0.7rem; }
+}
+
+@media (min-width: 700px){
+  .hero-content{ padding: 3rem 1.5rem; }
+  .actions{ max-width: 460px; }
+  /* Centré verticalement (et horizontalement, via la marge auto de
+     .hero-content) sur tous les écrans, y compris ordinateur. */
+  main{ align-items: center; }
+}
+
+@media (prefers-reduced-motion: reduce){
+  .cursor{ animation:none; }
+}
+
+/* ---------- BOUTON WHATSAPP FLOTTANT ----------
+   Toujours visible, indépendamment du reste de la page :
+   c'est l'accès le plus rapide possible à l'action. */
+.whatsapp-float{
+  position: fixed;
+  right: 1rem;
+  bottom: calc(1rem + env(safe-area-inset-bottom));
+  z-index: 60;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background: linear-gradient(155deg, var(--whatsapp) 0%, var(--whatsapp-deep) 100%);
+  box-shadow: 0 10px 26px -6px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.2);
+  animation: floatPulse 2.6s ease-in-out infinite;
+}
+
+.whatsapp-float svg{
+  width: 28px;
+  height: 28px;
+  fill: #f4fff2;
+}
+
+.whatsapp-float::before{
+  content:"";
+  position:absolute;
+  inset:-6px;
+  border-radius:50%;
+  border: 2px solid rgba(37,211,102,0.45);
+  animation: pulseRing 2.6s ease-out infinite;
+}
+
+@keyframes floatPulse{
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.05); }
+}
+
+@keyframes pulseRing{
+  0%   { transform: scale(0.85); opacity: 0.9; }
+  70%  { transform: scale(1.35); opacity: 0; }
+  100% { transform: scale(1.35); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce){
+  .whatsapp-float, .whatsapp-float::before{ animation:none; }
+}
+
+@media (min-width: 700px){
+  .whatsapp-float{ right: calc((100vw - 720px)/2 + 1.2rem); }
+}
