@@ -8,8 +8,10 @@
   --paper: #f6f3ec;
   --orange: #ff6a00;
   --orange-deep: #d95700;
-  --moov: #00a99d;
-  --moov-deep: #00867d;
+  --moov: #0057a3;
+  --moov-deep: #003f7a;
+  --turquoise: #14c99a;
+  --turquoise-deep: #0f9e7c;
   --whatsapp: #25d366;
   --whatsapp-deep: #1da851;
 }
@@ -135,7 +137,7 @@ header{
 
 .num-pill.orange{ color: #ffcaa0; }
 .num-pill.orange .dot{ background: var(--orange); }
-.num-pill.moov{ color: #a6ede7; }
+.num-pill.moov{ color: #b8d9ff; }
 .num-pill.moov .dot{ background: var(--moov); }
 
 .dot{ width:7px; height:7px; border-radius:50%; flex-shrink:0; }
@@ -168,7 +170,7 @@ main{
   background-image: url('assets/fond.jpg');
   background-size: cover;
   background-position: center;
-  opacity: 0.32; /* <-- réglez l'opacité de la photo ici */
+  opacity: 0.8; /* <-- réglez l'opacité de la photo ici (image bien visible) */
 }
 
 /* Calque de teinte/assombrissement, TOUJOURS au-dessus de la photo :
@@ -178,8 +180,8 @@ main{
   position:absolute;
   inset:0;
   background:
-    radial-gradient(circle at 30% 15%, rgba(217,171,61,0.10), transparent 45%),
-    linear-gradient(180deg, rgba(6,18,35,0.5) 0%, rgba(6,18,35,0.68) 45%, rgba(6,18,35,0.97) 100%);
+    radial-gradient(circle at 30% 15%, rgba(20,201,154,0.14), transparent 45%),
+    linear-gradient(180deg, rgba(6,18,35,0.38) 0%, rgba(6,18,35,0.6) 45%, rgba(6,18,35,0.97) 100%);
 }
 
 .hero-bg::before{
@@ -197,7 +199,7 @@ main{
   width: 480px; height:480px;
   border-radius:50%;
   right:-140px; top:-140px;
-  background: radial-gradient(circle, rgba(240,200,94,0.16), transparent 70%);
+  background: radial-gradient(circle, rgba(20,201,154,0.22), transparent 70%);
   filter: blur(10px);
   animation: driftGlow 14s ease-in-out infinite;
 }
@@ -210,7 +212,7 @@ main{
   width: 360px; height:360px;
   border-radius:50%;
   left:-120px; bottom:-100px;
-  background: radial-gradient(circle, rgba(0,169,157,0.13), transparent 70%);
+  background: radial-gradient(circle, rgba(0,87,163,0.15), transparent 70%);
   filter: blur(14px);
   animation: driftGlow2 18s ease-in-out infinite;
 }
@@ -361,7 +363,7 @@ h1 .accent{ color: var(--gold-bright); }
 }
 .btn-call-moov{
   background: linear-gradient(155deg, var(--moov) 0%, var(--moov-deep) 100%);
-  color:#eafffb;
+  color:#eaf4ff;
 }
 .btn-whatsapp{
   background: linear-gradient(155deg, var(--whatsapp) 0%, var(--whatsapp-deep) 100%);
