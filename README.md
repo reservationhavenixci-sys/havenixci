@@ -1,14 +1,14 @@
-# Havenixci
+# Havenix
 
-Nous accompagnons les entreprises dans leur développement digital grâce à des solutions modernes, performantes et adaptées à leurs objectifs.
+Réservez votre chambre en un appel ou un message WhatsApp.
 
-## Nos services
-- Création de sites web
-- Solution WhatsApp Business
-- Identité visuelle
-- Supports de communication
-- Maintenance
-- Conseil digital
+## Comment réserver
+
+- **Appeler Orange :** 07 98 01 69 27
+- **Appeler Moov :** 01 51 03 09 57
+- **WhatsApp :** 01 51 03 09 57
 
 ## Contact
-WhatsApp : +225 07 98 01 69 27
+
+- **E-mail :** reservationhavenixci@gmail.com
+- **Réseaux :** Facebook, TikTok
